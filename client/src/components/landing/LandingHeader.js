@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import HeaderLogo from '../layout/HeaderLogo';
+import HeaderLogo from '../Layout/HeaderLogo';
 
 class Header extends Component {
     render() {

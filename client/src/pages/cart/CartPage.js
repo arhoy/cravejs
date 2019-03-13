@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Cart from '../../components/cart/Cart';
-import Header from '../../components/layout/Header';
+import Header from '../../components/Layout/Header';
 import { connect } from 'react-redux';
 
 

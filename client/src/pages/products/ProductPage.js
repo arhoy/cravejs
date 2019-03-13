@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Products from '../../components/products/Products';
-import Header from '../../components/layout/Header';
+import Header from '../../components/Layout/Layout';
 import { connect } from 'react-redux';
 import ProductDetail from '../../components/products/ProductDetail';
 

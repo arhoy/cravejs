@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Register from '../../components/auth/Register';
-import Layout from '../../components/layout/Layout';
+import Layout from '../../components/Layout/Layout';
 
 class RegisterPage extends Component {
     render() {

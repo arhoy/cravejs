@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Navigation from '../layout/Navigation';
+import Navigation from '../Layout/Navigation';
 import PostMenu from './PostMenu';
 
 
