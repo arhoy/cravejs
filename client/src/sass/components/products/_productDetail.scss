@@ -1,0 +1,166 @@
+.productDetail-container {
+    display:grid;
+    background-color: $color-black;
+      grid-template-columns:
+          [full-start] 1fr 
+          [center-start] repeat(8, [col-start] minmax(min-content,1fr) [col-end] ) 
+          [center-end] 1fr [full-end];
+    min-height: 85vh;
+ 
+}
+
+.ProductDetail {
+    grid-column: center-start/ center-end;
+    
+    display:grid;
+    grid-template-columns: repeat(2, [col-start] 1fr [col-end]);
+    grid-template-rows:  1fr 1fr;
+    grid-column-gap: 8rem;
+   
+    margin: 5rem 0rem;
+    font-size: 1.6rem;
+    background-color: $color-black;
+    justify-content: center;
+    align-self: center;
+    @include respond(tab-port) {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4,min-content);
+        &  > *  {
+            margin-bottom: 0rem;
+        }
+    }
+    @include respond(tab-land) {
+        grid-row-gap: 3rem;
+    }
+    &__loading {
+        font-size: 2rem;
+        grid-column: center-start/ center-end;
+        align-items: center;
+        justify-self: center;
+        padding: 5rem;
+        & > * {
+            margin-bottom: 4rem;
+        }
+      }
+    &__feature {
+        color: $color-white;
+        grid-column: col-start 1 / col-end 1;
+        grid-row: 1 / 2;
+        align-self: center;
+        justify-self: center;
+        @include respond(tab-port) {
+            grid-column: 1/-1;
+            grid-row: 1 / 2;
+        }
+    }
+    &__figure {
+        grid-column: col-start 1 / col-end 1;
+        position: relative;
+        width: 70%;
+        max-width: 35rem;
+        min-width: 30rem;
+        @include respond(tab-port) {
+            grid-column: 1/-1;
+            grid-row: 2/3;
+            width: 90%;
+        }
+    
+    }
+
+    &__image {
+        width: 100%;
+        object-fit: cover;
+        border-radius: 3rem;
+        cursor: pointer;
+    }
+    &__lightbox {
+        position: absolute;
+        border:none;
+        outline:none;
+        margin-left: 1rem;
+        background-color: transparent;
+        color: $color-real-white;
+        font-size: 1.4rem;
+        cursor: pointer;
+
+    }
+        &__name {
+            font-size: 4.2rem;
+            line-height: 4.2rem;
+            margin-bottom: 2rem;
+        }
+        &__description {
+            font-size: 2rem;
+            line-height: 26px;
+         
+        }
+        &__price {
+            font-size: 3rem;
+        }
+
+    &__details {
+        grid-column: col-start 2 / col-end 2;
+        grid-row: 2/3;
+
+        font-size: 1.7rem;
+        color: $color-white;
+        
+        @include respond(tab-port) {
+            grid-column: 1/-1;
+            grid-row: 3/4;
+        }
+     
+    }
+        &__longDescription {
+
+            grid-column: col-start 2 / col-end 2;
+            grid-row: row-start 1 / row-end 2; 
+           
+            &-1 {
+                font-size: 2.3rem;
+            }
+        }
+    &__cta {
+        grid-column: col-start 2 / col-end 2;
+        grid-row: 1/ 2;
+
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        @include respond(tab-port) {
+            grid-column: 1/-1;
+            grid-row: 4/5;
+        }
+
+        ul {
+            list-style: none;
+        }
+        &-addToCart {
+            border:none;
+            width: 25rem;
+            padding: 2rem 4rem;
+            margin: 1rem;
+            cursor: pointer;
+        }
+        &-purchase {
+            border:none;
+            margin: 1rem;
+            padding: 1rem 2rem;
+            width: 25rem;
+        }
+        &-addToCart {
+            background-color: $color-red-light;
+            color: $color-white;
+            &:hover {
+                background-color: darken($color-red-light, 10%);
+            }
+        }
+        &-purchase {
+            background-color: $fb-grey;
+            &:hover {
+                background-color: darken($fb-grey, 10%);
+            }
+        }
+    }
+}

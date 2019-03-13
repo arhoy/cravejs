@@ -1,0 +1,21 @@
+.PostEditForm {
+    &__form {
+        width:100%;
+        display: grid;
+    }
+ 
+    &__button {
+        justify-self: flex-end;
+        align-self: flex-end;
+        display: inline-block;
+        background-color: $fb-grey;
+        border:none;
+        outline:none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        &:hover {
+            background-color: darken($fb-grey,5%);
+        }
+    }
+}

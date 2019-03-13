@@ -1,0 +1,58 @@
+.Product { 
+    font-size: 1.6rem;
+    color: $color-black;
+    background-color: $color-white;
+    display:grid;
+    grid-template-rows: 1fr 7rem 4rem 12rem 4rem;
+    cursor: pointer;
+    border: 0.5rem solid $fb-grey;
+    &:hover {
+        border:none;
+    }
+  
+
+    &__image {
+        display: block;
+        width: 100%;
+    
+    }
+    &__name, &__description, &__price, &__longDescription, &__button {
+        display: flex;
+  
+        text-align: center;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 1rem;
+    }
+    &__name {
+        font-weight: 600;
+        background: $color-white;
+        align-items: center;
+    }
+    &__description {
+        overflow: hidden;
+        background: $color-white;
+        align-items: flex-start;
+    }
+    &__price {
+        background-color:$color-red-light;
+        color:$color-white;
+        & span {
+            font-weight: 600;
+           
+        }
+    }
+    &__button {
+        cursor: pointer;
+        outline:none;
+        border:none;
+        transition: all 0.1s;
+        padding: 1rem 2rem;
+        background-color: $fb-grey-1;
+        &:hover{
+            background: $color-black;
+            color:$color-white;
+            font-weight: bold;
+        }
+    }
+}

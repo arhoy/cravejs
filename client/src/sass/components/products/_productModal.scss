@@ -1,0 +1,83 @@
+.ProductModal {
+    display: grid;
+    grid-template-columns: 1fr repeat(auto-fit,minmax(30rem,1fr))  1fr;
+    padding: 2rem;
+    font-size: 1.6rem;
+    position: relative;
+    &__close {
+        position: absolute;
+        top: -1.5rem;
+        right: -1.5rem;
+    }
+
+    &__header, &__footer {
+        display: grid;
+        grid-gap: 2rem;
+        grid-template-columns:  5fr 1fr;
+        background-color: $trello-green-100;
+        align-items: center;
+      
+        padding: 3rem;
+        color: $trello-green-900;
+        font-weight: 500;
+        font-size: 1.7rem;
+        @include respond(tab-port) {
+            grid-template-columns:  minmax(30rem,1fr);
+           }
+        &-1 {
+            @include respond(tab-port) {
+                justify-self: center;
+               }
+        }
+       
+        &-2 {
+            justify-self: flex-end;
+            @include respond(tab-port) {
+                justify-self: center;
+               }
+        }
+        & span {
+            font-weight: 900;
+        }
+    }
+    &__body {
+        padding: 5rem 5rem;
+        margin: 3rem 0rem;
+        border: 2px solid $fb-grey;
+        & span {
+            font-weight: 600;
+        }
+    }
+    &__footer {
+        background-color: $trello-blue-50;
+        color:$trello-blue-900;
+    }
+    &__button {
+        border:none;
+        outline:none;
+        padding: 1rem 2rem;
+        max-width: 16rem;
+        cursor: pointer;
+        display: inline-block;
+        width: max-content;
+        &-green {
+            background-color: $trello-green-900;
+            color: $color-white;
+            border-radius: 5px;
+            &:hover {
+                background-color: lighten($trello-green-900,10%);
+            }
+        }
+        &-blue {
+            background-color: $trello-blue-900;
+            color: $color-white;
+            border-radius: 5px;
+            &:hover {
+                background-color: lighten($trello-blue-900,10%);
+            }
+        }
+   
+    }
+
+
+}

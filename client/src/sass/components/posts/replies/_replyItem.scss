@@ -1,0 +1,95 @@
+.ReplyItem {
+    background-color:$fb-grey;
+    border-radius: 10px;
+    color:inherit;
+    grid-column: 1 / -1;
+    font-size: 1.6rem;
+    margin: 1rem 3rem;
+    padding: 1.5rem 2rem;
+    position:relative;
+    width: 80%;
+    display: grid;
+    justify-self:flex-end;
+       &:hover {
+            background-color:lighten($fb-grey,5%);
+        }
+
+    &__content {
+        position: relative;
+        padding: 1rem;
+     
+    }
+    &__toolbar {
+        &:hover{
+            cursor:pointer;
+        }
+    }
+    &__name { 
+
+        font-weight: 600;
+        color: $trello-blue-900;
+    }
+    &__likes, &__toolbar, &__replies, &__countLikes {
+        position:absolute;
+        display:flex;
+        justify-content:flex-end;
+    }
+    &__likes {
+        right:-1rem;
+        cursor: pointer;
+    }
+    &__countLikes {
+        right:-2rem;
+        bottom:-1rem;
+        padding: 0;
+        margin: 0;
+    }
+    &__toolbar {
+        top: -1.5rem;
+        right: -2rem;
+    }
+    &__replies {
+        right: 3.4rem;
+        bottom: -2.3rem;
+        cursor: pointer;
+     
+    }
+    &__like, &__ellipses, &__reply {
+        
+        margin-left: 2px;
+        border:none;
+        outline:none;
+        background-color:$fb-grey-1;
+        &:focus {
+            border:none;
+            outline:none;
+        }
+        &:hover {
+            background-color:darken($fb-grey-1,5%);
+        }
+    }
+    &__countLike {
+        background-color: transparent;
+        z-index:1;
+        padding: 0;
+    }
+    &__like {
+        border-radius: 50%;
+        width: 3.5rem;
+        height: 3.5rem;
+        z-index: 2;
+    }
+    &__ellipses {
+        width: 3.5rem;
+        height: 2rem;
+    }
+    &__reply { 
+        padding: 0.6rem 0.8rem;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+    &__countLike {
+        padding: 3px;
+        font-weight: 900;
+    }
+}

@@ -1,0 +1,50 @@
+
+.UserOrderId  {
+  font-size: 1.6rem;
+  grid-column: center-start/ center-end;
+  display:grid;
+  margin: 5rem 0rem;
+
+  &__main, &__products {
+      background-color: $color-white;
+      padding: 2rem;
+      margin-bottom: 4rem;
+  }
+  &__product {
+      background-color: $fb-grey;
+      margin: 1rem 0rem;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &-b {
+          width: 12rem;
+          img{
+              object-fit: cover;
+              width:100%;
+              height:100%;
+          }
+          @include respond(tab-port) {
+            display: none;
+        }
+      }
+  }
+ 
+  &__price, &__quantity, &__orderDate {
+      font-size: 1.6rem;
+      background-color: $fb-grey;
+      margin: 1rem 0rem;
+      padding: 1rem;
+      
+  }
+}
+.UserOrderId__loading {
+  font-size: 2rem;
+  grid-column: center-start/ center-end;
+  align-items: center;
+  justify-self: center;
+  padding: 5rem;
+  & > * {
+      margin-bottom: 4rem;
+  }
+}

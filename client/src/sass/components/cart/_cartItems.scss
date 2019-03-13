@@ -1,0 +1,30 @@
+.CartItems { 
+    margin: 3rem 0;
+    font-size: 1.6rem;
+}
+
+.CartItem {
+    background-color: $color-white;
+    
+    color: $color-black;
+    margin: 1.5rem 0rem;
+    padding: 1rem 2rem;
+    &__name { 
+        font-size: 2rem;
+        font-weight: 600;
+    }
+    &__price {
+        color: $trello-green-900;
+        font-weight: bolder;
+    }
+    &__remove {
+        display: inline;
+        border:none;
+        font-size: 1.5rem;
+        color: $trello-red-900;
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

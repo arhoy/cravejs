@@ -1,0 +1,25 @@
+.ReplyForm {
+    grid-column: center-start / center-end;
+    display: grid;
+    justify-items: flex-end;
+   &__form {
+       width: 80%;
+       position: relative;
+       margin-bottom: 1rem;
+   }
+   &__button {
+        position: absolute;
+        display: inline-block;
+        bottom:-1rem;
+        right: 0rem;
+        background-color: $fb-grey;
+        border:none;
+        outline:none;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        border-radius: 5px;
+        &:hover {
+            background-color: darken($fb-grey,5%);
+        }   
+    }
+}

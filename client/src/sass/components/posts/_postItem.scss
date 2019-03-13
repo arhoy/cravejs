@@ -1,0 +1,82 @@
+.PostItem {
+    background-color:$fb-grey;
+    border-radius: 10px;
+    color:inherit;
+    grid-column: center-start / center-end;
+    font-size: 1.6rem;
+    margin: 2rem 0rem;
+    padding: 1.5rem 2rem;
+    position:relative;
+    display:grid;
+    grid-template-columns: 1fr;
+    
+       &:hover {
+            background-color:lighten($fb-grey,5%);
+        }
+
+    &__content {
+        position: relative;
+        padding: 1rem;
+     
+    }
+    &__toolbar {
+        &:hover{
+            cursor:pointer;
+        }
+    }
+    &__name { 
+
+        font-weight: 600;
+        color: $trello-blue-900;
+    }
+
+    &__collection, &__toolbar {
+        position:absolute;
+        display:flex;
+        justify-content:flex-end;
+    }
+    &__collection {
+        right: -2rem;
+        bottom: -3rem;
+      
+    }
+    &__toolbar {
+        top: -1.5rem;
+        right: -2rem;
+    }
+    &__likes, &__toolbar, &__replies, &__showHideRepliesContainer, &__countLikesContainer {
+        cursor: pointer;
+    }
+
+    &__like, &__ellipses, &__reply, &__showHideReplies, &__countLikes {
+        
+        margin-left: 2px;
+        font-size: 1.4rem;
+        border:none;
+        outline:none;
+        background-color:$fb-grey-1;
+        &:focus {
+            border:none;
+            outline:none;
+        }
+        &:hover {
+            background-color:darken($fb-grey-1,5%);
+        }
+    }
+    &__like {
+        border-radius: 50%;
+        width: 3rem;
+        height: 3rem;
+    }
+    &__ellipses {
+        width: 3.5rem;
+        height: 2rem;
+    }
+    &__reply, &__showHideReplies, &__countLikes { 
+        padding: 0.6rem 0.8rem;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+    
+  
+}

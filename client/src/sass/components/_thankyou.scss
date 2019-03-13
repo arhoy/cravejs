@@ -1,0 +1,30 @@
+.thankyou-container {
+    display:grid;
+    background-color: $color-white;
+      grid-template-columns:
+          [full-start] 1fr 
+          [center-start] repeat(8, [col-start] minmax(min-content,1fr) [col-end] ) 
+          [center-end] 1fr [full-end];
+    min-height: 85vh;
+ 
+}
+
+.ThankYou {
+    margin-top: 5rem;
+    font-size: 1.6rem;
+    grid-column: center-start/ center-end; 
+    &__message {
+        border-left: 1px solid $color-black;
+        & > * {
+            margin-left: 3rem;
+            margin-bottom: 1rem;
+        }
+        &-1 {
+            font-size: 3rem;
+            line-height: 3.4rem;
+        }
+        &-2 {
+            font-size: 2rem;
+        }
+    }
+}

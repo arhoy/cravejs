@@ -1,0 +1,76 @@
+.section-dashboard {
+    padding: 10vh 0;
+    background:$trello-blue-200;
+    font-size: $default-font-size;
+    color:$trello-blue-900;
+    min-height: 100vh;
+}
+
+.dashboard {
+    display:block;
+    margin: 0 auto;
+    width: 70%;
+    background:$trello-blue-200;
+    justify-items:center;
+    color:$trello-blue-900;
+    font-size: 1.6rem;
+    &__loading {
+        font-size: 2.7rem;
+    }
+    &__user {
+        font-size: 3rem;
+        color: $color-grey-light-2;
+    }
+    &__links ul{
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        flex-basis: auto;
+        align-items: center;
+     
+        
+    }
+    &__links li{
+        background-color: $color-white;
+        padding: 1rem;
+        cursor: pointer;
+        &:hover{
+            background-color: $color-grey-light-2;
+        }
+    }
+    &__links li:not(:last-child){
+        border-right: 1px solid $color-black;
+    }
+    &__link {
+        color:$color-black;
+        text-decoration: none;
+        font-size: 1.6rem;
+        font-weight: 500;
+    }
+    &__getStarted {
+        font-size: 1.8rem;
+         color: $color-black;
+    }
+}
+.dashboard__experience, .dashboard__education {
+    padding: 2rem 0;
+}
+
+.dashboard__details {
+    padding: 2rem 1rem;
+    margin: 2rem 0rem;
+    border-radius: 5px;
+    border: 1px solid $color-white-faded;
+    background-color: $slate-blue-dark;
+    color: $color-white;
+}
+.dashboard__detail {
+    &-1 {
+        color:$color-white-faded;
+    }
+}
+
+.dashboard__addEducation, .dashboard__addExperience {
+  margin: 1.0rem 0rem;
+}
+

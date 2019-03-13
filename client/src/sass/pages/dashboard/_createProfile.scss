@@ -1,0 +1,31 @@
+.section-createProfile {
+    padding: 10vh 0;
+    background:$trello-blue-200;
+    font-size: $default-font-size;
+    color:$trello-blue-900;
+}
+
+.createProfile {
+    display:block;
+    margin: 0 auto;
+    width: 70%;
+    background:$trello-blue-200;
+    justify-items:center;
+    @include respond(tab-port) {
+        width: 90%;
+    }
+
+    &__header {
+        grid-column: 1/-1;
+        justify-self:center;
+        padding: 2rem;
+        
+    }
+     &__form {
+        grid-column: 2/ span 1;
+        justify-self:center;    
+    }
+    &__options {
+        margin-left: 1rem;
+    }
+}

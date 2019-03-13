@@ -1,0 +1,53 @@
+
+.Menu-container {
+    position: relative;
+}
+.Menu {
+    position: absolute;
+    top: 6rem;
+    right: -9rem;
+    padding: 2rem 0rem;
+    background-color: $color-real-white;
+    z-index: 100;
+    @include respond(tab-port) {
+     right:-1rem;
+    }
+    &__ul {
+        position: relative;
+        display:flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+        list-style: none;
+        padding:0;
+    }
+
+    &__link {
+        width: 100%;
+        text-align: center;
+        &:link,
+        &:visited {
+            display: inline-block;
+            font-size: 1.5rem;
+            font-weight: 500;
+            padding: 1rem 2rem;
+            color: $color-black;
+            text-decoration: none ;
+            text-transform: uppercase;
+            background-image: linear-gradient(110deg, transparent 0%, transparent 50%, $fb-grey 50%);
+            background-size: 235%;
+            transition: all .25s;
+
+            span {
+                margin-right: 1.5rem;
+                display: inline-block;
+            }
+        }
+        
+        &:hover,
+        &:active {
+            background-position: 100%;
+            color: $color-black
+        }
+    }
+}

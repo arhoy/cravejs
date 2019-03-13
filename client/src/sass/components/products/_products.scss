@@ -1,0 +1,43 @@
+.products-container {
+      display:grid;
+      background-color: $fb-grey;
+        grid-template-columns:
+            [full-start] 1fr 
+            [center-start] repeat(8, [col-start] minmax(min-content,1fr) [col-end] ) 
+            [center-end] 1fr [full-end];
+        
+}
+.products , .products__noResults {
+    grid-column: center-start/ center-end;
+    grid-row: 2/3;
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
+    grid-gap: 7rem;
+    margin: 5rem 0rem;
+}
+.products__loading {
+    font-size: 2rem;
+    grid-column: center-start/ center-end;
+    align-items: center;
+    justify-self: center;
+    padding: 5rem;
+    & > * {
+        margin-bottom: 4rem;
+    }
+}
+
+.products__noResults {
+    font-size: 2rem;
+}
+
+.products__input {
+    grid-column: center-start/ center-end;
+    grid-row: 1/2;
+    max-width: 20rem;
+    margin-top:2rem;
+    display: inline-block;
+    outline: none;
+    border:none;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+}

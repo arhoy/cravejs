@@ -1,0 +1,96 @@
+.cart-container {
+    display:grid;
+    background-color: $fb-grey;
+      grid-template-columns:
+          [full-start] 1fr 
+          [center-start] repeat(8, [col-start] minmax(min-content,1fr) [col-end] ) 
+          [center-end] 1fr [full-end];
+}
+
+.Cart {
+    grid-column: full-start/ full-end;
+    
+    display:grid;
+    grid-template-columns: 
+        [full-start] 1fr 
+        [center-start] repeat(8, [col-start] minmax(min-content,1fr) [col-end] ) 
+        [center-end] 1fr [full-end];
+    grid-gap: 8rem;
+   
+    font-size: 1.6rem;
+
+    &__empty {
+        grid-column: 1/-1;
+        display:grid;
+        background-color: $fb-grey;
+          grid-template-columns:
+              [full-start] 1fr 
+              [center-start] repeat(8, [col-start] minmax(min-content,1fr) [col-end] ) 
+              [center-end] 1fr [full-end];
+          grid-template-rows: 1fr 1fr;
+
+        font-size: 1.6rem;
+
+        &-block {
+            grid-column: full-start/full-end;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: $color-white;
+            display: flex;
+            padding: 2rem 0rem;
+            &--1 {
+                background-color:$color-black;
+            }
+            &--2{
+                background-color:lighten($color-black,10%);
+            }
+            &--3{
+                background-color:lighten($color-black,15%);
+            }
+        }
+    
+    }
+  
+    &__header {
+        grid-column: 1 / -1;
+        font-size: 3rem;
+        background-color: $color-black;
+        align-self: center;
+        align-items: center;
+        text-align: center;
+        color: $color-white;
+    }
+    &__body {
+        grid-column: center-start / center-end;
+        &-3{
+         
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+        }
+    }
+    &__total {
+        font-size: 2.1rem;
+        span {
+            font-weight: 600;
+            color:$trello-green-900;
+        }
+    }
+    &__paypal {
+        outline: none;
+        border:none;
+        background-color: transparent;
+        margin: 1rem;
+    }
+    &__loading {
+        grid-column: 1 / -1;
+        font-size: 2rem;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-self: center;
+        margin: 4rem 0rem;
+    }
+}

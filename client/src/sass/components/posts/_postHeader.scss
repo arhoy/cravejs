@@ -1,0 +1,85 @@
+.PostHeader {
+    display:grid;
+        grid-template-columns:
+            [full-start] 1fr 
+            [center-start] repeat(8, [col-start] minmax(min-content,1fr) [col-end] ) 
+            [center-end] 1fr [full-end];
+    background-color:$trello-blue-100;
+    color: $color-black;
+    padding: 2rem 1rem;
+    font-size: 1.6rem;
+    justify-items: stretch;
+    
+   
+    &__searchbar input {
+        padding: 1rem 3rem;
+        padding-left: 1rem;
+        min-width: 12rem;
+        max-width: 15vw;
+        outline:none;
+        border:none;
+        border-radius: 10px;
+    }
+    &__icon {
+        &-1 {
+            font-size: 4rem;
+        }
+        &-2 {
+            font-size: 2rem;
+        }
+    }
+    &__nav {
+        grid-column: center-start/center-end;
+        display: grid; 
+        align-items: center;
+        grid-template-columns:
+            [full-start] 1fr 
+            [center-start] repeat(8, [col-start] minmax(min-content,1fr) [col-end] ) 
+            [center-end] 1fr [full-end];
+
+    @include respond(phone) {
+        grid-column: 1 / -1;
+        margin: 0 2rem;
+    }
+        &-left {
+
+            display:flex;
+            align-items: center;
+            & > * {
+                margin-right: 1rem;
+            }
+
+        }
+        &-right {
+            grid-column: col-start-4 / full-end;
+            display: flex;
+            justify-items: space-between;
+            & > *  {
+                width: 6rem;
+                height: 6rem;
+              
+            
+                &:hover {
+                    font-weight: 600;
+                    background-color: $color-grey-blue;
+                    border-radius: 50%;
+                }
+                &:not(:last-child){
+                    margin-right: 2rem;
+                }
+            }
+        }
+    }
+    &__home , &__network, &__jobs, &__articles, &__login {
+      
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor:pointer;
+        font-weight: 500;
+        & span {
+            font-size: 1.6rem; 
+        }
+    }
+}

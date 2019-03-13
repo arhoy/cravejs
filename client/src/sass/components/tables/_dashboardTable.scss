@@ -1,0 +1,26 @@
+.dashboardTable {
+    background-color:$color-black;
+    display:grid;
+}
+
+.dashboardTable__header {
+    background-color:$color-white;
+    display:grid;
+    grid-template-columns: repeat(5,minmax(10rem,1fr));
+    justify-content:center;
+}
+
+.dashboardTable__row {
+    display:grid;
+    grid-template-columns: repeat(5,minmax(10rem,1fr));
+
+    padding: 1rem;
+    justify-content:center;
+    text-align:center;
+    align-items:center;
+    color:white;
+    background-color:$slate-blue-dark;
+    &:hover {
+        background-color:darken($slate-blue-dark,5%);
+    }
+}
