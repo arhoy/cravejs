@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Profile from '../../components/profiles/Profile';
+import Dashboard from '../../components/dashboard/Dashboard';
 import Header from '../../components/Layout/Header';
 import { connect } from 'react-redux';
 
-class ProfilePage extends Component {    
+class DashboardPage extends Component {    
     render() {
     
         const { isAuthenticated ,user } = this.props.auth;
@@ -57,8 +57,8 @@ class ProfilePage extends Component {
         return (
             <React.Fragment>
                 <Header links = {links}/>
-                <div className = "profile-container">
-                    <Profile/>
+                <div className = "dashboard-container">
+                    <Dashboard/>
                 </div>
 
             </React.Fragment>
@@ -73,4 +73,4 @@ const mapStateToProps = state => ({
     auth: state.auth
 })
 
-export default connect(mapStateToProps)(ProfilePage);
+export default connect(mapStateToProps)(DashboardPage);

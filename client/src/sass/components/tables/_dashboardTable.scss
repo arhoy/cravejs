@@ -1,6 +1,7 @@
 .dashboardTable {
-    background-color:$color-black;
     display:grid;
+   
+  
 }
 
 .dashboardTable__header {
@@ -8,19 +9,34 @@
     display:grid;
     grid-template-columns: repeat(5,minmax(10rem,1fr));
     justify-content:center;
+    @include respond(phone){
+        display: none;
+    }
 }
 
 .dashboardTable__row {
     display:grid;
     grid-template-columns: repeat(5,minmax(10rem,1fr));
-
     padding: 1rem;
     justify-content:center;
     text-align:center;
     align-items:center;
-    color:white;
+    color:$color-real-white;
     background-color:$slate-blue-dark;
+
+    & td {
+        margin: 0.5rem 0rem;
+    } 
     &:hover {
         background-color:darken($slate-blue-dark,5%);
+    }
+    &-info {
+        color:$fb-grey-1;
+        font-size: 1.7rem;
+    }
+    @include respond(phone){
+        grid-template-columns: 1fr;
+        margin-bottom: 1rem;
+
     }
 }

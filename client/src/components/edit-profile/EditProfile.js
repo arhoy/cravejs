@@ -192,12 +192,11 @@ class CreateProfile extends Component {
       ];
 
     return (
-        <div className = "section-createProfile">
           <div className="createProfile">
             <div className = "createProfile__header">
             
               <div>
-              <Link className = "btn-2 btn--blue" to = "/dashboard"> Back to Dashboard </Link> 
+              <Link className = "heading-secondary heading-secondary--blue" style = {{fontSize:'1.5rem'}} to = "/dashboard"> Back to Dashboard </Link> 
               </div>
                       
               <h2 className = "heading-secondary heading-secondary--blue">Edit Your Profile</h2>
@@ -253,7 +252,7 @@ class CreateProfile extends Component {
                     value={this.state.country}
                     onChange={this.onChangeHandler.bind(this)}
                     error={errors.country}
-                    info=""
+                    info="Country"
                   />
                   <TextFieldGroup
                     placeholder="City"
@@ -261,7 +260,7 @@ class CreateProfile extends Component {
                     value={this.state.city}
                     onChange={this.onChangeHandler.bind(this)}
                     error={errors.city}
-                    info=""
+                    info="City"
                   />
               
                   <TextFieldGroup
@@ -319,7 +318,6 @@ class CreateProfile extends Component {
                   />
                 </form>
         </div>
-      </div>
     );
   }
 }

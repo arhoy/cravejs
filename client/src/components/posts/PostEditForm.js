@@ -75,7 +75,7 @@ class PostEditForm extends Component {
                     />
                   </div>
                     <button type="submit" className="PostEditForm__button">
-                        Edit Post
+                        Save Edits
                     </button>
                 </form>
             </div>

@@ -59,17 +59,14 @@ class AddExperience extends Component {
     
 
         return (
-            <div className="section-addCredentials">
-            <div className="addCredentials">
     
-                
-
+            <div className="addCredentials">
                   <div className = "createProfile__header"> 
-                    <div> <Link className = "btn-2 btn--blue" to = "/dashboard"> Back to Dashboard </Link> </div>
+                       <div>
+                         <Link className = "heading-secondary heading-secondary--blue" style = {{fontSize:'1.5rem'}} to = "/dashboard"> Back to Dashboard </Link> 
+                      </div>
                     <h2 className = "heading-secondary" style = {{color:'#0C3953'}}>Add Experience</h2>
                   </div>
-
-             
 
                   <form onSubmit={ (e)=> this.onSubmit(e) }>
                         <TextFieldGroup
@@ -78,6 +75,7 @@ class AddExperience extends Component {
                         value={this.state.company}
                         onChange={this.onChange.bind(this)}
                         error={errors.company}
+                        info = "Company name"
                         />
                         <TextFieldGroup
                         placeholder="* Job Title"
@@ -85,6 +83,7 @@ class AddExperience extends Component {
                         value={this.state.title}
                         onChange={this.onChange.bind(this)}
                         error={errors.title}
+                        info = "Job title"
                         />
                         <TextFieldGroup
                         placeholder="Location"
@@ -92,6 +91,7 @@ class AddExperience extends Component {
                         value={this.state.location}
                         onChange={this.onChange.bind(this)}
                         error={errors.location}
+                        info = "Work location"
                         />
                         <h6>From Date</h6>
                         <TextFieldGroup
@@ -130,7 +130,7 @@ class AddExperience extends Component {
                         value={this.state.description}
                         onChange={this.onChange.bind(this)}
                         error={errors.description}
-                        info="Tell us about the the position"
+                        info="Tell us more about the the position"
                         cols="90"
                         rows = "15"
                         />
@@ -148,8 +148,6 @@ class AddExperience extends Component {
                     
                   </form>
                 </div>
-              </div>
-
         );
     }
 }

@@ -8,39 +8,88 @@ import { deleteExperience } from '../../actions/profileActions';
 
 class Experience extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = { width: 0, height: 0 };
+        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+      }
+
+    componentDidMount() {
+        this.updateWindowDimensions();
+        window.addEventListener('resize', this.updateWindowDimensions);
+     }
+
+    componentWillUnmount() {
+      window.removeEventListener('resize', this.updateWindowDimensions);
+      document.removeEventListener('mousedown',this.handleClick,false);
+    }
+    
+    updateWindowDimensions() {
+      this.setState({ width: window.innerWidth, height: window.innerHeight });
+    }
+
     onDeleteClick = (id) =>{
         this.props.deleteExperience(id);
     }
     render() {
         // const experience = this.props.experience;
         const experience = this.props.experience.map(exp=>(
-            <tr className = "dashboardTable__row" key = {exp._id}>
-                <td>{exp.title}</td>
-                <td> {exp.company} </td>
-                 <td> {exp.location} </td>
-                <td>
+            this.state.width <= 600 ?
+                            <tr className = "dashboardTable__row" key = {exp._id}>
+                            <td> <div className = "dashboardTable__row-info"> Title </div> <div>{exp.title}</div> </td>
+                            <td> <div className = "dashboardTable__row-info"> Company </div> <div>{exp.company}</div> </td>
+                            <td> <div className = "dashboardTable__row-info"> Location </div> <div>{exp.location}</div> </td>
+                            <td>
+                            <div className = "dashboardTable__row-info"> Dates </div> 
+                            {moment.utc(exp.from).format("YYYY MMM")} - 
+                                {exp.to === null ? (
+                                    <span>
+                                        Present
+                                    </span>
+                                    
+                                ) : (
+                                    <span>
+                                    {moment.utc(exp.to).format("YYYY MMM")}  
+                                    </span>
+                                )}
+                                </td>
+                                <td>
+                                    <button
+                                        onClick={this.onDeleteClick.bind(this, exp._id)}
+                                        className="btn btn-2 btn--red"
+                                    >
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        :
+                        <tr className = "dashboardTable__row" key = {exp._id}>
+                            <td>{exp.title}</td>
+                            <td> {exp.company} </td>
+                            <td> {exp.location} </td>
+                            <td>
 
-               {moment.utc(exp.from).format("YYYY MMM")} - 
-                {exp.to === null ? (
-                    <div>
-                        Present
-                    </div>
-                    
-                ) : (
-                    <div>
-                      {moment.utc(exp.to).format("YYYY MMM")}  
-                    </div>
-                )}
-                </td>
-                <td>
-                    <button
-                        onClick={this.onDeleteClick.bind(this, exp._id)}
-                        className="btn btn-2 btn--red"
-                    >
-                        Delete
-                    </button>
-                </td>
-            </tr>
+                        {moment.utc(exp.from).format("YYYY MMM")} - 
+                            {exp.to === null ? (
+                                <div>
+                                    Present
+                                </div>
+                                
+                            ) : (
+                                <div>
+                                {moment.utc(exp.to).format("YYYY MMM")}  
+                                </div>
+                            )}
+                            </td>
+                            <td>
+                                <button
+                                    onClick={this.onDeleteClick.bind(this, exp._id)}
+                                    className="btn btn-2 btn--red"
+                                >
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
         ));
 
     

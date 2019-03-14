@@ -15,11 +15,15 @@ import store from './store';
 import PrivateRoute from './components/common/PrivateRoute';
 
 import HomePage from './pages/HomePage';
+
 import LoginPage from './pages/auth/LoginPage'
 import RegisterPage from './pages/auth/RegisterPage'
-import DashboardPage from './pages/DashboardPage'
-import CreateProfilePage from './pages/CreateProfilePage'
-import EditProfilePage from './pages/EditProfilePage';
+
+import DashboardPage from './pages/dashboard/DashboardPage'
+import EditProfilePage from './pages/dashboard/EditProfilePage';
+import CreateProfilePage from './pages/dashboard/CreateProfilePage';
+
+
 
 
 import AddEducationPage from './pages/addEditCredentials/AddEducationPage';

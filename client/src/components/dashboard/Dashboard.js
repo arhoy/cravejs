@@ -6,11 +6,11 @@ import { getCurrentProfile, deleteAccount } from '../../actions/profileActions';
 import Moment from 'react-moment';
 import Experience from './Experience';
 import Education from './Education';
-import Posts from '../posts/Posts';
 import LoadingSpinner from '../utils/LoadingSpinner';
 
 
 class Dashboard extends Component {
+
 
     componentDidMount() {
         this.props.getCurrentProfile();
@@ -43,66 +43,67 @@ class Dashboard extends Component {
                 if(Object.keys(profile).length > 0){
                   dashboardContent = (
                     <React.Fragment>
-                        <div className="dashboard__welcome">
-                              <h3 className = "heading-secondary"> Your Dashboard </h3>
-                              <div className = "dashboard__user"> { `${displayName}'s profile `} </div>
-                              <div className="dashboard__links">
+                        <div className="Dashboard__welcome">
+                              <h3 className = "Dashboard__title"> Your Dashboard </h3>
+                              <div className = "Dashboard__user"> { `${displayName}'s profile `} </div>
+                              <div className="Dashboard__links">
                                     <ul>
-                                      <li> <Link className = "dashboard__link" to = "edit-profile">Edit Profile</Link> </li>
-                                      <li> <Link className = "dashboard__link" to = "add-experience"> Add Experience</Link> </li>
-                                      <li> <Link className = "dashboard__link" to = "add-education"> Add Education</Link> </li>
+                                      <li> <Link className = "Dashboard__link" to = "edit-profile">Edit Profile</Link> </li>
+                                      <li> <Link className = "Dashboard__link" to = "add-experience"> Add Experience</Link> </li>
+                                      <li> <Link className = "Dashboard__link" to = "add-education"> Add Education</Link> </li>
                                     </ul>
                             </div>
                         </div>
+                      <div className = "Dashboard__summary">
+                      <h4 className = "heading-secondary heading-secondary--blue" style = {{fontSize:'2.2rem'}}>Profile Snapshot</h4>
+                          <div className="Dashboard__details">
+                                <div className="Dashboard__detail">
+                                    <span className="Dashboard__detail-1"> 
+                                      Join Date: {' '}
+                                    </span> 
+                                    <span className="Dashboard__detail-2">
+                                    <Moment format = "MMM YYYY">{profile.date}</Moment>
+                                    </span> 
+                                </div>
+                                <div className="Dashboard__detail">
+                                    <span className="Dashboard__detail-1"> 
+                                    Career Status: {' '}
+                                    </span> 
+                                    <span className="Dashboard__detail-2">
+                                      {profile.status}
+                                    </span> 
+                                </div>
+                                <div className="Dashboard__detail">
+                                    <span className="Dashboard__detail-1"> 
+                                      Current Company: {' '}
+                                    </span>
+                                    <span className="Dashboard__detail-2"> 
+                                      {profile.company}
+                                    </span>    
+                                </div>
+                                <div className="Dashboard__detail" style = {{marginBottom: '1rem'}}>
+                                    <span className="Dashboard__detail-1"> 
+                                      My short bio: {' '}
+                                    </span>
+                                    <div className="Dashboard__detail-2"> 
+                                      { profile.bio ? profile.bio : 'No bio yet!' }
+                                    </div> 
+                                </div>
+                            </div>
+                            <Link className = "Dashboard__viewProfileBtn btn-2 btn--blue" to = {`/profile/${profile.handle}`}> View Public Profile </Link>
 
-                        <div className="dashboard__details">
-                            <div className="dashboard__detail">
-                                <span className="dashboard__detail-1"> 
-                                  Join Date: {' '}
-                                </span> 
-                                <span className="dashboard__detail-2">
-                                 <Moment format = "MMM YYYY">{profile.date}</Moment>
-                                </span> 
-                            </div>
-                            <div className="dashboard__detail">
-                                <span className="dashboard__detail-1"> 
-                                Career Status: {' '}
-                                </span> 
-                                <span className="dashboard__detail-2">
-                                  {profile.status}
-                                </span> 
-                            </div>
-                            <div className="dashboard__detail">
-                                <span className="dashboard__detail-1"> 
-                                   Current Company: {' '}
-                                </span>
-                                <span className="dashboard__detail-2"> 
-                                  {profile.company}
-                                </span>    
-                            </div>
-                            <div className="dashboard__detail" style = {{marginBottom: '1rem'}}>
-                                 <span className="dashboard__detail-1"> 
-                                   My short bio: {' '}
-                                 </span>
-                                 <div className="dashboard__detail-2"> 
-                                  { profile.bio ? profile.bio : 'No bio yet!' }
-                                 </div> 
-                            </div>
-
-                          <Link className = "btn-2 btn--blue" to = {`/profile/${profile.handle}`}> View Public Profile </Link>
-                         
-                           
-                        </div>
+                      </div>
+                       
 
                       
 
-                        <div className="dashboard__experience">
+                        <div className="Dashboard__experience">
                               <Experience experience = {profile.experience} />
                         </div>
 
                         <div style = {{borderBottom: '2px solid black', marginBottom:'2rem'}} />
 
-                        <div className="dashboard__education">
+                        <div className="Dashboard__education">
                               <Education education = {profile.education} />
                         </div>
 
@@ -118,11 +119,11 @@ class Dashboard extends Component {
                 else{
                   
                     dashboardContent = (
-                        <div className="dashboard__welcome">
-                          <h4 className = "heading-secondary heading-secondary--blue"> Your Dashboard </h4>
+                        <div className="Dashboard__welcome">
+                          <h4 className = "Dashboard__title"> Your Dashboard </h4>
                          
-                          <div className = "dashboard__user"> { `${displayName}'s profile `} </div>
-                          <div className="dashboard__getStarted">
+                          <div className = "Dashboard__user"> { `${displayName}'s profile `} </div>
+                          <div className="Dashboard__getStarted">
                               <p style = {{marginBottom: '2rem'}}>Looks like you have not yet created a profile. Let's get started! </p>
 
                               <Link className = "btn btn--primary" to = "/create-profile"> Create Profile </Link>
@@ -135,11 +136,9 @@ class Dashboard extends Component {
             
       
         return (
-          <section className="section-dashboard">
-            <div className="dashboard">
+            <div className="Dashboard">
                {dashboardContent}
             </div>
-          </section>
         );
     }
 }

@@ -7,39 +7,94 @@ import { deleteEducation } from '../../actions/profileActions';
 
 class Education extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = { width: 0, height: 0 };
+        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+      }
+
+    componentDidMount() {
+        this.updateWindowDimensions();
+        window.addEventListener('resize', this.updateWindowDimensions);
+     }
+
+    componentWillUnmount() {
+      window.removeEventListener('resize', this.updateWindowDimensions);
+      document.removeEventListener('mousedown',this.handleClick,false);
+    }
+    
+    updateWindowDimensions() {
+      this.setState({ width: window.innerWidth, height: window.innerHeight });
+    }
+
+    
     onDeleteClick = (id) =>{
         this.props.deleteEducation(id);
     }
     render() {
         // const education = this.props.education;
         const education = this.props.education.map(edu=>(
-            <tr className = "dashboardTable__row" key = {edu._id}>
-                <td>{edu.school}</td>
-                <td> {edu.degree} </td>
-                <td> {edu.fieldofstudy} </td>
-                <td>
+            
+                this.state.width <= 600 ?
 
-               {moment.utc(edu.from).format("YYYY MMM")} - 
-                {edu.to === null ? (
-                    <div>
-                        Present
-                    </div>
-                    
-                ) : (
-                    <div>
-                      {moment.utc(edu.to).format("YYYY MMM")}  
-                    </div>
-                )}
-                </td>
-                <td>
-                    <button
-                        onClick={this.onDeleteClick.bind(this, edu._id)}
-                        className="btn btn-2 btn--red"
-                    >
-                        Delete
-                    </button>
-                </td>
-            </tr>
+                            <tr className = "dashboardTable__row" key = {edu._id}>
+                            <td> <div className = "dashboardTable__row-info"> School </div> <div>{edu.school}</div> </td>
+                            <td> <div className = "dashboardTable__row-info"> Degree </div> {edu.degree} </td>
+                            <td> <div className = "dashboardTable__row-info"> Field of Study </div> {edu.fieldofstudy} </td>
+                            <td>
+                            <div className = "dashboardTable__row-info"> Dates </div>
+                            {moment.utc(edu.from).format("YYYY MMM")} - 
+                            {edu.to === null ? (
+                                <span>
+                                    Present
+                                </span>
+                                
+                            ) : (
+                                <span>
+                                {moment.utc(edu.to).format("YYYY MMM")}  
+                                </span>
+                            )}
+                            </td>
+                            <td>
+                                <button
+                                    onClick={this.onDeleteClick.bind(this, edu._id)}
+                                    className="btn btn-2 btn--red"
+                                >
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                         :
+                        <tr className = "dashboardTable__row" key = {edu._id}>
+                        <td>{edu.school}</td>
+                        <td> {edu.degree} </td>
+                        <td> {edu.fieldofstudy} </td>
+                        <td>
+        
+                        {moment.utc(edu.from).format("YYYY MMM")} - 
+                        {edu.to === null ? (
+                            <div>
+                                Present
+                            </div>
+                            
+                        ) : (
+                            <div>
+                            {moment.utc(edu.to).format("YYYY MMM")}  
+                            </div>
+                        )}
+                        </td>
+                        <td>
+                            <button
+                                onClick={this.onDeleteClick.bind(this, edu._id)}
+                                className="btn btn-2 btn--red"
+                            >
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+
+            
+           
         ));
 
     

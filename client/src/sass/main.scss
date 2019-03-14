@@ -19,6 +19,10 @@
 
 @import "components/tables/dashboardTable";
 
+@import "components/dashboard/dashboard";
+
+@import "components/profile/profile";
+
 @import "components/posts/posts";
 @import "components/posts/postItem";
 @import "components/posts/postOptions";
@@ -52,10 +56,6 @@
 @import "layout/navigation";
 @import "layout/layout";
 
-@import "pages/home";
-@import "pages/dashboard/dashboard";
 @import "pages/dashboard/createProfile";
 @import "pages/dashboard/addCredentials";
-@import "pages/profile/profile";
 @import "pages/post/postPage";
-@import "pages/orders/ordersPage";

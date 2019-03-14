@@ -22,7 +22,7 @@ const customStyles = {
     },
     content : {
       position              :'fixed',
-      top                   : '20%',
+      top                   : '50%',
       left                  : '50%',
       right                 : 'auto',
       bottom                : 'auto',

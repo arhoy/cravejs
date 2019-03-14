@@ -69,10 +69,12 @@ class AddEducation extends Component {
             { label: `Doctoral Degree`, value: `Doctoral Degree` }
         ];
         return (
-            <div className="section-addCredentials">
+    
             <div className="addCredentials">
                   <div className = "createProfile__header"> 
-                    <div><Link className = "btn-2 btn--blue" to = "/dashboard"> Back to dashboard</Link></div>
+                      <div>
+                         <Link className = "heading-secondary heading-secondary--blue" style = {{fontSize:'1.5rem'}} to = "/dashboard"> Back to Dashboard </Link> 
+                      </div>
                     <h2 className = "heading-secondary heading-secondary--blue">Add Education</h2>
                   </div>
                   <form onSubmit={ (e)=> this.onSubmit(e) }>
@@ -85,7 +87,7 @@ class AddEducation extends Component {
                       info="What school/college/university do you attend?"
                     />
                      <SelectListGroup
-                        placeholder="Degree Type"
+                        info="Highest level of education"
                         name="degree"
                         value={this.state.degree}
                         onChange={ (e)=> this.onChange(e) }
@@ -98,6 +100,7 @@ class AddEducation extends Component {
                       value={this.state.fieldofstudy}
                       onChange={ (e)=>this.onChange(e) }
                       error={errors.fieldofstudy}
+                      info = "Area of study"
                     />
                     <TextFieldGroup
                       placeholder="From"
@@ -157,7 +160,6 @@ class AddEducation extends Component {
                     
                   </form>
                 </div>
-              </div>
 
         );
     }

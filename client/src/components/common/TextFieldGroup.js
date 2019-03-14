@@ -15,6 +15,7 @@ const TextFieldGroup = ({
   return (
     <div className="form__group">
     {label && <div className="form__label">{label}</div>}
+    {info && <div className="form__info"> {info} </div>}
       <input
         type={type}
         className= "form__input"
@@ -24,7 +25,7 @@ const TextFieldGroup = ({
         onChange={onChange}
         disabled={disabled}
       />
-      {info && <div className="form__info"> {info} </div>}
+     
       {error && <div className="form__error">{error}</div>}
     </div>
   );

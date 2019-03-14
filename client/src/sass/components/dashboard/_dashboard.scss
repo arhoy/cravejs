@@ -1,0 +1,132 @@
+.dashboard-container {
+    display:grid;
+    background-color: $fb-grey;
+    color: $color-black;
+      grid-template-columns:
+          [full-start] 1fr 
+          [center-start] repeat(8, [col-start] minmax(min-content,1fr) [col-end] ) 
+          [center-end] 1fr [full-end];
+
+    min-height:85vh;
+}
+
+.Dashboard {
+    grid-column: center-start / center-end;
+    background:$fb-grey;
+    justify-items:center;
+    color:$trello-blue-900;
+    font-size: 1.6rem;
+    padding: 1rem;
+    @include respond(tab-port){
+        grid-column: full-start / full-end;
+        padding: 1rem 3rem;
+    }
+    @include respond(phone){
+        overflow-x: scroll;
+        padding: 1rem 1rem;
+    }
+ 
+
+    &__loading {
+        font-size: 2.7rem;
+    }
+    &__title {
+        font-size: 3.4rem;
+        @include respond(mobile-s) {
+            text-align: center;
+        }
+    }
+    &__user {
+        font-size: 3rem;
+        @include respond(mobile-s) {
+            text-align: center;
+        }
+    }
+    &__summary {
+        margin: 2rem 0rem;
+
+    }
+    &__details {
+        background-color: $slate-blue-dark;
+        padding: 2rem;
+        color:$color-white;
+        margin: 1rem 0rem;
+      
+    }
+    &__detail {
+        color: $color-real-white;
+        margin: 3px 0px;
+        @include respond(phone){
+            margin: 1rem 0rem;
+        }
+        &-1 {
+            color:$fb-grey-1;
+        }
+    }
+    &__viewProfileBtn{
+        margin: 0rem;
+    }
+  
+    &__links ul{
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        flex-basis: auto;
+        align-items: center;
+        @include respond(mobile-s){
+            flex-direction: column;
+         
+        }
+     
+        
+    }
+    &__links li{
+        background-color: $color-white;
+        padding: 1rem;
+        cursor: pointer;
+        &:hover, &:hover > * {
+            background-color: $slate-blue-dark;
+            color: $color-white;
+        }
+        @include respond(mobile-s) {
+            border-right: 1px solid $slate-blue-dark;
+            margin: 3px;
+        }
+
+    }
+    &__links li:not(:last-child){
+        border-right: 1px solid $slate-blue-dark;
+    }
+    &__link {
+        color:$color-black;
+        text-decoration: none;
+        font-size: 1.6rem;
+        font-weight: 500;
+    }
+    &__getStarted {
+        font-size: 1.8rem;
+         color: $color-black;
+    }
+}
+.dashboard__experience, .dashboard__education {
+    padding: 2rem 0;
+}
+
+.dashboard__details {
+    padding: 2rem 1rem;
+    margin: 2rem 0rem;
+    border-radius: 5px;
+    border: 1px solid $color-white-faded;
+    background-color: $slate-blue-dark;
+    color: $color-white;
+}
+.dashboard__detail {
+    &-1 {
+        color:$color-white-faded;
+    }
+}
+
+.dashboard__addEducation, .dashboard__addExperience {
+  margin: 1.0rem 0rem;
+}
+

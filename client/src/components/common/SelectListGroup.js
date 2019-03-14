@@ -10,6 +10,7 @@ const SelectListGroup = ({ name, value, error, info, onChange, options }) => {
   ));
   return (
     <div className="form__group">
+      {info && <small className="form__info">{info}</small>}
       <select
         className="form__select" 
         name={name}
@@ -18,7 +19,7 @@ const SelectListGroup = ({ name, value, error, info, onChange, options }) => {
       >
         {selectOptions}
       </select>
-      {info && <small className="form__info">{info}</small>}
+    
       {error && <div className="form__error">{error}</div>}
     </div>
   );

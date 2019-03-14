@@ -15,6 +15,7 @@ const TextAreaFieldGroup = ({
 }) => {
   return (
     <div className="form__group">
+    {info && <small className="form__info">{info}</small>}
       <textarea
         className= {className}
         placeholder={placeholder}
@@ -25,7 +26,7 @@ const TextAreaFieldGroup = ({
         rows = {rows}
       />
       <div>
-        {info && <small className="form__info">{info}</small>}
+        
         {error && <div className="form__error">{error}</div>}
       </div>
     

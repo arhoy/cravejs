@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Profile from '../../components/profiles/Profile';
+import EditProfile from '../../components/edit-profile/EditProfile';
 import Header from '../../components/Layout/Header';
 import { connect } from 'react-redux';
 
-class ProfilePage extends Component {    
+class EditProfilePage extends Component {    
     render() {
     
         const { isAuthenticated ,user } = this.props.auth;
@@ -58,7 +58,7 @@ class ProfilePage extends Component {
             <React.Fragment>
                 <Header links = {links}/>
                 <div className = "profile-container">
-                    <Profile/>
+                    <EditProfile/>
                 </div>
 
             </React.Fragment>
@@ -73,4 +73,4 @@ const mapStateToProps = state => ({
     auth: state.auth
 })
 
-export default connect(mapStateToProps)(ProfilePage);
+export default connect(mapStateToProps)(EditProfilePage);

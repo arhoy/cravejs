@@ -151,7 +151,7 @@ class CreateProfile extends Component {
             <div className = "createProfile__header"> 
 
              <div>
-              <Link className = "btn-2 btn--blue" to = "/dashboard"> Back to Dashboard </Link> 
+             <Link className = "heading-secondary heading-secondary--blue" style = {{fontSize:'1.5rem'}} to = "/dashboard"> Back to Dashboard </Link> 
               </div>
               
               <h2 className = "heading-secondary" style = {{color:'#0C3953'}}>Create Your Profile</h2>
