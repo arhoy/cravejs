@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
-import { addPost } from '../../actions/postActions';
+import { withRouter } from 'react-router-dom';
+import { addComment } from '../../actions/profileActions';
 import PropTypes from 'prop-types';
 import isEmpty from '../../validation/is-empty';
 
 const maxPostLength = 2000;
-class PostForm extends Component {
+class ProfileCommentsForm extends Component {
     state = {
         text: '',
        errors:{}
@@ -23,6 +24,7 @@ class PostForm extends Component {
     }
     onSubmitHandler = (e) => {
         e.preventDefault();
+        const {handle} = this.props.match.params;
         const { user } = this.props.auth;
         const newPost = {
             text: this.state.text,
@@ -31,8 +33,8 @@ class PostForm extends Component {
         }
     
          // validation 
-         if(newPost.text.length < maxPostLength ){
-            this.props.addPost(newPost);
+         if(newPost.text.length < maxPostLength && handle !== ''){
+            this.props.addComment(handle,newPost);
             this.setState({text:''});
          }
      
@@ -43,6 +45,7 @@ class PostForm extends Component {
        const {errors} = this.state;
        const { isAuthenticated } = this.props.auth;
        const { backgroundColor,placeholder, color } = this.props;
+
         return (
     
             <div className = "PostForm" style = {{backgroundColor, color}} >
@@ -86,10 +89,10 @@ class PostForm extends Component {
         );
     }
 }
-PostForm.propTypes = {
+ProfileCommentsForm.propTypes = {
      auth: PropTypes.object.isRequired,
  //   errors: PropTypes.object.isRequired,
-    addPost:PropTypes.func.isRequired
+    addComment:PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -98,4 +101,4 @@ const mapStateToProps = state => ({
   });
 
 
-export default connect(mapStateToProps,{ addPost })(PostForm);
+export default connect(mapStateToProps,{ addComment })(withRouter(ProfileCommentsForm));

@@ -49,6 +49,8 @@
         transition: all 0.1s;
         padding: 1rem 2rem;
         background-color: $fb-grey-1;
+        display: flex;
+        align-self: baseline;
         &:hover{
             background: $color-black;
             color:$color-white;

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Products from '../../components/products/Products';
 import Header from '../../components/Layout/Header';
 import { connect } from 'react-redux';
 import UserOrders from '../../components/orders/UserOrders';
+import Footer from '../../components/Layout/Footer';
 
 
 
@@ -60,6 +60,7 @@ class UserOrdersPage extends Component {
                 <div className = "orders-container">
                     <UserOrders/>
                 </div>
+                <Footer/>
 
             </React.Fragment>
            

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Cart from '../../components/cart/Cart';
 import Header from '../../components/Layout/Header';
 import { connect } from 'react-redux';
+import Footer from '../../components/Layout/Footer';
 
 
 
@@ -61,9 +62,10 @@ class CartPage extends Component {
         return (
             <React.Fragment>
                 <Header links = {links}/>
-                <div className = "cart-container">
+                <div className = "cart-container" style = {{minHeight:'85vh'}}>
                     <Cart/>
                 </div>
+                <Footer/>
 
             </React.Fragment>
            

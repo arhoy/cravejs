@@ -3,6 +3,7 @@ import Cart from '../../components/cart/Cart';
 import Header from '../../components/Layout/Header';
 import { connect } from 'react-redux';
 import ThankYou from '../../components/thankyou/ThankYou';
+import Footer from '../../components/Layout/Footer';
 
 
 
@@ -65,6 +66,7 @@ class ThankYouPage extends Component {
                 <div className = "thankyou-container">
                     <ThankYou/>
                 </div>
+                <Footer/>
 
             </React.Fragment>
            

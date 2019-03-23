@@ -2,14 +2,15 @@
     background-color:$fb-grey;
     border-radius: 10px;
     color:inherit;
-    grid-column: 1 / -1;
+    grid-column: center-start / center-end;
     font-size: 1.6rem;
-    margin: 1rem 3rem;
+    margin: 2rem 0rem;
     padding: 1.5rem 2rem;
     position:relative;
+    display:grid;
+    grid-template-columns: 1fr;
     width: 80%;
-    display: grid;
-    justify-self:flex-end;
+    
        &:hover {
             background-color:lighten($fb-grey,5%);
         }
@@ -29,34 +30,29 @@
         font-weight: 600;
         color: $trello-blue-900;
     }
-    &__likes, &__toolbar, &__replies, &__countLikes {
+
+    &__collection, &__toolbar {
         position:absolute;
         display:flex;
         justify-content:flex-end;
     }
-    &__likes {
-        right:-1rem;
-        cursor: pointer;
-    }
-    &__countLikes {
-        right:-2rem;
-        bottom:-1rem;
-        padding: 0;
-        margin: 0;
+    &__collection {
+        right: -2rem;
+        bottom: -3rem;
+      
     }
     &__toolbar {
         top: -1.5rem;
         right: -2rem;
     }
-    &__replies {
-        right: 3.4rem;
-        bottom: -2.3rem;
+    &__likes, &__toolbar, &__replies, &__showHideRepliesContainer, &__countLikesContainer {
         cursor: pointer;
-     
     }
-    &__like, &__ellipses, &__reply {
+
+    &__like, &__ellipses, &__reply, &__showHideReplies, &__countLikes {
         
         margin-left: 2px;
+        font-size: 1.4rem;
         border:none;
         outline:none;
         background-color:$fb-grey-1;
@@ -68,28 +64,25 @@
             background-color:darken($fb-grey-1,5%);
         }
     }
-    &__countLike {
-        background-color: transparent;
-        z-index:1;
-        padding: 0;
-    }
     &__like {
         border-radius: 50%;
-        width: 3.5rem;
-        height: 3.5rem;
-        z-index: 2;
+        width: 3rem;
+        height: 3rem;
     }
     &__ellipses {
         width: 3.5rem;
         height: 2rem;
     }
-    &__reply { 
+    &__reply, &__showHideReplies, &__countLikes { 
         padding: 0.6rem 0.8rem;
         cursor: pointer;
         border-radius: 10px;
     }
-    &__countLike {
-        padding: 3px;
-        font-weight: 900;
+    &__timeago {
+        font-style: italic;
+        margin-top: 0.7rem;
+        color:lighten($color-black,20%)
     }
+    
+  
 }

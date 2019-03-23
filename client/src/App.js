@@ -28,7 +28,7 @@ import CreateProfilePage from './pages/dashboard/CreateProfilePage';
 
 import AddEducationPage from './pages/addEditCredentials/AddEducationPage';
 import AddExperiencePage from './pages/addEditCredentials/AddExperiencePage';
-import EditEducationPage from './pages/addEditCredentials/EditEducationPage';
+
 
 import ProfilePage from './pages/profiles/ProfilePage';
 import PostsPage from './pages/posts/PostsPage';
@@ -87,7 +87,6 @@ class App extends Component {
           <PrivateRoute exact path="/edit-profile" component={EditProfilePage} />
 
           <PrivateRoute exact path="/add-education" component={AddEducationPage} />
-          <PrivateRoute exact path="/edit-education" component={EditEducationPage} />
           <PrivateRoute exact path="/add-experience" component={AddExperiencePage} />
           <PrivateRoute exact path="/thank-you" component={ThankYouPage} />
           <PrivateRoute exact path="/orders" component={UserOrdersPage} />

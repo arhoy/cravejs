@@ -21,7 +21,7 @@ const validateProfileInput = (data) => {
 
   if (!isEmpty(data.headline)) {
     if (!Validator.isLength(data.headline, {max:140})) {
-      console.log('data headline', data.headline)
+      
       errors.headline = 'Headline must not exceed 140 characters!';
     }
   }

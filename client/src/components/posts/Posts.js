@@ -13,7 +13,7 @@ class Posts extends Component {
   }
  
   render() {
-  
+
      const { posts, loading } = this.props.post;
      let postContent;
  
@@ -25,7 +25,7 @@ class Posts extends Component {
     }
 
     return (
-      <div className="posts">
+      <div style = {{backgroundColor:this.props.backgroundColor}} className="posts">
               {postContent}
       </div>
 
@@ -35,7 +35,7 @@ class Posts extends Component {
 
 Posts.propTypes = {
   getPosts: PropTypes.func.isRequired,
-  post: PropTypes.object.isRequired
+
 };
 
 const mapStateToProps = state => ({

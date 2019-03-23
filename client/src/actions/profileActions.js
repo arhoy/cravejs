@@ -6,8 +6,152 @@ import {
   GET_PROFILES,
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
-  GET_ERRORS
+  GET_ERRORS,
+  GET_PROFILE_COMMENT
 } from './types';
+
+/** ACTIONS RELATED TO COMMENTS SECTION **/
+
+// Get specific comment to a profile
+export const getProfileComment = (handle,commentId) => dispatch => {
+  axios
+    .get(`/api/profile/comment/${handle}/${commentId}`)
+    .then ( res => 
+        dispatch ({
+            type:GET_PROFILE_COMMENT,
+            payload:res.data // gives back the specific profile comment
+       })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_PROFILE_COMMENT,
+        payload: {}
+      })
+    );
+}
+
+// Get current comments to profile
+export const getProfileComments = (handle) => dispatch => {
+  axios
+    .get(`/api/profile/comment/${handle}`)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: []
+      })
+    );
+};
+
+// Add comment
+export const addComment = (handle,postData) => dispatch => {
+ // dispatch(clearErrors());
+  axios
+  .post(`/api/profile/comment/${handle}`,postData)
+  .then( res =>
+      dispatch({
+          type: GET_PROFILE,
+          payload:res.data
+      })
+  )
+  .catch( err =>
+      dispatch({
+          type:GET_ERRORS,
+          payload: err.response.data
+      })
+  );
+  dispatch(getProfileComments(handle));
+
+}
+
+export const editComment = (handle,commentId,postData) => dispatch => {
+  // dispatch(clearErrors());
+  axios
+      .post(`/api/profile/comment/${handle}/${commentId}`,postData)
+      .then( res => 
+          dispatch({
+              type: GET_PROFILE,
+              payload: res.data
+          })
+      )
+      .then( 
+        res =>  dispatch(getProfileComments(handle))
+      )
+      .catch( err =>
+          dispatch({
+              type:GET_PROFILE,
+              payload: {}
+          })
+      );
+     
+}
+
+//Add Comment Like
+export const addCommentLike = ( handle, commentId ) => dispatch => {
+
+  axios
+    .post(`/api/profile/comment/like/${handle}/${commentId}`)
+    .then( res => {
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data // res.data is comments data array.
+      });
+    })
+    .catch(({ response }) => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: response.data
+      });
+    });
+    dispatch(getProfileComments(handle));
+};
+
+//Remove Comment Like
+export const removeCommentLike = ( handle, commentId ) => dispatch => {
+  axios
+    .post(`/api/profile/comment/unlike/${handle}/${commentId}`)
+    .then(({ data }) => {
+      dispatch({
+        type: GET_PROFILE,
+        payload: data //pass in updated post
+      });
+    })
+    .catch(({ response }) => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: response.data
+      });
+    });
+    dispatch(getProfileComments(handle));
+};
+
+export const deleteComment = (handle,commentId) => dispatch => {
+  axios
+    .delete(`/api/profile/comment/${handle}/${commentId}`)
+    .then( res => {
+      dispatch({
+        type:GET_PROFILE,
+        payload:res.data
+      })
+    })
+    .catch( err => {
+       dispatch({
+         type: GET_ERRORS,
+         payload: err.response.data
+       })
+    })
+    dispatch(getProfileComments(handle));
+
+}
+
+
+
+/** ACTIONS RELATED TO USER PROFILE ( Not including the comments section ) */
 
 // Get current profile
 export const getCurrentProfile = () => dispatch => {

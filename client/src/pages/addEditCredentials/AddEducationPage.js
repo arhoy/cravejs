@@ -3,6 +3,7 @@ import AddExperience from '../../components/add-credentials/AddExperience';
 import Header from '../../components/Layout/Header';
 import { connect } from 'react-redux';
 import AddEducation from '../../components/add-credentials/AddEducation';
+import Footer from '../../components/Layout/Footer';
 
 class AddEducationPage extends Component {    
     render() {
@@ -61,6 +62,7 @@ class AddEducationPage extends Component {
                 <div className = "dashboard-container">
                     <AddEducation/>
                 </div>
+                <Footer/>
 
             </React.Fragment>
            

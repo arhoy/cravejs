@@ -122,7 +122,69 @@ const ProfileSchema = new Schema({
   date: {
     type: Date,
     default: Date.now
-  }
+  },
+  comments:[
+    {
+        user:{
+            type: Schema.Types.ObjectId,
+            ref:'users'
+        },
+        text:{
+            type:String,
+            require:true
+        },
+        name:{
+            type:String,
+            require:true
+        },
+        avatar:{
+            type:String
+        },
+        date:{
+            type:Date,
+            default:Date.now
+        },
+        likes : [
+            {
+                user:{
+                    type: Schema.Types.ObjectId,
+                    ref:'users'
+                }
+            }
+        ],
+        replies:[
+            {
+                    user:{
+                      type: Schema.Types.ObjectId,
+                      ref:'users'
+                  },
+                  text:{
+                      type:String,
+                      require:true
+                  },
+                  name:{
+                      type:String,
+                      require:true
+                  },
+                  avatar:{
+                      type:String
+                  },
+                  date:{
+                      type:Date,
+                      default:Date.now
+                  },
+                  likes : [
+                    {
+                        user:{
+                            type: Schema.Types.ObjectId,
+                            ref:'users'
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+  ]
 });
 
 module.exports = Profile = mongoose.model('profile', ProfileSchema);

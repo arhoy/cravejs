@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import AddExperience from '../../components/add-credentials/AddExperience';
 import Header from '../../components/Layout/Header';
 import { connect } from 'react-redux';
+import Footer from '../../components/Layout/Footer';
 
 class AddExperiencePage extends Component {    
     render() {
@@ -60,6 +61,7 @@ class AddExperiencePage extends Component {
                 <div className = "dashboard-container">
                     <AddExperience/>
                 </div>
+                <Footer/>
 
             </React.Fragment>
            

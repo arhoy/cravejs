@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classnames from 'classnames';
-import { addLike, removeLike, deletePost } from '../../actions/postActions';
+import { addCommentLike, removeCommentLike, deleteComment } from '../../actions/profileActions';
 import TimeAgo from 'react-timeago'
 
 
-import PostEditForm from './PostEditForm';
+import ProfileEditForm from './ProfileEditForm';
 import ReplyForm from './replies/ReplyForm';
 import Replies from './replies/Replies';
 import Modal from 'react-modal';
@@ -33,7 +33,7 @@ const customStyles = {
     }
   };
 
-class PostItem extends Component {
+class ProfileItem extends Component {
 
     state = {
         showOptions:false,
@@ -47,7 +47,6 @@ class PostItem extends Component {
         Modal.setAppElement('body');
     }
 
-
     openModal = () => {
         this.setState({
             modalIsOpen:true
@@ -59,7 +58,7 @@ class PostItem extends Component {
         
       }
 
-    closeModal = () => {
+    closeModal = (e) => {
         this.setState({
             modalIsOpen: false,
             showOptions:false
@@ -67,14 +66,16 @@ class PostItem extends Component {
       }
 
     onLikeClick = (id) => {
-        if(this.findUserLike(this.props.post.likes)){
-            this.props.removeLike(id);
+        const { profile } = this.props.profile;
+
+        if(this.findUserLike(this.props.comment.likes)){
+            this.props.removeCommentLike(profile.handle,id);
         }
         else {
-            this.props.addLike(id);
+            this.props.addCommentLike(profile.handle,id);
         }
        
-        this.findUserLike(this.props.post.likes);
+        this.findUserLike(this.props.comment.likes);
     }
     onToolBar = (id) => {
         this.setState({showOptions:!this.state.showOptions})
@@ -84,7 +85,8 @@ class PostItem extends Component {
     }
 
     deletePostHandler = (id) => {
-        this.props.deletePost(id);
+        const { profile } = this.props.profile;
+        this.props.deleteComment(profile.handle,id);
       
    }
 
@@ -101,7 +103,9 @@ class PostItem extends Component {
     }
 
     render() { 
-        const { post, showActions, auth } = this.props;
+        const { comment, showActions, auth } = this.props;
+        const { profile } = this.props.profile;
+   
         return (
             <React.Fragment>
 
@@ -113,8 +117,8 @@ class PostItem extends Component {
                         
                                 <div>
                                         <div className= {classnames('PostOptions',{'PostOptions__disappear':this.state.modalIsOpen})} >
-                                            <button className = "PostOptions__editPost"  onClick={this.openModal.bind(this)}>Edit Post</button>
-                                            <button className = "PostOptions__deletePost" onClick={this.deletePostHandler.bind(this,post._id)}>Delete Post</button>
+                                            <button className = "PostOptions__editPost"  onClick={this.openModal.bind(this)}>Edit comment</button>
+                                            <button className = "PostOptions__deletePost" onClick={this.deletePostHandler.bind(this,comment._id)}>Delete comment</button>
                                         </div>
                                     
                                         <Modal
@@ -123,7 +127,10 @@ class PostItem extends Component {
                                         style={customStyles}
                                         contentLabel="PostEditFormModal"
                                         >
-                                            <PostEditForm postId = {post._id}/>
+                                            <ProfileEditForm 
+                                                commentId = {comment._id}
+                                                handler = {this.closeModal}    
+                                            />
                                         </Modal>
                                 </div>
                      
@@ -136,9 +143,9 @@ class PostItem extends Component {
                     
                     <div className = "PostItem__content">
 
-                        <span className = "PostItem__name">{post.name}</span> {post.text}
+                        <span className = "PostItem__name">{comment.name}</span> {comment.text}
                         <div className = "PostItem__timeago" >
-                             <TimeAgo live = {false} date= { post.date }  />
+                             <TimeAgo live = {false} date= { comment.date }  />
                         </div>
                        
 
@@ -150,13 +157,13 @@ class PostItem extends Component {
                                                 this.state.showOptions ? 
                                                 <FontAwesomeIcon
                                                     icon="times-circle"
-                                                    style = {{color:`${this.findUserLike(post.likes) ? 'rgb(0, 121, 191)' : 'white'}`, cursor:'pointer'}}
+                                                    style = {{color:`${this.findUserLike(comment.likes) ? 'rgb(0, 121, 191)' : 'white'}`, cursor:'pointer'}}
                                                  />
                                              
                                                 :
                                                 <FontAwesomeIcon
                                                     icon="ellipsis-h"
-                                                    style = {{color:`${this.findUserLike(post.likes) ? 'rgb(0, 121, 191)' : 'white'}`, cursor:'pointer'}}
+                                                    style = {{color:`${this.findUserLike(comment.likes) ? 'rgb(0, 121, 191)' : 'white'}`, cursor:'pointer'}}
                                                 />
                                                
                                             }
@@ -168,32 +175,32 @@ class PostItem extends Component {
 
                           <div className = "PostItem__collection">  
                                 <span className = "PostItem__likes">
-                                    <button className = "PostItem__like" onClick = {this.onLikeClick.bind(this,post._id)} >
+                                    <button className = "PostItem__like" onClick = {this.onLikeClick.bind(this,comment._id)} >
                                         <FontAwesomeIcon
                                             icon="thumbs-up"
-                                            style = {{color:`${this.findUserLike(post.likes) ? 'rgb(0, 121, 191)' : 'white'}`, cursor:'pointer'}}
+                                            style = {{color:`${this.findUserLike(comment.likes) ? 'rgb(0, 121, 191)' : 'white'}`, cursor:'pointer'}}
                                         />
                                     </button>
                                 </span> 
                                 <span className = "PostItem__replies">
-                                    <button className = "PostItem__reply" onClick = {this.onReplyClick.bind(this,post._id)} >
+                                    <button className = "PostItem__reply" onClick = {this.onReplyClick.bind(this,comment._id)} >
                                         Reply
                                     </button>
                                 </span> 
                                 {
-                                    post.likes.length > 0 ? 
+                                    comment.likes.length > 0 ? 
                                     <span className = "PostItem__countLikesContainer">
-                                        <button className = "PostItem__countLikes" onClick = {this.onReplyClick.bind(this,post._id)} >
-                                        {post.likes.length === 1 ? `${post.likes.length} like` : `${post.likes.length} likes`}
+                                        <button className = "PostItem__countLikes" onClick = {this.onReplyClick.bind(this,comment._id)} >
+                                        {comment.likes.length === 1 ? `${comment.likes.length} like` : `${comment.likes.length} likes`}
                                         </button>
                                      </span> 
                                     :null
                                 }
                                {
-                                   post.replies.length > 0 ? 
+                                comment.replies.length > 0 ? 
                                    <span className = "PostItem__showHideRepliesContainer">
-                                        <button className = "PostItem__showHideReplies" onClick = {this.onReplyClick.bind(this,post._id)} >
-                                        {post.replies.length} Replies
+                                        <button className = "PostItem__showHideReplies" onClick = {this.onReplyClick.bind(this,comment._id)} >
+                                        {comment.replies.length} Replies
                                         </button>
                                     </span> 
                                    :null
@@ -204,11 +211,11 @@ class PostItem extends Component {
             </div>
 
             {
-                this.state.showReplyOption ? <ReplyForm postItem = {post}/> : null
+                this.state.showReplyOption ? <ReplyForm postItem = {comment}/> : null
             }
 
             {
-                post.replies.length > 0 ? <div className = "replies">  <Replies backgroundColor = {this.props.backgroundColor} postItem = {post} />  </div>  : null
+                comment.replies.length > 0 ? <div className = "replies">  <Replies backgroundColor = {this.props.backgroundColor} postItem = {comment} />  </div>  : null
             }
         
 
@@ -219,21 +226,22 @@ class PostItem extends Component {
     }
 }
 
-PostItem.defaultProps = {
+ProfileItem.defaultProps = {
   showActions: true
 };
 
-PostItem.propTypes = {
-  addLike: PropTypes.func.isRequired,
-  removeLike: PropTypes.func.isRequired,
-  deletePost: PropTypes.func.isRequired,
-  post: PropTypes.object.isRequired,
+ProfileItem.propTypes = {
+  addCommentLike: PropTypes.func.isRequired,
+  removeCommentLike: PropTypes.func.isRequired,
+  deleteComment: PropTypes.func.isRequired,
+  comment: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired
 };
 
 
 const mapStateToProps = state => ({
-    auth:state.auth
+    auth:state.auth,
+    profile:state.profile
 });
 
-export default connect(mapStateToProps, { addLike, removeLike, deletePost })(PostItem);
+export default connect(mapStateToProps, { addCommentLike, removeCommentLike, deleteComment })(ProfileItem);

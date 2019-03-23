@@ -2,38 +2,37 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
-import { addEditPost, getPost } from '../../actions/postActions';
+import { getProfileComment, editComment } from '../../actions/profileActions';
 import PropTypes from 'prop-types';
 
-class PostEditForm extends Component {
+class ProfileEditForm extends Component {
     componentDidMount() {
-        console.log(this.props);
-        const {posts} = this.props.post;
-        const {postId} = this.props;
-        this.props.getPost(postId);
-
+   
+        if(this.props.match.params.handle){
+            const {handle} = this.props.match.params;
+            console.log(handle);
+            console.log(this.props);
+             this.props.getProfileComment(handle,this.props.commentId);
+        }
+       
     }
     
     state = {
         text: '',
        // errors:{}
     }
-    
-    componentWillReceiveProps(nextProps) {
-        // if (nextProps.errors) {
-        //   this.setState({ errors: nextProps.errors });
-        // }
-        console.log('These are the next props',nextProps)
-        if(nextProps.post.post){
-            const post = nextProps.post.post;
-
-            // set component fields state.
+    // when getProfileComment Updates, setState from reducer.
+    componentDidUpdate(prevProps, prevState) {
+        const comment = this.props.profile.comment;
+        if(prevState.text === "" && this.props.profile.comment.text !== ""){
+            // check conditions, set the state
             this.setState({
-                text: post.text
-              });
-    
+                text: this.props.profile.comment.text
+            })
         }
-      }
+     
+    }
+    
       
     
     onChangeHandler = (e) => {
@@ -41,24 +40,31 @@ class PostEditForm extends Component {
     }
     onSubmitHandler = (e) => {
         e.preventDefault();
-        const {postId} = this.props;
+        const { handle } = this.props.profile.profile;
+    
+        const {commentId} = this.props;
         const { user } = this.props.auth;
-        const editPost = {
+        const editComment = {
             text: this.state.text,
             name: user.name,
             avatar: user.avatar
         }
-        console.log('I was submited',editPost,postId);
-         this.props.addEditPost(postId,editPost); // it will look for postId in the backend
-         this.setState({text:''});
-    
+        console.log('I was submited',handle,editComment,commentId);
+         this.props.editComment(handle,commentId,editComment); // it will look for commentId in the backend
+        this.setState({text:''});
+
+        // close the modal
+        setTimeout(()=>{
+            this.props.handler();
+        },600 )
+      
         
     }
     
     
     render() {
        // const {errors} = this.state;
-
+    
         return (
     
             <div className = "PostEditForm" style = {{zIndex: 1000}}>
@@ -82,15 +88,14 @@ class PostEditForm extends Component {
         );
     }
 }
-PostEditForm.propTypes = {
-     auth: PropTypes.object.isRequired,
-     addEditPost:PropTypes.func.isRequired
+ProfileEditForm.propTypes = {
+     auth: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
-    auth: state.auth,
-    post: state.post
+    auth:state.auth,
+    profile: state.profile
   });
 
 
-export default connect(mapStateToProps,{ addEditPost,getPost })(withRouter(PostEditForm));
+export default connect(mapStateToProps,{ getProfileComment,editComment })(withRouter(ProfileEditForm));

@@ -1,12 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import PostItem from './PostItem';
 
-const PostFeed = ({posts,showActions}) => (
+const PostFeed = ({posts,showActions,backgroundColor}) => (
 
         posts.map(post => {
                 return (
-                    <PostItem key = {post._id} post = {post} showActions = {showActions} />
+                    <PostItem key = {post._id} backgroundColor = {backgroundColor} post = {post} showActions = {showActions} />
                 )
             }
         )

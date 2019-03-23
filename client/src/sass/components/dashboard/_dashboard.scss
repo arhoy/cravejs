@@ -16,7 +16,8 @@
     justify-items:center;
     color:$trello-blue-900;
     font-size: 1.6rem;
-    padding: 1rem;
+    margin: 2rem 0;
+    margin-bottom: 6rem;
     @include respond(tab-port){
         grid-column: full-start / full-end;
         padding: 1rem 3rem;
@@ -24,6 +25,7 @@
     @include respond(phone){
         overflow-x: scroll;
         padding: 1rem 1rem;
+        margin-bottom: 2rem;
     }
  
 

@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getProfileByHandle } from '../../actions/profileActions';
+import { getProfileByHandle,getProfileComments } from '../../actions/profileActions';
 
 import ProfileEducation from './ProfileEducation';
 import ProfileExperience from './ProfileExperience';
 import ProfileSkills from './ProfileSkills';
 import ProfileGitHub from './ProfileGitHub';
+import ProfileCommentsForm from './ProfileCommentsForm';
+import ProfileFeed from './ProfileFeed';
 
 class Profile extends Component {
 
@@ -15,10 +17,12 @@ class Profile extends Component {
         if( this.props.match.params.handle ) {
             this.props.getProfileByHandle(this.props.match.params.handle);
         }
+  
      }
     render() {
         
             const { profile, loading } = this.props.profile;
+            const { user } = this.props.auth;
         
             let profileContent;
             if(profile === null || loading ){
@@ -30,11 +34,12 @@ class Profile extends Component {
                 }
             }
             else {
+                console.log(profile.comments);
                 if(Object.keys(profile).length > 0){
                   profileContent = (
                     <React.Fragment>
                         <div className="profile__welcome">
-                              <h3 className = "profile__title"> { `${profile.user.name}'s profile `} </h3>
+                              <h3 className = "profile__title"> { `${user.name}'s profile `} </h3>
                               <div className = "profile__headline"> {profile.headline} </div>
                               
                         </div>
@@ -110,6 +115,26 @@ class Profile extends Component {
                               
                         }
                         
+                        {
+                            profile.comments ? 
+                            <React.Fragment>
+                                <div style = {{borderBottom: '2px solid black', marginBottom:'1rem', marginTop:'3rem'}} />
+                                <div className = "profile__comments">
+                                    <h4 className = "heading-secondary heading-secondary--blue" style = {{fontSize:'2.2rem'}}>Comments</h4>
+                                    <ProfileCommentsForm 
+                                        backgroundColor = '#e8e8e8'
+                                        placeholder = 'Add a comment'
+                                        color = 'black'
+
+                                    />
+                                    <ProfileFeed backgroundColor = '#e8e8e8' comments = {profile.comments} showActions = {true} />
+                                </div>
+                            </React.Fragment>
+                        
+                            
+                            :null
+                        }
+                        
                     </React.Fragment>
                   )
               }
@@ -149,7 +174,8 @@ Profile.propTypes = {
 
 const mapStateToProps = state => ({
   profile: state.profile,
-  errors:state.errors
+  errors:state.errors,
+  auth: state.auth
 });
 
-export default connect(mapStateToProps, { getProfileByHandle })(withRouter(Profile) );
+export default connect(mapStateToProps, { getProfileByHandle,getProfileComments })(withRouter(Profile) );

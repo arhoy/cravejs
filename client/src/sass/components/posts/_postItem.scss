@@ -77,6 +77,10 @@
         cursor: pointer;
         border-radius: 10px;
     }
-    
+    &__timeago {
+        font-style: italic;
+        margin-top: 0.7rem;
+        color:lighten($color-black,20%)
+    }
   
 }

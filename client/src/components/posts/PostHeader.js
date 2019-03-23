@@ -81,7 +81,10 @@ class PostHeader extends Component {
                             <Navigation/>
                             :
                             <div className="PostHeader__nav-right">     
-                                <Link className = "link link__black PostHeader__home" to = "/dashboard">
+                                <Link 
+                                    className = "link link__black PostHeader__home" 
+                                    to = {isAuthenticated ? '/dashboard': '/'}
+                                >
                                     <FontAwesomeIcon
                                         icon="igloo"
                                         style = {{color:'white', cursor:'pointer',fontSize: '2.5rem'}}

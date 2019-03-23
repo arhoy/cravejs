@@ -46,7 +46,7 @@ class ProfileGithub extends Component {
         return (
           <div className = "ProfileCredential">
                 {
-                    repos.length > 0 ? repoItems : <div style = {{color: 'white'}}> Could not get repo items at this time</div>
+                    repos.length > 0 ? repoItems : <div> Could not get repo items at this time</div>
                 }
           </div>
         );

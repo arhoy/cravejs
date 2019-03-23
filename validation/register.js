@@ -2,6 +2,10 @@ const Validator = require('validator');
 const isEmpty = require('./is-empty');
 
 const validateRegisterInput = data => {
+  
+
+ var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{8,})");
+
   let errors = {};
 
   data.name = !isEmpty(data.name) ? data.name : '';
@@ -32,6 +36,11 @@ const validateRegisterInput = data => {
   if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
     errors.password = 'Password must be at least 6 characters';
   }
+
+  if(!mediumRegex.test(data.password)){
+    errors.password = 'Does not meet password strength requirements!'
+  }
+ 
 
   if (Validator.isEmpty(data.password2)) {
     errors.password2 = 'Confirm Password field is required';

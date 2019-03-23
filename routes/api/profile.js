@@ -8,6 +8,7 @@ const keys = require('../../config/keys');
 const validateProfileInput = require('../../validation/profile');
 const validateExperienceInput = require('../../validation/experience');
 const validateEducationInput = require('../../validation/education');
+const validatePostInput = require('../../validation/post');
 
 // Load Profile Model
 const Profile = require('../../models/Profile');
@@ -205,9 +206,310 @@ router.post(
 );
 
 
-// @route   POST api/profile/education
-// @desc    Add/Edit education to profile
-// @access  Private
+// Type         :  GET
+// Route:       :  api/profile/comment/:handle
+// Description  :  Get specific comment from gvien user profile handle 
+// Access:      : Public: Anyone can see all comments on a user profile.
+// Returns      : Returns a specific comment
+router.get('/comment/:handle/:commentId', (req, res) => {
+ 
+    Profile.findOne({handle:req.params.handle})
+    .then( profile => {
+      if( profile.comments.filter( comment => comment._id.toString() === req.params.commentId).length === 0 ) {
+        // reply does not exsist
+       return  res.status(404).json({msg:'comment does not exist'});
+     }
+     const commentIndex = profile.comments.map( comment => comment._id.toString()).indexOf(req.params.commentId);
+      // return the specific comment
+      return res.status(200).json(profile.comments[commentIndex])
+    })
+      .catch( err => res.status(400).json({msg:'Profile not found'}))
+})
+
+// Type         :  GET
+// Route:       :  api/profile/comment/:handle
+// Description  :  Get all comments for the specific user profile 
+// Access:      : Public: Anyone can see all comments on a user profile.
+router.get('/comment/:handle', (req, res) => {
+ 
+    Profile.findOne({handle:req.params.handle})
+      .then( profile => res.status(200).json(profile))
+      .catch( err => res.status(400).json({msg:'Profile not found'}))
+})
+
+// Type         :  POST
+// Route:       :  api/profile/comment/:handle
+// Description  :  Add a comment to the specific user profile 
+// Access:      : Private, any logged in user can comment.
+router.post('/comment/:handle',passport.authenticate('jwt',{session:false}), (req,res) => {
+
+    // validation is same as post validation
+    const { errors, isValid } = validatePostInput(req.body);
+    if(!isValid){
+        return res.status(400).json(errors)
+    }
+    //save new comment into the profile with the above user handle
+    Profile
+        .findOne({ handle: req.params.handle })
+        .then(profile => {
+              const newComment = {
+                user:req.user.id,
+                text: req.body.text,
+                name: req.user.name,
+                avatar: req.user.avatar
+                };
+      // Add to exp array
+      profile.comments.unshift(newComment);
+
+      profile
+        .save()
+        .then(profile => res.json(profile))
+        .catch(err => res.status(400).json({msg:`There was an error saving the new profile comment ${err}`} ))   
+
+        })
+        .catch( err => res.status(400).json({'msg':'Cannot find user'}) )
+  });
+
+// Type         :  POST
+// Route:       :  api/profile/comment/:handle/:commentId
+// Description  :  Edit a comment to the specific user profile 
+// Access:      : Private, owner or comment can edit
+router.post('/comment/:handle/:commentId',passport.authenticate('jwt',{session:false}), (req,res) => {
+
+  // validation is same as post validation
+  const { errors, isValid } = validatePostInput(req.body);
+  if(!isValid){
+      return res.status(400).json(errors)
+  }
+  //save new comment into the profile with the above user handle
+   // Get fields
+    const commentFields = {};
+
+    commentFields.user = req.user.id;
+    if (req.body.text) commentFields.text = req.body.text;
+    if (req.user.name) commentFields.name = req.user.name;
+    if (req.user.avatar) commentFields.avatar = req.user.avatar;
+
+    Profile
+    .findOne({handle:req.params.handle})
+    .then(profile => {
+      
+            if( profile.comments.filter( comment => comment._id.toString() === req.params.commentId).length === 0 ) {
+              // reply does not exsist
+              return  res.status(404).json({msg:'comment does not exist'}); 
+            }
+         
+              const findCommentIndex = profile.comments.map( comment => comment._id.toString() ).indexOf(req.params.commentId);
+
+              const commentData = profile.comments[findCommentIndex];
+
+                // update the text.
+              commentData.text = req.body.text;
+              // const commentDataReturn = {
+              //     commentId: req.params.commentId,
+              //     replyObj: commentData
+              // }
+              
+              // finally save the profile
+              profile.save()
+                  .then( profile =>  res.status(200).json(profile) )
+                  .catch(err => res.status(400).json({msg:'Comment not saved'}))       
+               // return the specific reply 
+         
+    })
+    .catch( ()=> res.status(400).json({msg:'Could not get user handle'}))
+});
+
+// Type         :  POST
+// Route:       :  api/profile/reply/:handle/:commentId/
+// Description  :  Add a reply to a comment inside the specified user profile handle 
+// Access:      : Private, any logged in user can reply.
+router.post('/reply/:handle/:commentId',passport.authenticate('jwt',{session:false}), (req,res) => {
+
+    // validation is same as post validation
+    const { errors, isValid } = validatePostInput(req.body);
+    if(!isValid){
+        return res.status(400).json(errors)
+    }
+    Profile
+      .findOne({handle:req.params.handle})
+      .then( profile => {
+            profile.comments.forEach(comment => {
+                if(comment._id.toString() === req.params.commentId.toString()){
+                    // comment exists, add reply
+                    const newReply = {
+                      text:req.body.text,
+                      name:req.user.name,
+                      avatar:req.user.avatar,
+                      user:req.user.id
+                    }
+                    //add new reply to the comments.replies array
+                    comment.replies.unshift(newReply);
+                    profile
+                      .save()
+                      .then( profile => res.status(200).json(profile))
+                      .catch ( () => res.status(400).json({msg:'Could not add comments reply to profile'}))
+
+                }
+            });        
+      })
+      .catch( err => res.status(400).json({msg:`Could not find the comment`}))
+     
+    
+      .catch( err => res.status(400).json({msg:`Could not find the user's handle`}))
+         //save new comment into the profile with the above user handle
+})
+
+
+// Type         :  POST
+// Route:       :  api/profile/reply/:handle/:commentId/:replyId
+// Description  :  Edit a reply to a comment inside the specified user profile handle 
+// Access:      : Private, any logged in user can reply.
+router.post( '/reply/:handle/:commentId/:replyId',passport.authenticate('jwt', { session: false }),(req, res) => {
+
+    const { errors, isValid } = validatePostInput(req.body);
+    // Check Validation
+    if (!isValid) {
+      // Return any errors with 400 status
+      return res.status(400).json(errors);
+    }
+ 
+  // Get fields
+  const replyFields = {};
+
+  replyFields.user = req.user.id;
+  if (req.body.text) replyFields.text = req.body.text;
+  if (req.user.name) replyFields.name = req.user.name;
+  if (req.user.avatar) replyFields.avatar = req.user.avatar;
+
+
+  Profile
+      .findOne({handle:req.params.handle})
+      .then(profile => {
+
+        profile.comments.forEach(comment => {
+          if(comment._id.toString() === req.params.commentId.toString()){
+        
+              if( comment.replies.filter( reply => reply._id.toString() === req.params.replyId).length === 0 ) {
+                // reply does not exsist
+                return  res.status(404).json({replynotexist:'reply does not exist'}); 
+              }
+           
+
+                const findReplyIndex = comment.replies.map( item => item._id.toString() ).indexOf(req.params.replyId);
+
+                const commentReply = comment.replies[findReplyIndex];
+  
+                  // update the text.
+                commentReply.text = req.body.text;
+                const commentReplyReturn = {
+                    commentId: req.params.commentId,
+                    replyObj: commentReply
+                }
+                
+                // finally save the profile
+                profile.save()
+                    .then( () => console.log('saved'))
+                    .catch(err => res.status(400).json({msg:'Reply not saved'}))       
+                 // return the specific reply 
+                return res.status(200).json(commentReplyReturn)
+        
+          }
+
+          })
+
+      })
+      .catch( ()=> res.status(400).json({msg:'Could not get user handle'}))
+}); // router comments reply end
+
+
+// Type          :  POST
+// Route         :  api/profile/comment/like/:handle/:commentId
+// Description   :  Like a comment in users profile
+// Access:       :  Private
+router.post('/comment/like/:handle/:commentId',passport.authenticate('jwt',{session:false}), (req,res) => {
+    Profile
+      .findOne({handle:req.params.handle})
+      .then(profile => {
+           profile.comments.forEach (comment => {
+              if(comment._id.toString() === req.params.commentId.toString()){
+                    // check to see if user has liked, it not push user to likes array.
+                    if(comment.likes.filter( like => like.user.toString() === req.user.id).length > 0 ) {
+                      return res.status(400).json({'alreadyLiked':'User has alread liked this comment reply'})
+                    }
+                    // not already liked,push logged in user to likes array.
+                    comment.likes.unshift({user:req.user.id})
+                    // save profile
+                    profile
+                      .save()
+                      .then( profile => res.status(200).json(profile))
+                      .catch( err => res.status(400).json({msg:'Could not save profile!'}))
+              }
+           })
+      })
+      .catch( err => res.status(400).json({msg:'Could not find user handle'}))
+})
+
+// Type          :  POST
+// Route         :  api/profile/comment/unlike/:handle/:commentId
+// Description   :  UnLike a comment in users profile
+// Access:       :  Private
+router.post('/comment/unlike/:handle/:commentId',passport.authenticate('jwt',{session:false}), (req,res) => {
+  Profile
+    .findOne({handle:req.params.handle})
+    .then(profile => {
+         profile.comments.forEach (comment => {
+            if(comment._id.toString() === req.params.commentId.toString()){
+                  // check to see if user has liked, if not, send back response
+                  if(comment.likes.filter( like => like.user.toString() === req.user.id).length === 0 ) {
+                    return res.status(400).json({'alreadyLiked':'User has not liked this comment yet'})
+                  }
+                  // find like to remove
+                  const removeIndex = comment.likes.map( like => like.user.toString() ).indexOf(req.user.id);
+                  // remove user like
+                  comment.likes.splice(removeIndex,1);
+                  // save profile
+                  profile
+                    .save()
+                    .then( profile => res.status(200).json(profile))
+                    .catch( err => res.status(400).json({msg:'Could not save profile!'}))
+            }
+         })
+    })
+    .catch( err => res.status(400).json({msg:'Could not find user handle'}))
+})
+
+
+// Type          :  DELETE
+// Route         :  api/profile/comment/:handle/:commentId
+// Description   :  Delete a specific comment on the profile.
+// Access:       :  Private
+router.delete('/comment/:handle/:commentId',passport.authenticate('jwt',{session:false}), (req,res) => {
+    Profile
+    .findOne({handle:req.params.handle})
+      .then(profile => {
+            const removeIndex = profile.comments.map(comment => comment._id.toString() ).indexOf(req.params.commentId);
+            // remove comment
+            if (removeIndex === -1){ res.status(400).json({msg:'Could not find comment to delete!'})}
+            else {
+              profile.comments.splice(removeIndex,1);
+              profile
+                .save()
+                .then( profile => res.status(200).json(profile))
+                .catch( err => res.status(400).json({msg:'Could not delete comment'}))
+            }
+        })
+
+      .catch(err=> res.status(400).json({msg:'cannot find comment to delete!'}))
+})
+
+
+/*** GENERAL PROFILE ROUTES NOT RELATED TO COMMENTS! */
+
+// Type         :  POST
+// Route:       :  api/profile/education
+// Description  :  Add or edit? education to profile
+// Access:      : Private, Only created user can make changes to his/her profile
 router.post(
   '/education',
   passport.authenticate('jwt', { session: false }),

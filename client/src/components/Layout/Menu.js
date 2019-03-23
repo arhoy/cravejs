@@ -9,6 +9,8 @@ class Menu extends Component {
         e.preventDefault();
          // this.props.clearCurrentProfile();
         this.props.logoutUser();
+        // redirect to home page
+        this.props.history.push('/');
       }
     
     render() {

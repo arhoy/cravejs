@@ -2,17 +2,21 @@ import {
   GET_PROFILE,
   GET_PROFILES,
   PROFILE_LOADING,
-  CLEAR_CURRENT_PROFILE
+  CLEAR_CURRENT_PROFILE,
+  GET_PROFILE_COMMENT
 } from '../actions/types';
 
 const initialState = {
   profile: null,
   profiles: null,
-  loading: false
+  loading: false,
+  comment: {}
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
+
+  
     case PROFILE_LOADING:
       return {
         ...state,
@@ -35,6 +39,11 @@ export default function(state = initialState, action) {
         ...state,
         profile: null
       };
+    case GET_PROFILE_COMMENT: 
+      return {
+        ...state,
+        comment: action.payload
+      }
     default:
       return state;
   }

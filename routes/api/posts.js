@@ -38,8 +38,11 @@ router.post('/',passport.authenticate('jwt',{session:false}),(req,res) => {
 })
 
 
-// @route Edit Post POST api/posts/id
-// @access Private
+
+// Type          :  POST
+// Route         :  api/posts/id
+// Description   :  Edit the post by the id
+// Access:       :  Private / only created user can edit the post.
 router.post( '/:id',passport.authenticate('jwt', { session: false }),(req, res) => {
 
     const { errors, isValid } = validatePostInput(req.body);
@@ -56,15 +59,13 @@ router.post( '/:id',passport.authenticate('jwt', { session: false }),(req, res) 
     if (req.body.text) postFields.text = req.body.text;
     if (req.body.name) postFields.name = req.body.name;
     if (req.user.avatar) postFields.avatar = req.user.avatar;
-    console.log(req.params.id);
-    
-    Profile.findOne({ user: req.user.id })
-        .then(profile => {
-            console.log(req.user.id);
-            if(profile.user.toString() !== req.user.id){
+  
+    Post.findOne({ _id: req.params.id })
+        .then(post => {
+            if(post.user.toString() !== req.user.id){
                 return res.status(401).json({msg:'Access denied, this user is not allowed to edit this post'});
             }
-            if(req.params.id){ // pass this in for a new post.
+            if(req.params.id){ // pass this in for a new post. 
                 Post.findByIdAndUpdate(
                     req.params.id,
                     { $set: postFields },
@@ -73,21 +74,15 @@ router.post( '/:id',passport.authenticate('jwt', { session: false }),(req, res) 
                 .then(post => res.json(post))
                 .catch(err => res.status(400).json({msg:'Could not update the profile'}))
             }
-          
-            
-    
     })
 }); // router posts end
 
 
-
-
-
-
-// @route GET api/posts
-// @desc Get all the posts READ ONLY
-// @access Public
-router.get('/',(req,res)=>{
+// Type          :  GET
+// Route         :  api/posts/
+// Description   :  get all the posts
+// Access:       :  Public
+router.get('/',(req,res)=> {
     Post
     .find()
     .sort({date: -1})
@@ -95,30 +90,12 @@ router.get('/',(req,res)=>{
     .catch( err => res.status(400).json({msg:`cannot get all posts right now ${err}`}) );
 })
 
-// @route GET api/posts/stuff
-// @desc Get specific post READ ONLY
-// @access Pubic
-// for testing only, only GET if req.query.category is react
-router.get('/stuff',(req,res) => {
-   // console.log(req.query);
-    if(req.query.category === 'react'){
-        Post
-        .find()
-        .sort({date: -1})
-        .then( post => res.status(200).json(post) )
-        .catch( err => res.status(400).json({msg:`cannot get all posts right now ${err}`}) );
-    }
-    else {
-        res.status(404).json({msg:'Could not find React request mr AQUASAR'});
-    }
-    
-})
 
 
-
-// @route GET api/posts/latest
-// @desc Get all the latest post READ ONLY
-// @access Public
+// Type          :  GET
+// Route         :  api/posts/latest
+// Description   :  get posts by date / newest to oldest
+// Access:       :  Public
 router.get('/latest',(req,res)=>{
     Post
     .find()
@@ -127,9 +104,10 @@ router.get('/latest',(req,res)=>{
     .catch( err => res.status(400).json({msg:`cannot get all posts right now ${err}`}) );
 })
 
-// @route GET api/posts/first
-// @desc Get all the first post READ ONLY
-// @access Public
+// Type          :  GET
+// Route         :  api/posts/first
+// Description   :  get posts by date oldest to newest
+// Access:       :  Public
 router.get('/first',(req,res)=>{
     Post
     .find()
@@ -139,9 +117,10 @@ router.get('/first',(req,res)=>{
 })
 
 
-// @route GET api/posts
-// @desc Get specific post READ ONLY
-// @access Pubic
+// Type          :  GET
+// Route         :  api/posts
+// Description   :  get a specific post by id
+// Access:       :  Public
 router.get('/:id',(req,res) => {
     Post
     .findById(req.params.id)
@@ -150,11 +129,10 @@ router.get('/:id',(req,res) => {
 })
 
 
-
-// @route DELETE api/posts
-// @routeNumber: delete_post_specific
-// @desc Delete a post
-// @access Private
+// Type          :  DELETE
+// Route         :  api/posts
+// Description   :  Delete a specific post by id
+// Access:       :  Private
 router.delete('/:id',passport.authenticate('jwt',{session:false}), (req,res) => {
     Profile.findOne({user:req.user.id})
         .then(profile=>{
@@ -175,9 +153,12 @@ router.delete('/:id',passport.authenticate('jwt',{session:false}), (req,res) => 
 
 
 
-// @route POST api/post/like/:id
-// @desc Like a post
-// @access Private
+
+
+// Type          :  POST
+// Route         :  api/post/like/:id
+// Description   :  Like a post
+// Access:       :  Private
 router.post('/like/:id',passport.authenticate('jwt',{session:false}), (req,res) => {
         Profile.findOne({user:req.user.id})
             .then(profile =>{
@@ -197,9 +178,11 @@ router.post('/like/:id',passport.authenticate('jwt',{session:false}), (req,res) 
             })
 })
 
-// @route POST api/posts/reply/like/:postId/:replyId
-// @desc Like a reply to a post
-// @access Private
+
+// Type          :  POST
+// Route         :  api/posts/reply/like/:postId/:replyId
+// Description   :  Like a reply to a post
+// Access:       :  Private
 router.post('/reply/like/:postId/:replyId',passport.authenticate('jwt',{session:false}), (req,res) => {
     Profile.findOne({user:req.user.id})
         .then(profile =>{
@@ -229,10 +212,10 @@ router.post('/reply/like/:postId/:replyId',passport.authenticate('jwt',{session:
                 .catch(err=> res.status(404).json({postnotfound:'No post found'}));
         })
 })
-
-// @route POST api/posts/reply/unlike/:postId/:replyId
-// @desc Like a reply to a post
-// @access Private
+// Type          :  POST
+// Route         :  api/posts/reply/unlike/:postId/:replyId
+// Description   :  UNLike a reply to a post
+// Access:       :  Private
 router.post('/reply/unlike/:postId/:replyId',passport.authenticate('jwt',{session:false}), (req,res) => {
     Profile.findOne({user:req.user.id})
         .then(profile =>{
@@ -266,9 +249,10 @@ router.post('/reply/unlike/:postId/:replyId',passport.authenticate('jwt',{sessio
 
 
 
-// @route   POST api/posts/unlike/:id
-// @desc    Unlike post
-// @access  Private
+// Type         :  POST
+// Route        :  api/posts/unlike/:id
+// Description  :  Unlike post
+// Access       :  Private
 router.post( '/unlike/:id', passport.authenticate('jwt', { session: false }), (req,res) => {
     Profile.findOne({ user: req.user.id }).then(profile => {
       Post.findById(req.params.id)
@@ -298,10 +282,10 @@ router.post( '/unlike/:id', passport.authenticate('jwt', { session: false }), (r
   }
 );
 
-// @Route GET api/post/reply
-// @DESC Get all the replies for a given post id
-// @auth required? NO
-
+// Type         : GET
+// Route        : api/post/reply
+// Description  : Get all replies for a given post id
+// Access       : Public
 router.get('/reply/:id', (req,res) => {
     Post
         .findById(req.params.id)
@@ -309,9 +293,11 @@ router.get('/reply/:id', (req,res) => {
         .catch( err => res.status(400).json({msg:`cannot get all posts right now ${err}`}) );
 })
 
-// @route POST api/post/reply/:id
-// @desc Add a reply to a specific post post
-// @access Private
+
+// Type: POST
+// Route: api/post/reply/:id
+// Description:  Add a reply to a specific post post
+// Access Private
 router.post('/reply/:id',passport.authenticate('jwt',{session:false}),(req,res)=>{
 
     const {errors,isValid} = validateReplyInput(req.body);
@@ -336,14 +322,17 @@ router.post('/reply/:id',passport.authenticate('jwt',{session:false}),(req,res)=
         .catch(err=> res.status(404).json({postnotfound:'No post found'}));
 })
 
-// @route DELETE api/post/reply/:id
-// @desc Remove a reply from post
-// @access Private
-// @url form reply/:postid/:reply_id
-router.delete('/reply/:id/:reply_id',passport.authenticate('jwt',{session:false}),(req,res)=>{
+// Type         : DELETE
+// Route        : api/post/reply/:id
+// Description  : Remove a reply from post
+// Access       : Private / Only created user or admin can delete reply
+router.delete('/reply/:id/:reply_id',passport.authenticate('jwt',{session:false}), (req,res) => {
 
     Post.findById(req.params.id)
         .then(post =>{
+           if(post.user !== req.user.id) {
+               return res.status(401).json({msg:'You cannot delete this reply!'})
+           }
            if( post.replies.filter( reply => reply._id.toString() === req.params.reply_id).length === 0 ) {
                 // reply does not exsist
                return  res.status(404).json({replynotexist:'reply does not exist'});
@@ -364,8 +353,11 @@ router.delete('/reply/:id/:reply_id',passport.authenticate('jwt',{session:false}
 
 
 
-// @route ADD and save changes... Edit Post reply POST api/posts/reply/:postId/:replyId
-// @access Private
+
+// Type         : POST
+// Description  : Edit the post reply
+// Route        : api/posts/reply/:postId/:replyId
+// Access       : Private && Only the login user can edit his/her reply.
 router.post( '/reply/:postId/:replyId',passport.authenticate('jwt', { session: false }),(req, res) => {
 
     const { errors, isValid } = validatePostInput(req.body);
@@ -403,12 +395,10 @@ router.post( '/reply/:postId/:replyId',passport.authenticate('jwt', { session: f
             // find specific post and reply within the post.
             Post.findById(req.params.postId)
                 .then(post => {
-                    
+                
                     if( post.replies.filter( reply => reply._id.toString() === req.params.replyId).length === 0 ) {
                         // reply does not exsist
-                        return  res.status(404).json({replynotexist:'reply does not exist'});
-                       
-                        
+                        return  res.status(404).json({replynotexist:'reply does not exist'}); 
                     }
                     
                     const findReplyIndex = post.replies.map( item => item._id.toString() ).indexOf(req.params.replyId);
@@ -429,14 +419,8 @@ router.post( '/reply/:postId/:replyId',passport.authenticate('jwt', { session: f
                 
                 })
                 .catch(err => res.status(400).json({msg:'Post not found'}))
-          
-            
-    
     })
 }); // router posts reply end
-
-
-
 
 
 
@@ -457,6 +441,7 @@ router.post( '/:postId/:replyId',passport.authenticate('jwt', { session: false }
             // find specific post and reply within the post.
             Post.findById(req.params.postId)
                 .then(post => {
+
                     
                     if( post.replies.filter( reply => reply._id.toString() === req.params.replyId).length === 0 ) {
                         // reply does not exsist
@@ -481,7 +466,7 @@ router.post( '/:postId/:replyId',passport.authenticate('jwt', { session: false }
 
 
 
-    module.exports = router;
+module.exports = router;
 
 
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import EditProfile from '../../components/edit-profile/EditProfile';
 import Header from '../../components/Layout/Header';
 import { connect } from 'react-redux';
+import Footer from '../../components/Layout/Footer';
 
 class EditProfilePage extends Component {    
     render() {
@@ -60,7 +61,7 @@ class EditProfilePage extends Component {
                 <div className = "profile-container">
                     <EditProfile/>
                 </div>
-
+                <Footer/>
             </React.Fragment>
            
         );

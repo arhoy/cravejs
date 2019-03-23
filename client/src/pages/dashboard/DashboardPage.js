@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Dashboard from '../../components/dashboard/Dashboard';
 import Header from '../../components/Layout/Header';
 import { connect } from 'react-redux';
+import Footer from '../../components/Layout/Footer';
+import Posts from '../../components/posts/Posts';
 
 class DashboardPage extends Component {    
     render() {
@@ -60,6 +62,8 @@ class DashboardPage extends Component {
                 <div className = "dashboard-container">
                     <Dashboard/>
                 </div>
+                <Posts backgroundColor = '#e8e8e8' />
+                <Footer/>
 
             </React.Fragment>
            

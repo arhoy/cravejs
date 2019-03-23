@@ -8,8 +8,10 @@ class PostMenu extends Component {
     
     logoutUserHandler(e) {
         e.preventDefault();
-         // this.props.clearCurrentProfile();
+         // logout user
         this.props.logoutUser();
+        // redirect to home page
+        this.props.history.push('/');
       }
     
     render() {
