@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import Dashboard from '../../components/dashboard/Dashboard';
+
 import Header from '../../components/Layout/Header';
 import { connect } from 'react-redux';
 import Footer from '../../components/Layout/Footer';
-import Posts from '../../components/posts/Posts';
+import Developers from '../../components/developers/Developers';
 
-class DashboardPage extends Component {    
+
+class DevelopersPage extends Component {    
     render() {
     
         const { isAuthenticated ,user } = this.props.auth;
@@ -18,10 +19,6 @@ class DashboardPage extends Component {
             {
                 title: 'Posts',
                 linkTo: '/posts' 
-            },
-            {
-                title: 'Products',
-                linkTo: '/products' 
             },
         ];
         else {
@@ -37,10 +34,6 @@ class DashboardPage extends Component {
                 {
                     title: 'Posts',
                     linkTo: '/posts' 
-                },
-                {
-                    title: 'Products',
-                    linkTo: '/products' 
                 },
                 {
                     title: 'My Cart',
@@ -59,12 +52,10 @@ class DashboardPage extends Component {
         return (
             <React.Fragment>
                 <Header links = {links}/>
-                <div className = "dashboard-container">
-                    <Dashboard/>
+                <div className = "products-container" style = {{minHeight: '85vh'}}>
+                    <Developers/>
                 </div>
-             
                 <Footer/>
-
             </React.Fragment>
            
         );
@@ -77,4 +68,4 @@ const mapStateToProps = state => ({
     auth: state.auth
 })
 
-export default connect(mapStateToProps)(DashboardPage);
+export default connect(mapStateToProps)(DevelopersPage);

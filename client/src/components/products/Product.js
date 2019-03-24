@@ -6,7 +6,6 @@ class Product extends Component {
  
     showDetailsHandler = (id) => {
         this.props.history.push(`/products/${id}`);
-    
     }
     render() {
         const { name, description, imageUrl, price, longDescription, id } = this.props;

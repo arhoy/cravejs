@@ -45,6 +45,7 @@ import UserOrdersPage from './pages/orders/UserOrdersPage';
 import UserOrderPage from './pages/orders/UserOrderPage';
 
 import './sass/main.scss';
+import DevelopersPage from './pages/network/DevelopersPage';
 
 
 
@@ -82,6 +83,7 @@ class App extends Component {
         <React.Fragment>
         <Switch>
           <PrivateRoute exact path="/dashboard" component={DashboardPage} />
+          <Route exact path = "/developers" component = {DevelopersPage}/>
 
           <PrivateRoute exact path="/create-profile" component={CreateProfilePage} />
           <PrivateRoute exact path="/edit-profile" component={EditProfilePage} />

@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const keys = require('../../config/keys');
 
+const _ = require('lodash');
+
 // Load Validation
 const validateProfileInput = require('../../validation/profile');
 const validateExperienceInput = require('../../validation/experience');
@@ -199,6 +201,7 @@ router.post(
 
       // Add to exp array
       profile.experience.unshift(newExp);
+      profile.experience = _.sortBy(profile.experience,['to','from']).reverse()
 
       profile.save().then(profile => res.json(profile));
     });
@@ -214,6 +217,7 @@ router.post(
 router.get('/comment/:handle/:commentId', (req, res) => {
  
     Profile.findOne({handle:req.params.handle})
+    .populate('user', ['name', 'avatar'])
     .then( profile => {
       if( profile.comments.filter( comment => comment._id.toString() === req.params.commentId).length === 0 ) {
         // reply does not exsist
@@ -233,6 +237,7 @@ router.get('/comment/:handle/:commentId', (req, res) => {
 router.get('/comment/:handle', (req, res) => {
  
     Profile.findOne({handle:req.params.handle})
+     .populate('user', ['name', 'avatar'])
       .then( profile => res.status(200).json(profile))
       .catch( err => res.status(400).json({msg:'Profile not found'}))
 })
@@ -251,6 +256,7 @@ router.post('/comment/:handle',passport.authenticate('jwt',{session:false}), (re
     //save new comment into the profile with the above user handle
     Profile
         .findOne({ handle: req.params.handle })
+        .populate('user', ['name', 'avatar'])
         .then(profile => {
               const newComment = {
                 user:req.user.id,
@@ -292,6 +298,7 @@ router.post('/comment/:handle/:commentId',passport.authenticate('jwt',{session:f
 
     Profile
     .findOne({handle:req.params.handle})
+    .populate('user', ['name', 'avatar'])
     .then(profile => {
       
             if( profile.comments.filter( comment => comment._id.toString() === req.params.commentId).length === 0 ) {
@@ -333,6 +340,7 @@ router.post('/reply/:handle/:commentId',passport.authenticate('jwt',{session:fal
     }
     Profile
       .findOne({handle:req.params.handle})
+      .populate('user', ['name', 'avatar'])
       .then( profile => {
             profile.comments.forEach(comment => {
                 if(comment._id.toString() === req.params.commentId.toString()){
@@ -385,8 +393,8 @@ router.post( '/reply/:handle/:commentId/:replyId',passport.authenticate('jwt', {
 
   Profile
       .findOne({handle:req.params.handle})
+      .populate('user', ['name', 'avatar'])
       .then(profile => {
-
         profile.comments.forEach(comment => {
           if(comment._id.toString() === req.params.commentId.toString()){
         
@@ -430,6 +438,7 @@ router.post( '/reply/:handle/:commentId/:replyId',passport.authenticate('jwt', {
 router.post('/comment/like/:handle/:commentId',passport.authenticate('jwt',{session:false}), (req,res) => {
     Profile
       .findOne({handle:req.params.handle})
+      .populate('user', ['name', 'avatar'])
       .then(profile => {
            profile.comments.forEach (comment => {
               if(comment._id.toString() === req.params.commentId.toString()){
@@ -457,6 +466,7 @@ router.post('/comment/like/:handle/:commentId',passport.authenticate('jwt',{sess
 router.post('/comment/unlike/:handle/:commentId',passport.authenticate('jwt',{session:false}), (req,res) => {
   Profile
     .findOne({handle:req.params.handle})
+    .populate('user', ['name', 'avatar'])
     .then(profile => {
          profile.comments.forEach (comment => {
             if(comment._id.toString() === req.params.commentId.toString()){
@@ -487,6 +497,7 @@ router.post('/comment/unlike/:handle/:commentId',passport.authenticate('jwt',{se
 router.delete('/comment/:handle/:commentId',passport.authenticate('jwt',{session:false}), (req,res) => {
     Profile
     .findOne({handle:req.params.handle})
+    .populate('user', ['name', 'avatar'])
       .then(profile => {
             const removeIndex = profile.comments.map(comment => comment._id.toString() ).indexOf(req.params.commentId);
             // remove comment
@@ -538,8 +549,11 @@ router.post(
         description: req.body.description
       };
 
-      // Add to exp array
+      // Add to education array
       profile.education.unshift(newEdu);
+
+      // sort using lodash
+      profile.education =  _.sortBy(profile.education,['to','from']).reverse()
 
       profile.save()
         .then(profile => res.json(profile))

@@ -90,7 +90,7 @@ class Header extends Component {
                                         <span>Home</span> 
                                 </Link>       
                                 
-                                <Link className = "link link__black Header__network" to = "/dashboard">
+                                <Link className = "link link__black Header__network" to = "/developers">
                                     <FontAwesomeIcon
                                         icon="user-friends"
                                         style = {{color:'white', cursor:'pointer',fontSize: '2.5rem'}}

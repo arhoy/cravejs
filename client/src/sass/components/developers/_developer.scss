@@ -1,0 +1,64 @@
+.Developer { 
+    font-size: 1.6rem;
+    color: $color-black;
+ 
+    background-color: $color-black;
+    display:grid;
+    grid-template-rows: 1fr 7rem 4rem 12rem 4rem;
+    cursor: pointer;
+    border: 0.5rem solid $fb-grey;
+    &:hover {
+        background-color: $color-white;
+    }
+  
+    &__figure {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &__image {
+        display: block;
+        width: 100%;
+        border-radius: 50%;
+        max-width: 15rem;
+        
+    
+    }
+    &__name, &__headline, &__handle, &__button {
+        display: flex;
+  
+        text-align: center;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 1rem;
+    }
+    &__name {
+        font-weight: 600;
+        background: $color-white;
+        align-items: center;
+    }
+    &__headline {
+        overflow: hidden;
+        background: $color-white;
+        align-items: flex-start;
+    }
+    &__handle {
+        background-color:$color-black;
+        color:$color-white;
+        & span {
+            font-weight: 600;
+           
+        }
+    }
+    &__button {
+        cursor: pointer;
+        outline:none;
+        border:none;
+        transition: all 0.1s;
+        padding: 1rem 2rem;
+        color: $color-black;
+        background-color: $fb-grey-1;
+        display: flex;
+        align-self: baseline;
+    }
+}

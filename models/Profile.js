@@ -7,6 +7,10 @@ const ProfileSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'users'
   },
+  name : {
+    type: Schema.Types.String,
+    ref:'users'
+  },
   handle: {
     type: String,
     required: true,

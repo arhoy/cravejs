@@ -39,7 +39,7 @@ class Profile extends Component {
                   profileContent = (
                     <React.Fragment>
                         <div className="profile__welcome">
-                              <h3 className = "profile__title"> { `${user.name}'s profile `} </h3>
+                              <h3 className = "profile__title"> { `${profile.user.name}'s public profile `} </h3>
                               <div className = "profile__headline"> {profile.headline} </div>
                               
                         </div>
