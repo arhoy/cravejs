@@ -82,6 +82,7 @@ class Developers extends Component {
                                         avatar = { developer.user.avatar }
                                         handle = { developer.handle }
                                         headline = { developer.headline }
+                                        skills = {developer.skills}
                                     />
                                 )
                             }
