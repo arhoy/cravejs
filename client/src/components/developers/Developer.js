@@ -10,13 +10,10 @@ class Developer extends Component {
     }
     render() {
         const { name, avatar, handle, headline, skills } = this.props;
-        console.log(skills);
+    
     
         return (
    
-             
-                     
-        
                  <div 
                         className = "Developer"
                         onClick = { this.showDetailsHandler.bind(this,handle) }

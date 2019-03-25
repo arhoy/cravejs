@@ -11,7 +11,10 @@ const TextAreaFieldGroup = ({
   onChange,
   cols,
   rows,
-  className
+  className,
+  showCharactersRemaining,
+  maxLength,
+  showOnLength
 }) => {
   return (
     <div className="form__group">
@@ -26,7 +29,7 @@ const TextAreaFieldGroup = ({
         rows = {rows}
       />
       <div>
-        
+        { value.length >= showOnLength && showCharactersRemaining && <div className="form__info"> Max {maxLength - value.length} characters remaining! </div>}
         {error && <div className="form__error">{error}</div>}
       </div>
     
@@ -37,7 +40,10 @@ const TextAreaFieldGroup = ({
 TextAreaFieldGroup.defaultProps = {
   className: 'form__textarea',
   cols: 10,
-  rows: 3
+  rows: 3,
+  showCharactersRemaining:false,
+  maxLength: 0,
+  showOnLength:0
 }
 TextAreaFieldGroup.propTypes = {
   name: PropTypes.string.isRequired,

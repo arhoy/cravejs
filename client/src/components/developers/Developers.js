@@ -18,9 +18,8 @@ class Developers extends Component {
         
     }
     componentDidUpdate(prevProps, prevState) {
-        console.log('prevProps',prevProps.profile)
         if(prevProps.profile.profiles !== this.props.profile.profiles){
-            console.log('udpate the state')
+  
             this.setState({profiles: this.props.profile.profiles})
         }
       
@@ -50,7 +49,7 @@ class Developers extends Component {
     
     
     render() {
-        console.log(this.props);
+
         const { profiles,filteredProfiles } = this.state;
         if( !profiles || profiles.length < 1 ) {
             return (

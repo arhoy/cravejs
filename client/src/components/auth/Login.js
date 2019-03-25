@@ -24,7 +24,6 @@ class Login extends Component {
     
 
     static getDerivedStateFromProps (props, state) {
-        console.log(state);
         if(props.errors !== state.errors) {
         return {errors: props.errors}
         }

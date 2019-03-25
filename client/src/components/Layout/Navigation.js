@@ -25,13 +25,12 @@ class Navigation extends Component {
         
         const guestLinks = (
             <ul className="navigation__list">
+                <li> <Link to = "/register" className = "navigation__link">Create Account</Link> </li>
                 <li> <Link to = "/login" className = "navigation__link">Login</Link> </li>
                 <li> <Link to = "/developers" className = "navigation__link">Network</Link> </li>
                 <li> <Link to = "/posts" className = "navigation__link">Daily Feed</Link> </li>
                 <li> <Link to = "/products" className = "navigation__link" >Products</Link></li>
-                
-                <li> <Link to = "/register" className = "navigation__link">Create Account</Link> </li>
-                <li> <Link to = "/about-us" className = "navigation__link" >About Us</Link></li>
+                <li> <Link to = "/contact" className = "navigation__link" >Contact</Link></li>
                 
             </ul>   
         )

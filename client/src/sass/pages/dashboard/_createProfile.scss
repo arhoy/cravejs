@@ -27,4 +27,12 @@
     &__options {
         margin-left: 1rem;
     }
+    &__errors {
+        background-color: $trello-red-100;
+        display: inline-block;
+        color: $trello-red-900;
+        font-weight: 600;
+        padding: 0.5rem 3rem;
+        margin-top: 1rem;
+    }
 }

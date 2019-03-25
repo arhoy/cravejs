@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Layout from '../components/Layout/Layout';
+
 import LandingHeader from '../components/landing/LandingHeader';
 import Register from '../components/auth/Register';
 import Footer from '../components/Layout/Footer';
-import HeaderLogo from '../components/Layout/HeaderLogo';
+import Gallery from '../components/galleries/Gallery';
 import Navigation from '../components/Layout/Navigation';
 
 class HomePage extends Component {
@@ -12,6 +12,7 @@ class HomePage extends Component {
                 <React.Fragment>
                   <LandingHeader/>
                   <Navigation/>
+                  <Gallery/>
                   <Register/>
                   <Footer/>
                 </React.Fragment>

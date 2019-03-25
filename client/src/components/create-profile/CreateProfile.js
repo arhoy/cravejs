@@ -8,6 +8,10 @@ import InputGroup from '../common/InputGroup';
 import SelectListGroup from '../common/SelectListGroup';
 import { createProfile, getCurrentProfile } from '../../actions/profileActions';
 import isEmpty from '../../validation/is-empty';
+import { countryOptions } from './options/countryList';
+import { statusOptions } from './options/statusList';
+
+
 class CreateProfile extends Component {
  
     state = {
@@ -27,7 +31,8 @@ class CreateProfile extends Component {
       linkedin: '',
       youtube: '',
       instagram: '',
-      errors: {}
+      errors: {},
+      submitPressed:false
     }
 
   componentDidMount() {
@@ -39,7 +44,7 @@ class CreateProfile extends Component {
     return {errors: props.errors}
     }
     if(!isEmpty(props.profile.profile) ) {
-      console.log(props.profile.profile);
+
       props.history.push('/edit-profile');
     }
     return null;
@@ -65,7 +70,7 @@ class CreateProfile extends Component {
       youtube: this.state.youtube,
       instagram: this.state.instagram
     };
-
+    this.setState({submitPressed:true})
     this.props.createProfile(profileData, this.props.history);
   }
 
@@ -73,9 +78,9 @@ class CreateProfile extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  render() {
-    const { errors, displaySocialInputs } = this.state;
 
+  render() {
+    const { errors, displaySocialInputs, suggestions } = this.state;
     let socialInputs;
 
     if (displaySocialInputs) {
@@ -134,16 +139,8 @@ class CreateProfile extends Component {
       );
     }
 
-    // Select options for status
-    const options = [
-      { label: '* Select Career Status', value: 0 },
-      { label: 'Student/Intern', value: 'Student/Intern' },
-      { label: 'Entry Level', value: 'Entry Level' },
-      { label: 'Starting Career ( 1 to 5 years )', value: 'Starting Career' },
-      { label: 'Mid Career/ Established', value: 'Established' },
-      { label: 'Late Career/ Seasoned', value: 'Late Career' },
-      { label: 'Other', value: 'Other' }
-    ];
+
+   
 
     return (
       <div className = "section-createProfile">
@@ -155,6 +152,7 @@ class CreateProfile extends Component {
               </div>
               
               <h2 className = "heading-secondary" style = {{color:'#0C3953'}}>Create Your Profile</h2>
+              <div> * is a required field</div>
             </div>
              
                 <form className = "createProfile__form" onSubmit={this.onSubmitHandler.bind(this)}>
@@ -164,26 +162,28 @@ class CreateProfile extends Component {
                     value={this.state.handle}
                     onChange={this.onChangeHandler.bind(this)}
                     error={errors.handle}
-                    info="A unique name for your profile URL. ie.name / business"
+                    info="A unique name for your profile *"
                   />
                   <SelectListGroup
-                    placeholder="Status"
                     name="status"
                     value={this.state.status}
                     onChange={this.onChangeHandler.bind(this)}
-                    options={options}
+                    options={statusOptions}
                     error={errors.status}
-                    info="How far are you in your career?"
+                    info= {`What stage you're at in your career *`}
                   />
                    <TextAreaFieldGroup
-                     placeholder="Headline: i.e React developer at CraveJs"
+                     placeholder="* Headline: i.e React developer at CraveJs"
                     name="headline"
                     value={this.state.headline}
                     onChange={this.onChangeHandler.bind(this)}
                     error={errors.headline}
-                    info="Insert attention grabbing headline!"
+                    info="Insert attention grabbing headline *"
                     cols="90"
                     rows = "3"
+                    showCharactersRemaining = {true}
+                    maxLength = {100}
+                    showOnLength = {10}
                   />
                   <TextFieldGroup
                     placeholder="Company"
@@ -201,23 +201,26 @@ class CreateProfile extends Component {
                     error={errors.website}
                     info="Your website or a company one"
                   />
-                  <TextFieldGroup
-                    placeholder="Country"
+      
+                  <SelectListGroup
                     name="country"
                     value={this.state.country}
                     onChange={this.onChangeHandler.bind(this)}
+                    options={countryOptions}
                     error={errors.country}
-                    info=""
+                    info="Your Country *"
                   />
+             
+             
                   <TextFieldGroup
                     placeholder="City"
                     name="city"
                     value={this.state.city}
                     onChange={this.onChangeHandler.bind(this)}
                     error={errors.city}
-                    info=""
+                    info="Your City"
                   />
-              
+
                   <TextFieldGroup
                     placeholder="* Skills"
                     name="skills"
@@ -225,7 +228,7 @@ class CreateProfile extends Component {
                     onChange={this.onChangeHandler.bind(this)}
                     error={errors.skills}
                     info="Please use comma separated values (eg.
-                      HTML,CSS,JavaScript,PHP"
+                      HTML,CSS,JavaScript,PHP) *"
                   />
                   <TextFieldGroup
                     placeholder="Github Username"
@@ -244,6 +247,9 @@ class CreateProfile extends Component {
                     info="Tell us a little about yourself"
                     cols="90"
                     rows = "15"
+                    showCharactersRemaining = {true}
+                    maxLength = {500}
+                    showOnLength = {250}
                   />
 
                   <div className="mb-3">
@@ -272,6 +278,12 @@ class CreateProfile extends Component {
                     value="Submit"
                   />
                 </form>
+                    {
+                      this.state.submitPressed && errors ? 
+                        <div className = "createProfile__errors" >Please fix the errors above</div>
+                      : null
+                    }
+               
         </div>
       </div>
      

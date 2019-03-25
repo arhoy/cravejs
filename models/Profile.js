@@ -18,7 +18,9 @@ const ProfileSchema = new Schema({
   },
   headline: {
     type: String,
-    max: 140
+    min: 10,
+    max: 140,
+    required:true
   },
   company: {
     type: String

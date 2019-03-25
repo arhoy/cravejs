@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Register from '../../components/auth/Login';
+import Register from '../../components/auth/Register';
 import Layout from '../../components/Layout/Layout';
 import { connect } from 'react-redux';
 
