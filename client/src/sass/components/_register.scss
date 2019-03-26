@@ -1,50 +1,18 @@
 .section-register {
-    height: 100vh;
-    padding: 15rem 0;
-    background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
-
-    @include respond(tab-port) {
-        padding: 10rem 0;
-    }
-}
-
-.register {
-    background-image: linear-gradient(45deg, 
-                                    rgba($color-white, 0.8) 0%, 
-                                    rgba($color-white, 0.8) 25%, 
-                                    rgba($color-white, 0.6) 25%, 
-                                    rgba($color-white, 0.6) 50%, 
-                                    rgba($color-white, 0.4) 50%, 
-                                    rgba($color-white, 0.4) 75%, 
-                                    rgba($color-white, 0) 75%), 
+    background-image: 
+                            linear-gradient(180deg, 
+                                    rgba($stripe-grey, 0.95) 0%, 
+                                    rgba($stripe-grey, 0.95) 100%), 
                                     
                             url(/img/register.jpg);
     background-size: 100%;
     border-radius: 3px;
-    box-shadow: 0 1.5rem 4rem rgba($color-black, .2);
+    object-fit: cover;
+}
 
-    @include respond(tab-land) {
-        background-image: linear-gradient(45deg, 
-        rgba($color-white, 0.8) 0%, 
-        rgba($color-white, 0.8) 25%, 
-        rgba($color-white, 0.6) 25%, 
-        rgba($color-white, 0.6) 50%, 
-        rgba($color-white, 0.4) 50%, 
-        rgba($color-white, 0.4) 75%, 
-        rgba($color-white, 0) 75%), 
-url(/img/register.jpg);
-        background-size: cover;
-    }
+.register {
+  
 
-    @include respond(tab-port) {
-        color: $color-black;
-        background-image: linear-gradient(to right, 
-        rgba($color-primary-light, 1) 0%,
-        rgba($color-primary-light, 1) 100%),
-        url(/img/register.jpg);
-
-        border-radius: 20px;
-    }
 
     &__form {
         width: 50%;

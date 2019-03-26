@@ -1,0 +1,173 @@
+.HomeAbout {
+    padding: 10rem 0rem;
+    font-size: 1.6rem;
+    display:grid;
+    background-color: $stripe-grey;
+    color: $color-black;
+      grid-template-columns:
+          [full-start] 1fr 
+          [center-start] repeat(8, [col-start] minmax(min-content,1fr) [col-end] ) 
+          [center-end] 1fr [full-end];
+    grid-template-rows: 34% 22% 22% 22%;
+    grid-column-gap: 6rem;
+
+    @include respond(t-800){
+       grid-template-columns: 1fr;
+       grid-template-rows: repeat(7,15%);
+    }
+       
+    @include respond(desktop-small) {
+        @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+            -webkit-clip-path: polygon(50% 0%, 100% 0, 100% 85%, 50% 100%, 0% 85%, 0 0);
+            clip-path: polygon(50% 0%, 100% 15%, 100% 85%, 50% 100%, 0% 85%, 0 15%);
+    
+        }
+    }
+ 
+
+    &__mission {
+        display: inline-block;
+        font-size: 1.7rem;
+        width: 50%;
+        @include respond(t-800){
+            width: 100%;
+         }
+    }
+    h2 {
+        font-size: 3.6rem;
+        font-weight: 200;
+    }
+    h4 {
+        font-size: 2.2rem;
+    }
+
+    &__section {
+        margin: 3rem 0rem;
+        &-1 {
+            grid-column:  full-start/ full-end;
+            grid-row: 1 / 2;
+            align-items: center;
+            justify-items: center;
+            text-align: center;
+        }
+        &-2, &-3, &-4{
+            display: flex;
+            grid-column: full-start / col-end 5;
+            @include respond(t-800){
+                grid-column: full-start / full-end;
+             }
+          
+        }
+        &-2 {
+            grid-row: 2 / 3;
+        }
+        &-3 {
+            grid-row: 3 / 4;
+        }
+        &-4 {
+            grid-row: 4 / 5;
+        }
+        &-5, &-6, &-7 {
+            display: flex;
+            flex-direction: column;
+            grid-column: col-start 6 / center-end;
+            @include respond(t-800){
+                grid-column: full-start / full-end;
+             }
+        }
+        &-5 {
+            grid-row: 2 / 3;
+            @include respond(t-800){
+                grid-row: 5 / 6;
+             }
+        }
+        &-6 {
+            grid-row: 3 / 4;
+            @include respond(t-800){
+                grid-row: 6 / 7;
+             }
+        }
+        &-7 {
+            grid-row: 4 / 5;
+            @include respond(t-800){
+                grid-row: 7 / 8;
+             }
+        }
+        @include respond(t-800){
+            margin: 4rem 0rem;
+         }
+    }
+}
+
+// TODO : move to new folder
+.css_box_container {
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    &-1{
+        justify-content: space-around;
+    }
+    &-2 {
+        justify-content: space-evenly;
+    }
+
+}
+.css_box {
+    width: 14rem;
+    height: 14rem;
+    cursor: pointer;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-transform: uppercase;
+    color:$color-white;
+    font-weight: 600;
+    box-shadow: 2px 1px 14px 2px rgba(82, 82, 143, 0.39);
+    transition: all 0.2s ease-in;
+    &:hover {
+        width: 15rem;
+        height: 15rem;
+    }
+    @include respond(t-800){
+       &:hover {
+        width: 14rem;
+        height: 14rem;
+       }
+     }
+    
+
+    &-1 {
+        background: $trello-green-500;
+    }
+    &-2 {
+        background: $trello-blue-400;
+    }
+    &-3 {
+        background: $trello-purple-500;
+    }
+    &-4 {
+        background: $trello-red-500;
+    }
+    &-5 {
+        background: $trello-orange-500;
+    }
+    &-6 {
+        background: $trello-yellow-600;
+    }
+    &-7 {
+        background: $trello-pink-500;
+    }
+    &-8 {
+        background: $trello-sky-500;
+    }
+    &-9 {
+        background: $trello-lime-500;
+    }
+
+ 
+}

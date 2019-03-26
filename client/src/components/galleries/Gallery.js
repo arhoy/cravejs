@@ -46,7 +46,7 @@ class Gallery extends Component {
                 <img src="img/react.png" alt="" className="gallery__img gallery__img-13"/>
             </figure>
             <figure className="gallery__item gallery__item--14">
-              <img src="img/es6.svg" alt="" className="gallery__img gallery__img-14"/>
+              <img src="img/es6.png" alt="" className="gallery__img gallery__img-14"/>
             </figure>
                   
         </div>

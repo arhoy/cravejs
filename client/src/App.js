@@ -14,7 +14,7 @@ import store from './store';
 
 import PrivateRoute from './components/common/PrivateRoute';
 
-import HomePage from './pages/HomePage';
+import HomePage from './pages/homepage/HomePage';
 
 import LoginPage from './pages/auth/LoginPage'
 import RegisterPage from './pages/auth/RegisterPage'
@@ -38,7 +38,11 @@ import ProductPage from './pages/products/ProductPage';
 import CartPage from './pages/cart/CartPage';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faEnvelope, faKey, faThumbsUp, faEllipsisH, faIgloo, faUserFriends,faLaptopCode,faUserAstronaut, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { 
+      faEnvelope, faChartLine, faCode, faDatabase,
+      faKey, faThumbsUp, faEllipsisH, faIgloo, faUserFriends,
+      faLaptopCode,faUserAstronaut, faTimesCircle
+ } from '@fortawesome/free-solid-svg-icons';
 
 import ThankYouPage from './pages/thankyou/ThankYouPage';
 import UserOrdersPage from './pages/orders/UserOrdersPage';
@@ -51,7 +55,11 @@ import DevelopersPage from './pages/network/DevelopersPage';
 
 
 
-library.add(faEnvelope, faKey, faThumbsUp,faEllipsisH, faIgloo, faUserFriends, faLaptopCode, faUserAstronaut, faTimesCircle);
+library.add(
+     faEnvelope, faKey, faThumbsUp,faEllipsisH,
+     faIgloo, faUserFriends, faLaptopCode, faUserAstronaut, faTimesCircle,
+     faChartLine,faDatabase,faCode
+  );
 
 
 // Check for token

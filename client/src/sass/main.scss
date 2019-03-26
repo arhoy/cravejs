@@ -54,11 +54,15 @@
 
 @import "layout/footer";
 @import "layout/grid";
-@import "layout/landingheader";
 @import "layout/header";
 @import "layout/navigation";
 @import "layout/layout";
 
+// home_landing page
+@import "pages/home_landing/landingheader";
+@import "pages/home_landing/home-gallery-section";
+@import "pages/home_landing/home-about";
+// dashboard page
 @import "pages/dashboard/createProfile";
 @import "pages/dashboard/addCredentials";
 @import "pages/post/postPage";
