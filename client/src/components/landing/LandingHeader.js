@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import HeaderLogo from '../Layout/HeaderLogo';
 
-class Header extends Component {
+class LandingHeader extends Component {
+    
     render() {
         return (
             <div className="landingheader">
@@ -12,7 +13,7 @@ class Header extends Component {
                         <span className="heading-primary--main">Crave JS</span>
                         <span className="heading-primary--sub">Awesome Resume App</span>
                     </h1>
-                    <Link to = "/register" className = "btn btn--white btn--animated" > Sign Up </Link>
+                    <a href = {this.props.href}  className = "btn btn--white btn--animated" > Sign Up </a>
                 </div>
             </div>
             
@@ -20,4 +21,4 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default LandingHeader;

@@ -1,10 +1,13 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import LightSpeed from 'react-reveal/LightSpeed'
 const HomeAbout = () => {
     return (
         <div className = "HomeAbout">
                <div className="HomeAbout__section HomeAbout__section-1">
-                    <h2>Showcase your skills</h2>
+                    <LightSpeed left> 
+                        <h2>Showcase your skills</h2>
+                    </LightSpeed>   
                     <div className = "HomeAbout__mission" >
                         Cravejs is a community of lifelong learners 
                         in all areas of life who want to showcase their skills and potential, learn from others

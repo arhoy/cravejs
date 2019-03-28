@@ -67,7 +67,7 @@ class Register extends Component {
                             <form onSubmit = { (e) => this.onSubmitHandler(e) } className="form">
                             <div className="u-margin-bottom-medium">
                                 <h2 className = "heading-secondary" style = {{color:'#333',fontWeight: '200'}} >
-                                    Create your Account
+                                    Signup Today
                                 </h2>
                             </div>
 

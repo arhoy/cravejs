@@ -1,0 +1,76 @@
+.HomeServices {
+    padding: 10rem 0rem;
+    font-size: 1.6rem;
+    display:grid;
+    color: $color-black;
+      grid-template-columns:
+          [full-start] 1fr 
+          [center-start] repeat(8, [col-start] minmax(min-content,1fr) [col-end] ) 
+          [center-end] 1fr [full-end];
+
+      
+    &__title {
+        grid-column: full-start/ full-end;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 5rem;
+      
+    }
+    &__main {
+        grid-column: center-start/center-end;
+    }
+    &__mission {
+   
+        display: inline-block;
+        font-size: 1.7rem;
+        width: 50%;
+        margin: 1rem 0rem;
+        text-align: center;
+        @include respond(t-800){
+            width: 100%;
+         }
+    }
+
+    h2 {
+        font-size: 3.6rem;
+        font-weight: 200;
+        text-align: center;
+    }
+    h4 {
+        font-size: 2.2rem;
+    }
+    &__textLoop {
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 2rem;
+        padding: 0.5rem 10rem;
+        -webkit-clip-path: polygon(80% 0, 100% 50%, 80% 100%, 0% 100%, 15% 50%, 0% 0%);
+        clip-path: polygon(80% 0, 100% 50%, 80% 100%, 0% 100%, 15% 50%, 0% 0%);
+        &-1 {
+            color: $trello-red-900;
+            background-color: $trello-red-100;
+           
+        }
+        &-2 {
+            color: $trello-orange-900;
+            background-color: $trello-orange-100;
+        }
+        &-3 {
+            color: $trello-yellow-900;
+            background-color: $trello-yellow-100;
+        }
+        &-4 {
+            color: $trello-green-900;
+            background-color: $trello-green-100;
+        }
+        &-5 {
+            color: $trello-blue-900;
+            background-color: $trello-blue-100;
+        }
+        &-6 {
+            color: $trello-purple-900;
+            background-color: $trello-purple-100;
+        }
+    }
+}

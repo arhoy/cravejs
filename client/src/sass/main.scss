@@ -45,6 +45,9 @@
 @import "components/cart/cart";
 @import "components/cart/cartItems";
 
+@import "components/features/features-six";
+@import "components/features/feature";
+
 @import "components/orders/userorders";
 @import "components/orders/userorder";
 
@@ -62,7 +65,10 @@
 @import "pages/home_landing/landingheader";
 @import "pages/home_landing/home-gallery-section";
 @import "pages/home_landing/home-about";
+ @import "pages/home_landing/home-services";
+
 // dashboard page
 @import "pages/dashboard/createProfile";
 @import "pages/dashboard/addCredentials";
 @import "pages/post/postPage";
+

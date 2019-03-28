@@ -18,7 +18,7 @@ const Footer = () => {
                         </div>   
             
                 </div>
-                <div className="Footer__items">
+                {/* <div className="Footer__items">
                     <ul>
 
                         <li><Link className = "Footer__link" to = "/">Sample Products</Link></li>
@@ -40,7 +40,7 @@ const Footer = () => {
                         <li><Link className = "Footer__link" to = "/">Network</Link></li>
                         <li><Link className = "Footer__link" to = "/">Profile</Link></li>
                     </ul>
-                </div>
+                </div> */}
             
         </div>
         </div>
