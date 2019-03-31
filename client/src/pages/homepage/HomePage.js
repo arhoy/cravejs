@@ -13,16 +13,44 @@ import HomeServices from './HomeServices';
 configureAnchors({scrollDuration: 800})
 
 class HomePage extends Component {
+    state = {
+        pageYOffset: 0,
+        homeAboutDOMOffset:0
+    }
+
+    componentDidMount() {
+        window.addEventListener('scroll', this.hasScrolled);
+        const homeAboutDOM = this.refs.homeAboutContainer;
+        const homeAboutDOMOffset = homeAboutDOM.offsetHeight;
+        this.setState({homeAboutDOMOffset})
+     }
+
+    componentWillUnmount() {
+      window.removeEventListener('scroll', this.hasScrolled);
+    }
+    hasScrolled = () => {
+       this.setState({pageYOffset: window.pageYOffset});
+    }
     render() {
+
+        const { pageYOffset, homeAboutDOMOffset } = this.state;
         return (
                 <React.Fragment>
-                  <LandingHeader href = "#register_section" />
+                  <LandingHeader href = "#register_section" pageYOffset = {pageYOffset}/>
                   <Navigation/>
                   <HomeGallerySection/>
-                  <HomeAbout/>
+                  <div ref = "homeAboutContainer">
+                     <HomeAbout
+                         pageYOffset = {pageYOffset} 
+                         homeAboutDOMOffset = {homeAboutDOMOffset}
+                         windowHeight = {window.innerHeight}
+                     />
+                  </div>
+                
                   <HomeServices/>
                   <Register />
                   <Footer/>
+
                   <ScrollableAnchor id={'register_section'}>
                  <div></div>
                 </ScrollableAnchor>

@@ -1,7 +1,17 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import LightSpeed from 'react-reveal/LightSpeed'
-const HomeAbout = () => {
+const HomeAbout = ({pageYOffset,homeAboutDOMOffset, windowHeight}) => {
+
+    var css_box = 'css_box';
+    
+    const showBoxes = () => {
+        css_box += ' css_box-show'; // append -show styles ( space is important 
+    }
+    if( pageYOffset > homeAboutDOMOffset + windowHeight/2.2) {
+            showBoxes();
+    }
+
     return (
         <div className = "HomeAbout">
                <div className="HomeAbout__section HomeAbout__section-1">
@@ -16,22 +26,22 @@ const HomeAbout = () => {
                </div>
                
               <div className="HomeAbout__section HomeAbout__section-2">
-                        <div className="css_box_container css_box_container-1">
-                            <div className="css_box css_box-1">
+                        <div className=  {`css_box_container css_box_container-1`} >
+                            <div className= {`${css_box} css_box-1`}>
                                      <FontAwesomeIcon
                                         icon="chart-line"
                                         style = {{color:'white', cursor:'pointer',fontSize: '4.5rem'}}
                                     />
                                     <span>power bi</span> 
                             </div>
-                            <div className="css_box css_box-2">
+                            <div className= {`${css_box} css_box-2`}>
                                      <FontAwesomeIcon
                                         icon="code"
                                         style = {{color:'white', cursor:'pointer',fontSize: '4.5rem'}}
                                     />
                                     <span>javascript</span> 
                             </div>
-                            <div className="css_box css_box-3">
+                            <div className= {`${css_box} css_box-3`}>
                                       <FontAwesomeIcon
                                         icon="database"
                                         style = {{color:'white', cursor:'pointer',fontSize: '4.5rem'}}
@@ -41,22 +51,22 @@ const HomeAbout = () => {
                         </div>
               </div>
               <div className="HomeAbout__section HomeAbout__section-3">
-                      <div className="css_box_container css_box_container-2">
-                            <div className="css_box css_box-4">
+              <div className=  {`css_box_container css_box_container-2`} >
+                         <div className= {`${css_box} css_box-4`}>
                                      <FontAwesomeIcon
                                         icon="chart-line"
                                         style = {{color:'white', cursor:'pointer',fontSize: '4.5rem'}}
                                     />
                                     <span>tableau</span> 
                             </div>
-                            <div className="css_box css_box-5">
+                            <div className= {`${css_box} css_box-5`}>
                                      <FontAwesomeIcon
                                         icon="code"
                                         style = {{color:'white', cursor:'pointer',fontSize: '4.5rem'}}
                                     />
                                     <span>css</span> 
                             </div>
-                            <div className="css_box css_box-6">
+                            <div className= {`${css_box} css_box-6`}>
                                       <FontAwesomeIcon
                                         icon="database"
                                         style = {{color:'white', cursor:'pointer',fontSize: '4.5rem'}}
@@ -66,22 +76,22 @@ const HomeAbout = () => {
                     </div>
               </div>
               <div className="HomeAbout__section HomeAbout__section-4">
-              <div className="css_box_container css_box_container-1">
-                         <div className="css_box css_box-7">
+              <div className=  {`css_box_container css_box_container-1`} >
+                            <div className= {`${css_box} css_box-7`}>
                                      <FontAwesomeIcon
                                         icon="chart-line"
                                         style = {{color:'white', cursor:'pointer',fontSize: '4.5rem'}}
                                     />
                                     <span>rpa</span> 
                             </div>
-                            <div className="css_box css_box-8">
+                            <div className= {`${css_box} css_box-8`}>
                                      <FontAwesomeIcon
                                         icon="code"
                                         style = {{color:'white', cursor:'pointer',fontSize: '4.5rem'}}
                                     />
                                     <span>node</span> 
                             </div>
-                            <div className="css_box css_box-9">
+                            <div className= {`${css_box} css_box-9`}>
                                       <FontAwesomeIcon
                                         icon="database"
                                         style = {{color:'white', cursor:'pointer',fontSize: '4.5rem'}}
