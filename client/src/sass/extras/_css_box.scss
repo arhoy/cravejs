@@ -21,26 +21,22 @@
 }
 .css_box {
     width: 14rem;
-    height: 14rem;
-    cursor: pointer;
-    border-radius: 1rem;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    text-transform: uppercase;
-    color:$color-white;
-    font-weight: 600;
-    box-shadow: 2px 1px 14px 2px rgba(82, 82, 143, 0.39);
-    opacity:0;
-    transition: all 0.2s 1s ease-in;
-    transform: translateX(-5rem);
-    &-show {
-        opacity: 1;
-        transform: translateX(0);
-    }
+   height: 14rem;
+   cursor: pointer;
+   border-radius: 1rem;
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
+   text-transform: uppercase;
+   color:$color-white;
+   font-weight: 600;
+   box-shadow: 2px 1px 14px 2px rgba(82, 82, 143, 0.39);
+   transition: all 0.2s ease-in;
+   transform: translate(0rem);
     &:hover {
-        animation: skewing 0.8s ease-in-out;
+        animation: jello_skewing 0.8s ease-in-out !important;
+       
     }
     @include respond(t-800){
         width: 12rem;
@@ -59,46 +55,35 @@
     
 
     &-1 {
-        background: $trello-green-500;
-    
+        background: $trello-green-500; 
     }
     &-2 {
         background: $trello-blue-400;
-        transition-delay: 0.1s;
     }
     &-3 {
-        background: $trello-purple-500;
-        transition-delay: 0.3s;
+        background: $trello-purple-500;    
     }
     &-4 {
         background: $trello-red-500;
-        transition-delay: 0.5s;
     }
     &-5 {
-        background: $trello-orange-500;
-        transition-delay: 0.7s;
+        background: $trello-orange-500;   
     }
     &-6 {
         background: $trello-yellow-600;
-        transition-delay: 0.9s;
     }
     &-7 {
         background: $trello-pink-500;
-        transition-delay: 1.1s;
     }
     &-8 {
-        background: $trello-sky-500;
-        transition-delay: 1.3s;
+       background: $trello-sky-500;
     }
     &-9 {
-        background: $trello-lime-500;
-        transition-delay: 1.5s;
+       background: $trello-lime-500;
     }
-
- 
 }
 
-@keyframes skewing {
+@keyframes jello_skewing {
     0% { transform: skewX(8deg) skewY(10deg); }
     20% { transform: skewX(-6deg) skewY(-8deg) ; }
     40% { transform: skewX(4deg) skewY(5deg); }
