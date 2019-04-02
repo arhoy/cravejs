@@ -3,12 +3,19 @@
     font-size: 1.6rem;
     display:grid;
     color: $color-black;
+   
       grid-template-columns:
           [full-start] 1fr 
           [center-start] repeat(8, [col-start] minmax(min-content,1fr) [col-end] ) 
           [center-end] 1fr [full-end];
 
-      
+    @include respond(desktop) {
+        grid-template-columns:
+        [full-start] 2fr 
+        [center-start] repeat(8, [col-start] minmax(min-content,1fr) [col-end] ) 
+        [center-end] 2fr [full-end];
+    }
+
     &__title {
         grid-column: full-start/ full-end;
         display: flex;

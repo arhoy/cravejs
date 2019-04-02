@@ -1,12 +1,18 @@
 
 import React from 'react';
+import Fade from 'react-reveal/Fade'; 
 
 const Features = (props) => {
     return (
-        <div className="Feature">
-            <h4>{props.header}</h4>
-            <p>{props.text}</p>
-        </div>
+        <Fade left cascade>
+           <div className="Feature">
+                <div className="Feature__icon">  
+                </div>
+                <h4>{props.header}</h4>
+                <p>{props.text}</p>
+            </div>
+        </Fade>
+     
     );
 };
 

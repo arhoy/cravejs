@@ -4,6 +4,7 @@ import Feature from './Feature';
 class FeaturesSix extends Component {
     render() {
         const { features } = this.props;
+     
         return (
             <div className = "FeaturesSix">
                 {

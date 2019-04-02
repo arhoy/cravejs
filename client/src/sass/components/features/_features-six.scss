@@ -2,17 +2,23 @@
 .FeaturesSix{
 
 
-    grid-gap: 1rem;
+    grid-row-gap: 3rem;
+    grid-column-gap: 2rem;
     display: grid;
     grid-template-columns: repeat(3,1fr);
     grid-template-rows: repeat(2,1fr);
     justify-content: center;
     align-content: center;
+  
+
 
     @include respond(t-800){
        grid-template-columns: repeat(auto-fit,minmax(25rem,1fr)); 
      }
      @include respond(phone){
         grid-template-columns: repeat(1,minmax(min-content,1fr));
+      }
+      @include respond(desktop) {
+        grid-column-gap: 3rem;
       }
 }

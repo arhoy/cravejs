@@ -4,13 +4,30 @@
     font-size: 1.8rem;
     display:flex;
     align-items: center;
+    justify-self: center;
     flex-direction: column;
-    background: linear-gradient(45deg, $color-white,90%, $stripe-grey 90%);
+    background: linear-gradient(45deg, $color-white,90%, $color-black 90%);
+    border: 2px solid $color-black;
+    border-radius: 1rem;
+    position: relative;
+    z-index: 10;
+    max-width: 35rem;
+    &__icon {
+        position: absolute;
+        top: -25px;
+        background: $color-white;
+        z-index: 20;
+        padding: 4px;
+        border-radius: 50%;
+        width: 5.5rem;
+        height: 5.5rem;
+        color: $color-black;
+    }
     &:hover {
-        background: linear-gradient(45deg, $color-white,10%, $stripe-grey 10%);
+        background: linear-gradient(45deg, $color-white,10%, $color-black 10%);
+        color: $color-white;
     }
     & h4 {
-        color: $color-black;
         margin-bottom: 1rem;
         text-align: center;
     }

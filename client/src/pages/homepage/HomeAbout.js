@@ -8,7 +8,7 @@ const HomeAbout = ({pageYOffset,homeAboutDOMOffset, windowHeight}) => {
     const showBoxes = () => {
         css_box += ' css_box-show'; // append -show styles ( space is important 
     }
-    if( pageYOffset > homeAboutDOMOffset + windowHeight/2.2) {
+    if( pageYOffset > homeAboutDOMOffset + windowHeight/2.4) {
             showBoxes();
     }
 
@@ -51,7 +51,7 @@ const HomeAbout = ({pageYOffset,homeAboutDOMOffset, windowHeight}) => {
                         </div>
               </div>
               <div className="HomeAbout__section HomeAbout__section-3">
-              <div className=  {`css_box_container css_box_container-2`} >
+              <div className =  {`css_box_container css_box_container-2`} >
                          <div className= {`${css_box} css_box-4`}>
                                      <FontAwesomeIcon
                                         icon="chart-line"
@@ -76,7 +76,7 @@ const HomeAbout = ({pageYOffset,homeAboutDOMOffset, windowHeight}) => {
                     </div>
               </div>
               <div className="HomeAbout__section HomeAbout__section-4">
-              <div className=  {`css_box_container css_box_container-1`} >
+                 <div className=  {`css_box_container css_box_container-1`} >
                             <div className= {`${css_box} css_box-7`}>
                                      <FontAwesomeIcon
                                         icon="chart-line"

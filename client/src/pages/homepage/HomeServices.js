@@ -8,27 +8,33 @@ const HomeServices = () => {
     const features = [
         {
             headline: 'Web Development', 
-            description: 'We build everything from landing pages to fullstack single page applications'
+            description: 'We build everything from landing pages to fullstack single page applications',
+            icon: ''
         },
         {
             headline: 'Online Advertising', 
-            description: 'We provide targeted online advertising through Facebook and Google ads'
+            description: 'We provide targeted online advertising through Facebook and Google ads',
+            icon: ''
         },
         {
             headline: 'Data Visualizations', 
-            description: 'Creating custom built reports using Tableau or Power BI'
+            description: 'Creating custom built reports using Tableau or Power BI',
+            icon: ''
         },
         {
             headline: 'Data Reporting', 
-            description: 'Automate your reports using SQL and refreshable spreadsheets'
+            description: 'Automate your reports using SQL and refreshable spreadsheets',
+            icon: ''
         },
         {
             headline: 'Content Writing', 
-            description: 'Content writing on an array of topics from technical concepts to social issues'
+            description: 'Content writing on an array of topics from technical concepts to social issues',
+            icon: ''
         },
         {
             headline: 'Mobile Apps', 
-            description: 'Building rich mobile UI apps using React Native'
+            description: 'Building rich mobile UI apps using React Native',
+            icon: ''
         },
 
     ]
