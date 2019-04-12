@@ -6,11 +6,24 @@
     justify-items:center;
     color:$trello-blue-900;
     font-size: 1.6rem;
-    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    width: 50%;
+    padding: 4rem 0rem;
+
     @include respond(tab-port){
         grid-column: full-start / full-end;
         padding: 1rem 3rem;
-    
+        width: 80%;
+    }
+    @include respond(phone){
+        width: 90%;
+    }
+    &__extras {
+        margin: 1rem 0rem;
     }
 
 

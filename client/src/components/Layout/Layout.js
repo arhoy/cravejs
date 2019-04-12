@@ -4,7 +4,7 @@ import Header from './Header';
 import { connect } from 'react-redux';
 
 
-class Layout extends Component {
+class BasicLayout extends Component {
     
     render() {
         const {links} = this.props
@@ -20,7 +20,7 @@ class Layout extends Component {
     }
 }
 
-Layout.defaultProps = {
+BasicLayout.defaultProps = {
     links :  [
         {
             title: 'Dashboard',
@@ -49,4 +49,4 @@ const mapStateToProps = state => ({
     auth:state.auth
 })
 
-export default connect(mapStateToProps)(Layout);
+export default connect(mapStateToProps)(BasicLayout);

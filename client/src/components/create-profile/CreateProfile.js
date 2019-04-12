@@ -10,12 +10,13 @@ import { createProfile, getCurrentProfile } from '../../actions/profileActions';
 import isEmpty from '../../validation/is-empty';
 import { countryOptions } from './options/countryList';
 import { statusOptions } from './options/statusList';
-
+import FileUpload from '../utils/form/FileUpload';
 
 class CreateProfile extends Component {
  
     state = {
       displaySocialInputs: false,
+      displayPhotoUpload: false,
       handle: '',
       headline:'',
       company: '',
@@ -32,6 +33,7 @@ class CreateProfile extends Component {
       youtube: '',
       instagram: '',
       errors: {},
+      profilePhoto:'',
       submitPressed:false
     }
 
@@ -68,7 +70,8 @@ class CreateProfile extends Component {
       facebook: this.state.facebook,
       linkedin: this.state.linkedin,
       youtube: this.state.youtube,
-      instagram: this.state.instagram
+      instagram: this.state.instagram,
+      profilePhoto: this.state.profilePhoto
     };
     this.setState({submitPressed:true})
     this.props.createProfile(profileData, this.props.history);
@@ -80,8 +83,9 @@ class CreateProfile extends Component {
 
 
   render() {
-    const { errors, displaySocialInputs, suggestions } = this.state;
-    let socialInputs;
+    const { errors, displaySocialInputs, suggestions, displayPhotoUpload } = this.state;
+    console.log(errors);
+    let socialInputs, photoUpload;
 
     if (displaySocialInputs) {
       socialInputs = (
@@ -135,15 +139,23 @@ class CreateProfile extends Component {
             error={errors.instagram}
             inputClassNames = "form__input form__input-sm form__input-white"
           />
+
+          
         </div>
-      );
+      ); // end social inputs
     }
+
+    if(displayPhotoUpload){
+      photoUpload = (
+          <FileUpload/>
+      )
+    }
+   
 
 
    
 
     return (
-      <div className = "section-createProfile">
           <div className="createProfile">
             <div className = "createProfile__header"> 
 
@@ -252,9 +264,10 @@ class CreateProfile extends Component {
                     showOnLength = {250}
                   />
 
-                  <div className="mb-3">
+                  <div className="mb-3 createProfile__extras" >
                     <button
                       type="button"
+                      ref = "socialmedia"
                       onClick={() => {
                         this.setState(prevState => ({
                           displaySocialInputs: !prevState.displaySocialInputs
@@ -267,6 +280,26 @@ class CreateProfile extends Component {
                     <span style = {{marginLeft: '1rem',fontWeight:'600'}} className = "CreateProfile__options" >Optional</span>
                   </div>
                   {socialInputs}
+
+                  <div className="mb-3 createProfile__extras">
+                    <button
+                      type="button"
+                      ref = "photo"
+                      onClick={() => {
+                        this.setState(prevState => ({
+                          displayPhotoUpload: !prevState.displayPhotoUpload
+                        }));
+                      }}
+                      className="btn btn-2 btn--secondary"
+                    >
+                      Upload Photo
+                    </button>
+                    <span style = {{marginLeft: '1rem',fontWeight:'600'}} className = "CreateProfile__options" >Optional</span>
+                  </div>
+                  {photoUpload}
+
+            
+                  
                   <input
                     style = {{
                       marginTop: '1rem',
@@ -285,7 +318,6 @@ class CreateProfile extends Component {
                     }
                
         </div>
-      </div>
      
     );
   }

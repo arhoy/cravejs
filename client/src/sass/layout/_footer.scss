@@ -1,15 +1,18 @@
 .Footer {
+
+    grid-column: 1/ -1;
+
     display:grid;
     grid-template-columns:
         [full-start] 1fr 
         [center-start] repeat(8, [col-start] minmax(min-content,1fr) [col-end] ) 
         [center-end] 1fr [full-end];
-    background-color:$stripe-grey;
+    background-color: $stripe-grey;
     color: $color-black;
     padding: 2rem 1rem;
     font-size: 1.6rem;
     justify-items: stretch;
-
+ 
 
     &__container {
         grid-column: center-start / center-end;

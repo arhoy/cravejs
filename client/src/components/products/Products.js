@@ -50,7 +50,7 @@ class Products extends Component {
         else {
             const productsToLoop = this.state.keyword === '' ? products : filteredProducts
             return (
-                <React.Fragment>
+                <div className = "products-container">
                     <input onChange = { this.inputChangeHandler } className = "products__input" type="text" placeholder = "Search for products"/>
                     <div className = "products">
                     {
@@ -70,7 +70,7 @@ class Products extends Component {
                         ))
                     }
                     </div>
-                </React.Fragment>
+                </div>
                
             );
         }

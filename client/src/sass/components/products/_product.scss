@@ -1,16 +1,20 @@
 .Product { 
+    grid-column: 1/-1;
+
     font-size: 1.6rem;
     color: $color-black;
     background-color: $color-white;
     display:grid;
-    grid-template-rows: 1fr 7rem 4rem 12rem 4rem;
+   
     cursor: pointer;
     border: 0.5rem solid $fb-grey;
+    max-width: 50rem;
+    justify-self: center;
+   
     &:hover {
         border:none;
     }
   
-
     &__image {
         display: block;
         width: 100%;

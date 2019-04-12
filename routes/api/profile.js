@@ -129,7 +129,6 @@ router.post(
     if (req.body.website) profileFields.website = req.body.website;
     if (req.body.country) profileFields.country = req.body.country;
     if (req.body.city) profileFields.city = req.body.city;
-    if (req.body.headline) profileFields.city = req.body.headline;
     if (req.body.bio) profileFields.bio = req.body.bio;
     if (req.body.status) profileFields.status = req.body.status;
     if (req.body.githubusername)
@@ -623,6 +622,23 @@ router.delete(
         res.json({ success: true })
       );
     });
+  }
+);
+
+// Type: DELETE
+// Route: api/profile/deleteProfile
+// Desc: Delete the profile only for the given user
+// Access: Private 
+router.delete(
+  '/deleteProfile',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Profile
+      .findOneAndRemove({ user: req.user.id })
+      .then(() => {
+        res.json({ success: true })
+      })
+      .catch ( err => res.status(400).json({errorMsg: `Could not delete profile: ${err}`}))
   }
 );
 

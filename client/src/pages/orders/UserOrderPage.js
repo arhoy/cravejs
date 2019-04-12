@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import UserOrders from '../../components/orders/UserOrders';
 import UserOrderId from '../../components/order/UserOrderId';
 import Footer from '../../components/Layout/Footer';
+import Layout from '../../components/Layout/Layout';
 
 
 
@@ -57,14 +58,10 @@ class UserOrderPage extends Component {
  
         
         return (
-            <React.Fragment>
-                <Header links = {links}/>
-                <div className = "orders-container">
-                    <UserOrderId/>
-                </div>
-                <Footer/>
-
-            </React.Fragment>
+     
+            <Layout links = {links}>
+               <UserOrderId/>
+            </Layout>
            
         );
     }

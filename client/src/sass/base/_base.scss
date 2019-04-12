@@ -33,6 +33,7 @@ body {
     @include respond(big-desktop) {
         padding: 0rem;
     }
+    font-size: $default-font-size;
 }
 
 ::selection {

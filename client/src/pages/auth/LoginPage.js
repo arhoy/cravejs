@@ -43,7 +43,7 @@ class LoginPage extends Component {
         }
         
         return (
-            <Layout links = {links}>
+             <Layout links = {links}>
                 <Login/>
             </Layout>
         );

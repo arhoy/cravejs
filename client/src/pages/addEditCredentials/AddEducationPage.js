@@ -4,6 +4,7 @@ import Header from '../../components/Layout/Header';
 import { connect } from 'react-redux';
 import AddEducation from '../../components/add-credentials/AddEducation';
 import Footer from '../../components/Layout/Footer';
+import Layout from '../../components/Layout/Layout';
 
 class AddEducationPage extends Component {    
     render() {
@@ -57,14 +58,10 @@ class AddEducationPage extends Component {
  
         
         return (
-            <React.Fragment>
-                <Header links = {links}/>
-                <div className = "dashboard-container">
-                    <AddEducation/>
-                </div>
-                <Footer/>
-
-            </React.Fragment>
+            
+            <Layout links = {links}>
+                <AddEducation/>
+            </Layout>
            
         );
     }

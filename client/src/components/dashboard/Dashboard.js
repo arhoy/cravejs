@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getCurrentProfile, deleteAccount } from '../../actions/profileActions';
+import { getCurrentProfile, deleteProfile, deleteAccount } from '../../actions/profileActions';
 import Moment from 'react-moment';
 import Experience from './Experience';
 import Education from './Education';
@@ -11,13 +11,21 @@ import LoadingSpinner from '../utils/LoadingSpinner';
 
 class Dashboard extends Component {
 
-
+    state = {
+      showDanger: false
+    }
     componentDidMount() {
         this.props.getCurrentProfile();
      }
 
      deleteAccountHandler = () => {
       this.props.deleteAccount();
+     }
+     deleteProfileHandler = () => {
+        this.props.deleteProfile();
+     }
+     showDangerHandler = () => {
+       this.setState({ showDanger: !this.state.showDanger})
      }
 
     render() {
@@ -28,12 +36,12 @@ class Dashboard extends Component {
             let dashboardContent;
             if(profile == null || loading ){
               dashboardContent = ( 
-                <React.Fragment>
+                <>
                     <div className = "dashboard__loading">Loading Profile...</div>
                       <LoadingSpinner
                         bgColor = '#eee'
                       />
-                </React.Fragment>
+                </>
                  
               )
             }
@@ -57,6 +65,23 @@ class Dashboard extends Component {
                       <div className = "Dashboard__summary">
                       <h4 className = "heading-secondary heading-secondary--blue" style = {{fontSize:'2.2rem'}}>Profile Snapshot</h4>
                           <div className="Dashboard__details">
+
+                               <div className="Dashboard__detail">
+                                    <span className="Dashboard__detail-1"> 
+                                      Headline: {' '}
+                                    </span>
+                                    <span className="Dashboard__detail-2"> 
+                                      {profile.headline}
+                                    </span>    
+                                </div>
+                                <div className="Dashboard__detail">
+                                    <span className="Dashboard__detail-1"> 
+                                      From : {' '}
+                                    </span>
+                                    <span className="Dashboard__detail-2"> 
+                                      {profile.city} {profile.country}
+                                    </span>    
+                                </div>
                                 <div className="Dashboard__detail">
                                     <span className="Dashboard__detail-1"> 
                                       Join Date: {' '}
@@ -108,9 +133,30 @@ class Dashboard extends Component {
                         </div>
 
                         <div style = {{borderBottom: '2px solid black', marginBottom:'2rem'}} />
-
-                    
-                        <button className = "btn btn-2 btn--blue" onClick = {this.deleteAccountHandler}>Delete Account</button>
+                        <h2> Danger Zone</h2>
+                        <button className = "Dashboard__btn Dashboard__btn-danger" onClick = {this.showDangerHandler}>
+                           {this.state.showDanger? 'Hide':'Show'}
+                        </button>
+                        {
+                          this.state.showDanger ?
+                            <div className = "Dashboard__dangerzone">
+                                <p>
+                                  Once you delete your profile, your education and work experience will be deleted as well.
+                                  You will also no longer have a public profile and handle
+                                </p>
+                                <button className = "btn btn-2 btn--blue" onClick = {this.deleteProfileHandler}>Delete Profile</button>
+                                <div style = {{borderBottom: '2px solid black', margin:'2rem 0'}} />
+                                <p>
+                                  Once you delete your account, your profile and dashboard will be deleted and you will no longer be able to post.
+                                  Your email address will also be deleted from the system and you will have to re-register.
+                                </p>
+                                <button className = "btn btn-2 btn--blue" onClick = {this.deleteAccountHandler}>Delete Account</button>
+                            </div>
+                          :null
+                        }
+                       
+                       
+                        
                    
                     </React.Fragment>
                   )
@@ -155,4 +201,4 @@ const mapStateToProps = state => ({
   errors:state.errors
 });
 
-export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(Dashboard);
+export default connect(mapStateToProps, { getCurrentProfile, deleteProfile, deleteAccount })(Dashboard);

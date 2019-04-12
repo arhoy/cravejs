@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Products from '../../components/products/Products';
-import Header from '../../components/Layout/Header';
+
 import { connect } from 'react-redux';
-import Footer from '../../components/Layout/Footer';
+import Layout from '../../components/Layout/Layout';
 
 
 
@@ -51,13 +51,14 @@ class ProductsPage extends Component {
  
         
         return (
-            <React.Fragment>
-                <Header links = {links}/>
-                <div className = "products-container" style = {{minHeight: '85vh'}}>
-                    <Products/>
-                </div>
-                <Footer/>
-            </React.Fragment>
+       
+
+            <Layout links = {links}>
+                  <Products
+                  />
+            </Layout>
+
+
            
         );
     }

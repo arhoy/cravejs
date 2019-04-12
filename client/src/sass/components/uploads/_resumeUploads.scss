@@ -1,0 +1,55 @@
+
+
+.Resume {
+    grid-column: 1/-1;
+    &__loading,&__uploads {
+   
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(10rem,1fr));
+
+        justify-items: center;
+        align-items: center;
+        background-color: $stripe-grey;
+        padding: 2rem 0rem;
+        &-1, &-2,&-3 {
+            padding: 1rem;
+            grid-column: 1 / -1;
+        }
+    }
+    &__image,&__containerLink {
+
+        width: 10rem;
+        height: 10rem;
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        margin: 2rem;
+        padding: 1rem;
+        border-radius: 12px;
+        cursor: pointer;
+      
+        & img { 
+            width: 100%;
+        }
+    }
+    &__image {
+        &:hover {
+            background-color: $color-white;
+     
+        }
+    }
+    &__containerLink {
+        text-align: center;
+        background-color: $trello-blue-400;
+        border-radius: 2rem;
+        &:hover {
+            background-color: darken($trello-blue-400,10%);
+        }
+
+    }
+    &__link {
+        color: $color-white;
+    }
+
+}

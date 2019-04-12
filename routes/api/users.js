@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const gravatar = require('gravatar');
+const formidableMiddleware = require('express-formidable');
+const cloudinary = require('cloudinary');
+
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
@@ -17,6 +20,8 @@ const sendgridTransport = require('nodemailer-sendgrid-transport');
 
 // Load User model
 const User = require('../../models/User');
+
+
 
 const transporter = nodemailer.createTransport(sendgridTransport({
   auth:{
@@ -169,17 +174,49 @@ router.get('/currentTotal',passport.authenticate('jwt', { session: false }), (re
 
   })
   .then( user => {
-    console.log(user);
+   
     let total = 0;
     let quantity = 0;
       user.cart.items.forEach(item => {
         total += item.productId.price*item.quantity;
         quantity += item.quantity;
       });
-      console.log(total);
       res.status(200).json({cartTotal:total, cartQuantity: quantity})
   })
   .catch( () => res.status(400).json({'msg':'Not able to retrieve items'}))
 });
+
+// Type: Post
+// Route: api/users/photoupload
+// Desc: Upload user photo using cloudinary
+// Access: Private
+router.post('/uploadimage', passport.authenticate('jwt', { session: false }), formidableMiddleware() ,(req, res) => {
+  // find the user in the database
+  User
+    .findById(req.user.id)
+    .then( user => {
+       //   console.log(req.files.file);
+        cloudinary.uploader.upload(req.files.file.path,(result)=>{
+          //  console.log('result is',result);
+            res.status(200).send({
+                public_id: result.public_id,
+                url: result.url
+            })
+          },
+            // cloudinary configuration
+              // create a folder in cravejs under website uploads and a folder specific to the sign up email to store the users images in
+            {
+              public_id: `${req.files.file.name}`,
+              folder: `cravejs/website_uploads/${user.email}`,
+              resource_type: 'auto',
+              tags: [user.email,req.files.file.name],
+              overwrite:true
+            })
+
+    })
+
+ 
+});
+
 
 module.exports = router;

@@ -59,6 +59,12 @@ export const GET_ORDER = 'GET_ORDER';
 export const GET_ALL_ORDERS = 'GET_ALL_ORDERS'; // gets all orders
 export const SUBMIT_ORDER = 'SUBMIT_ORDER';
 
+// RESUME RELATED
+export const GET_RESUME = 'GET_RESUME';
+export const GET_RESUMES = 'GET_RESUMES';
+export const POST_RESUME = 'POST_RESUME';
+export const RESUME_LOADING = 'RESUME_LOADING';
+
 
 
 

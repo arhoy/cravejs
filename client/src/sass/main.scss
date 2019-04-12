@@ -16,8 +16,12 @@
 @import "components/login";
 @import "components/thankyou";
 
+@import "components/utils/fileUpload";
+
 @import "components/menu/menu";
 @import "components/galleries/gallery";
+
+@import "components/uploads/resumeUploads";
 
 @import "components/tables/dashboardTable";
 

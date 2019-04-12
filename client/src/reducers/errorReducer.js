@@ -9,6 +9,9 @@ const initialState = {
     },
     replyErrors:{
 
+    },
+    profileErrors:{
+      
     }
 
 };

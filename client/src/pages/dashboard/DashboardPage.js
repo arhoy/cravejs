@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import Dashboard from '../../components/dashboard/Dashboard';
 import Header from '../../components/Layout/Header';
 import { connect } from 'react-redux';
-import Footer from '../../components/Layout/Footer';
-import Posts from '../../components/posts/Posts';
+import Layout from '../../components/Layout/Layout';
 
 class DashboardPage extends Component {    
     render() {
@@ -52,21 +51,11 @@ class DashboardPage extends Component {
                 }
             ]
         }
-        
-       
- 
-        
+               
         return (
-            <React.Fragment>
-                <Header links = {links}/>
-                <div className = "dashboard-container">
+            <Layout links = {links}>
                     <Dashboard/>
-                </div>
-             
-                <Footer/>
-
-            </React.Fragment>
-           
+            </Layout>
         );
     }
 }

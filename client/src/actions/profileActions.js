@@ -318,6 +318,23 @@ export const deleteEducation = (id) => dispatch => {
     })
 }
 
+// Delete profile
+export const deleteProfile = () => dispatch => {
+  if( prompt("Are you sure you want to delete your profile? This action cannot be undone. If so type YES to delete your profile") === "YES"){
+      axios
+        .delete('/api/profile/deleteProfile')
+        .then(res => {
+            window.location = "/dashboard";
+        })
+        .catch( err => {
+          dispatch ({
+              type:GET_ERRORS,
+              payload:err.response.data
+          })
+        })
+  }
+}
+
 // Delete Account 
 export const deleteAccount = () => dispatch => {
   if( prompt("Enter DELETE to confirm") === "DELETE" ){

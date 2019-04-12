@@ -23,12 +23,10 @@ import DashboardPage from './pages/dashboard/DashboardPage'
 import EditProfilePage from './pages/dashboard/EditProfilePage';
 import CreateProfilePage from './pages/dashboard/CreateProfilePage';
 
-
-
-
 import AddEducationPage from './pages/addEditCredentials/AddEducationPage';
 import AddExperiencePage from './pages/addEditCredentials/AddExperiencePage';
 
+import ResumeUploadPage from './pages/resume/ResumeUploadPage';
 
 import ProfilePage from './pages/profiles/ProfilePage';
 import PostsPage from './pages/posts/PostsPage';
@@ -41,7 +39,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { 
       faEnvelope, faChartLine, faCode, faDatabase,
       faKey, faThumbsUp, faEllipsisH, faIgloo, faUserFriends,
-      faLaptopCode,faUserAstronaut, faTimesCircle
+      faLaptopCode,faUserAstronaut, faTimesCircle,faPlusCircle
  } from '@fortawesome/free-solid-svg-icons';
 
 import ThankYouPage from './pages/thankyou/ThankYouPage';
@@ -58,7 +56,7 @@ import DevelopersPage from './pages/network/DevelopersPage';
 library.add(
      faEnvelope, faKey, faThumbsUp,faEllipsisH,
      faIgloo, faUserFriends, faLaptopCode, faUserAstronaut, faTimesCircle,
-     faChartLine,faDatabase,faCode
+     faChartLine,faDatabase,faCode,faPlusCircle
   );
 
 
@@ -101,6 +99,7 @@ class App extends Component {
           <PrivateRoute exact path="/thank-you" component={ThankYouPage} />
           <PrivateRoute exact path="/orders" component={UserOrdersPage} />
           <PrivateRoute exact path="/order/:id" component={UserOrderPage} />
+          <PrivateRoute exact path="/resume" component={ResumeUploadPage} />
         
           <Route exact path = "/login" component = {LoginPage}/>
           <Route exact path = "/posts" component = {PostsPage}/>

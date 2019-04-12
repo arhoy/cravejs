@@ -6,6 +6,7 @@ import postReducer from './postReducer';
 import productsReducer from './productsReducer';
 import cartReducer from './cartReducer';
 import orderReducer from './orderReducer';
+import resumeReducer from './resumeReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -14,5 +15,6 @@ export default combineReducers({
   post: postReducer,
   products: productsReducer,
   cart: cartReducer,
-  order:orderReducer
+  order:orderReducer,
+  resume:resumeReducer
 });

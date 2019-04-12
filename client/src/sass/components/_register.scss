@@ -1,15 +1,17 @@
 .section-register {
+    background: transparent;
+    grid-column: 1/-1;
     background-image: 
                             linear-gradient(180deg, 
-                                    rgba($stripe-grey, 0.90) 0%, 
-                                    rgba($stripe-grey, 0.90) 100%), 
+                                    rgba($fb-grey, 0.90) 0%, 
+                                    rgba($fb-grey, 0.90) 100%), 
                                     
                             url(/img/register.jpg);
     background-size: 100%;
     border-radius: 3px;
     object-fit: cover;
     background-position: center center;
-
+    background-repeat: no-repeat;
     padding: 10rem 0rem;
     @include respond(desktop-small) {
         @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {

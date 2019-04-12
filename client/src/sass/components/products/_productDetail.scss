@@ -1,25 +1,16 @@
-.productDetail-container {
-    display:grid;
-    background-color: $color-black;
-      grid-template-columns:
-          [full-start] 1fr 
-          [center-start] repeat(8, [col-start] minmax(min-content,1fr) [col-end] ) 
-          [center-end] 1fr [full-end];
-    min-height: 85vh;
- 
-}
 
 .ProductDetail {
-    grid-column: center-start/ center-end;
-    
+    grid-column: 1/-1;
+
+    padding: 10rem 5rem;
     display:grid;
     grid-template-columns: repeat(2, [col-start] 1fr [col-end]);
     grid-template-rows:  1fr 1fr;
     grid-column-gap: 8rem;
    
-    margin: 5rem 0rem;
     font-size: 1.6rem;
-    background-color: $color-black;
+    background-color: $fb-grey;
+    color:$color-black;
     justify-content: center;
     align-self: center;
     @include respond(tab-port) {
@@ -43,7 +34,7 @@
         }
       }
     &__feature {
-        color: $color-white;
+    
         grid-column: col-start 1 / col-end 1;
         grid-row: 1 / 2;
         align-self: center;
@@ -79,7 +70,7 @@
         outline:none;
         margin-left: 1rem;
         background-color: transparent;
-        color: $color-real-white;
+        color: $trello-blue-900;
         font-size: 1.4rem;
         cursor: pointer;
 
@@ -103,7 +94,7 @@
         grid-row: 2/3;
 
         font-size: 1.7rem;
-        color: $color-white;
+      
         
         @include respond(tab-port) {
             grid-column: 1/-1;

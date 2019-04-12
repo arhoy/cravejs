@@ -53,7 +53,7 @@ class UserOrders extends Component {
         else {
             const ordersToLoop = keyword === '' ? orders : filteredOrders
             return (
-                <React.Fragment>
+                <div className = "orders-container">
                     <input onChange = { this.inputChangeHandler } className = "orders__input" type="text" placeholder = "Search for orders"/>
                     <div className = "orders">
                     {
@@ -73,7 +73,7 @@ class UserOrders extends Component {
                         ))
                     }
                     </div>
-                </React.Fragment>
+                </div>
                
             );
         }

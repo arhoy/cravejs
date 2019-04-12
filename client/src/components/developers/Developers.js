@@ -65,7 +65,7 @@ class Developers extends Component {
         else {
             const developersToLoop = this.state.keyword === '' ? profiles : filteredProfiles
             return (
-                <React.Fragment>
+                <div style = {{gridColumn:'1/-1',padding:'2rem'}}>
                     <input onChange = { this.inputChangeHandler } className = "products__input" type="text" placeholder = "Search for profiles"/>
                     <div className = "products">
                     {
@@ -88,7 +88,7 @@ class Developers extends Component {
                         })
                     }
                     </div>
-                </React.Fragment>
+                </div>
                
             );
         }

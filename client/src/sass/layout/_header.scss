@@ -1,4 +1,6 @@
 .Header {
+    grid-column: 1 / -1;  // ensures header remains at top.
+
     display:grid;
         grid-template-columns:
             [full-start] 1fr 

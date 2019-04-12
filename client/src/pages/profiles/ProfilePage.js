@@ -56,14 +56,13 @@ class ProfilePage extends Component {
  
         
         return (
-            <React.Fragment>
+            <>
                 <Header links = {links}/>
                 <div className = "profile-container">
                     <Profile/>
                 </div>
                 <Footer/>
-
-            </React.Fragment>
+            </>
            
         );
     }

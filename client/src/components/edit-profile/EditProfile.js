@@ -8,11 +8,15 @@ import InputGroup from '../common/InputGroup';
 import SelectListGroup from '../common/SelectListGroup';
 import { createProfile, getCurrentProfile } from '../../actions/profileActions';
 import isEmpty from  '../../validation/is-empty';
+import FileUpload from '../utils/form/FileUpload';
+import { statusOptions } from '../create-profile/options/statusList';
 
-class CreateProfile extends Component {
+
+class EditProfile extends Component {
 
     state = {
         displaySocialInputs: false,
+        displayPhotoUpload: false,
         handle: '',
         headline:'',
         company: '',
@@ -28,7 +32,8 @@ class CreateProfile extends Component {
         linkedin: '',
         youtube: '',
         instagram: '',
-        errors: {}
+        errors: {},
+        submitPressed:false
       }
   
     componentDidMount() {
@@ -95,6 +100,7 @@ class CreateProfile extends Component {
   }
 
   onSubmitHandler(e) {
+    const { errors } = this.state;
     e.preventDefault();
 
     const profileData = {
@@ -114,7 +120,11 @@ class CreateProfile extends Component {
       youtube: this.state.youtube,
       instagram: this.state.instagram
     };
-    this.props.createProfile(profileData, this.props.history);
+    this.setState({submitPressed:true});
+    // edit the profile
+
+      this.props.createProfile(profileData, this.props.history);
+    
   }
 
   onChangeHandler(e) {
@@ -122,8 +132,9 @@ class CreateProfile extends Component {
   }
 
   render() {
-    const { errors, displaySocialInputs } = this.state;
-    let socialInputs;
+    const { errors, displaySocialInputs, displayPhotoUpload } = this.state;
+    console.log(this.props);
+    let socialInputs, photoUpload;
     if (displaySocialInputs) {
       socialInputs = (
         <div>
@@ -177,19 +188,17 @@ class CreateProfile extends Component {
             inputClassNames = "form__input form__input-sm form__input-white"
           />
         </div>
-      );
+
+      ); // end social inputs
+
+
+      if(displayPhotoUpload){
+        photoUpload = (
+            <FileUpload/>
+        )
+      }
     }
 
-    // Select options for status
-    const options = [
-        { label: '* Select Career Status', value: 0 },
-        { label: 'Student/Intern', value: 'Student' },
-        { label: 'Entry Level', value: 'entry_level' },
-        { label: 'Starting Career ( 1 to 5 years )', value: 'junior' },
-        { label: 'Mid Career/ Established', value: 'mid_career' },
-        { label: 'Late Career/ Seasoned', value: 'Student or Learning' },
-        { label: 'Other', value: 'Other' }
-      ];
 
     return (
           <div className="createProfile">
@@ -200,6 +209,7 @@ class CreateProfile extends Component {
               </div>
                       
               <h2 className = "heading-secondary heading-secondary--blue">Edit Your Profile</h2>
+              <div> * is a required field</div>
             </div>
              
                 <form className = "createProfile__form" onSubmit={this.onSubmitHandler.bind(this)}>
@@ -216,9 +226,9 @@ class CreateProfile extends Component {
                     name="status"
                     value={this.state.status}
                     onChange={this.onChangeHandler.bind(this)}
-                    options={options}
+                    options={statusOptions}
                     error={errors.status}
-                    info="How far are you in your career?"
+                    info="How far are you in your career? *"
                   />
                     <TextAreaFieldGroup
                     placeholder="Headline: i.e React developer at CraveJs"
@@ -226,7 +236,7 @@ class CreateProfile extends Component {
                     value={this.state.headline}
                     onChange={this.onChangeHandler.bind(this)}
                     error={errors.headline}
-                    info="Insert attention grabbing headline"
+                    info="Insert attention grabbing headline *"
                     cols="90"
                     rows = "3"
                   />
@@ -252,7 +262,7 @@ class CreateProfile extends Component {
                     value={this.state.country}
                     onChange={this.onChangeHandler.bind(this)}
                     error={errors.country}
-                    info="Country"
+                    info="Country *"
                   />
                   <TextFieldGroup
                     placeholder="City"
@@ -270,7 +280,7 @@ class CreateProfile extends Component {
                     onChange={this.onChangeHandler.bind(this)}
                     error={errors.skills}
                     info="Please use comma separated values (eg.
-                      HTML,CSS,JavaScript,PHP"
+                      HTML,CSS,JavaScript,PHP) *"
                   />
                   <TextFieldGroup
                     placeholder="Github Username"
@@ -306,6 +316,24 @@ class CreateProfile extends Component {
                     <span style = {{marginLeft: '1rem',fontWeight:'600'}} className = "CreateProfile__options" >Optional</span>
                   </div>
                   {socialInputs}
+
+                  <div className="mb-3 createProfile__extras">
+                    <button
+                      type="button"
+                      ref = "photo"
+                      onClick={() => {
+                        this.setState(prevState => ({
+                          displayPhotoUpload: !prevState.displayPhotoUpload
+                        }));
+                      }}
+                      className="btn btn-2 btn--secondary"
+                    >
+                      Your Photo
+                    </button>
+                    <span style = {{marginLeft: '1rem',fontWeight:'600'}} className = "CreateProfile__options" >Optional</span>
+                  </div>
+                  {photoUpload}
+
                   <input
                     style = {{
                       marginTop: '1rem',
@@ -317,21 +345,27 @@ class CreateProfile extends Component {
                     value="Finish Edits"
                   />
                 </form>
+
+                {/* {
+                      this.state.submitPressed && errors ? 
+                        <div className = "createProfile__errors" >Please fix the errors above</div>
+                      : null
+                } */}
+
         </div>
     );
   }
 }
 
-CreateProfile.propTypes = {
-  profile: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+EditProfile.propTypes = {
+  profile: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
   profile: state.profile,
-  errors: state.errors
+  profileErrors: state.errors
 });
 
 export default connect(mapStateToProps, { createProfile,getCurrentProfile })(
-  withRouter(CreateProfile)
+  withRouter(EditProfile)
 );

@@ -35,7 +35,7 @@ class HomePage extends Component {
 
         const { pageYOffset, homeAboutDOMOffset } = this.state;
         return (
-                <React.Fragment>
+                <>
                   <LandingHeader href = "#register_section" pageYOffset = {pageYOffset}/>
                   <Navigation/>
                   <HomeGallerySection/>
@@ -54,7 +54,7 @@ class HomePage extends Component {
                   <ScrollableAnchor id={'register_section'}>
                  <div></div>
                 </ScrollableAnchor>
-                </React.Fragment>
+                </>
               
             
             

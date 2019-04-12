@@ -4,15 +4,22 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const passport = require('passport');
 const path = require('path');
+const cloudinary = require('cloudinary');
 
 const app = express();
 
 // Body parser middleware
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // DB Config
 const db = require('./config/keys').mongoURI;
+
+// Cloudinary config
+const cloud_name = require('./config/keys').cloud_name;
+const cloud_api_key = require('./config/keys').cloud_api_key;
+const cloud_api_secret = require('./config/keys').cloud_api_secret;
+
 
 // Connect to MongoDB
 mongoose
@@ -27,12 +34,22 @@ const profile = require('./routes/api/profile');
 const posts = require('./routes/api/posts');
 const product = require('./routes/api/product');
 const order = require('./routes/api/order');
+const resume = require('./routes/api/resume');
 
 // Passport middleware
 app.use(passport.initialize());
 
 // Passport Config
 require('./config/passport')(passport);
+
+// Cloudinary config
+cloudinary.config({
+    cloud_name:cloud_name,
+    api_key: cloud_api_key,
+    api_secret: cloud_api_secret
+})
+
+
 
 // for env variables
 require('dotenv').config();
@@ -44,6 +61,8 @@ app.use('/api/profile', profile);
 app.use('/api/posts', posts);
 app.use('/api/product', product);
 app.use('/api/order',order);
+app.use('/api/resume',resume);
+
 
 // Server static assets if in production
 if (process.env.NODE_ENV === 'production') {

@@ -4,6 +4,7 @@ import Header from '../../components/Layout/Header';
 import { connect } from 'react-redux';
 import Footer from '../../components/Layout/Footer';
 import Developers from '../../components/developers/Developers';
+import Layout from '../../components/Layout/Layout';
 
 
 class DevelopersPage extends Component {    
@@ -50,13 +51,11 @@ class DevelopersPage extends Component {
  
         
         return (
-            <React.Fragment>
-                <Header links = {links}/>
-                <div className = "products-container" style = {{minHeight: '85vh'}}>
-                    <Developers/>
-                </div>
-                <Footer/>
-            </React.Fragment>
+            <Layout links = {links}>
+                 <Developers/>
+            </Layout>
+
+            
            
         );
     }

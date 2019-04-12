@@ -109,6 +109,31 @@
         font-size: 1.8rem;
          color: $color-black;
     }
+    &__dangerzone {
+        border: 2px solid $color-black;
+        padding: 2rem;
+        h2 {
+            color: $trello-red-900;
+        }
+       
+    }
+    &__btn {
+        border: none;
+        padding : 1rem 2rem;
+        cursor: pointer;
+        outline: none;
+        font-weight: 600;
+        box-sizing: border-box;
+        transition: all 0.2s ease-in;
+        &-danger {
+            background-color: $stripe-grey;
+            margin-bottom: 4px;
+            &:hover {
+                border: 2px solid $color-red;
+         
+            }
+        }
+    }
 }
 .dashboard__experience, .dashboard__education {
     padding: 2rem 0;
