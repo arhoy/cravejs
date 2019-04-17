@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import EditProfile from '../../components/edit-profile/EditProfile';
 import { connect } from 'react-redux';
-import Layout from '../../components/Layout/Layout';
+import Layout from '../../../components/Layout/Layout';
+import ModernJS from '../../../components/articles/javascript/ModernJS';
 
-class EditProfilePage extends Component {    
+class ModernJSPage extends Component {    
     render() {
     
         const { isAuthenticated ,user } = this.props.auth;
@@ -56,7 +56,7 @@ class EditProfilePage extends Component {
         
         return (
             <Layout links = {links}>
-             <EditProfile/>
+             <ModernJS/>
             </Layout>
            
         );
@@ -69,4 +69,4 @@ const mapStateToProps = state => ({
     auth: state.auth
 })
 
-export default connect(mapStateToProps)(EditProfilePage);
+export default connect(mapStateToProps)(ModernJSPage);
