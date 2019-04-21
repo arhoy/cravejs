@@ -58,17 +58,15 @@
             display: flex;
             justify-items: space-between;
             & > *  {
-                width: 6rem;
+                width: max-content;
                 height: 6rem;
               
-            
                 &:hover {
-                    font-weight: 600;
-                    background-color: $color-grey-blue;
-                    border-radius: 50%;
+                    font-weight: bolder;
+                  
                 }
                 &:not(:last-child){
-                    margin-right: 2rem;
+                    margin-right: 3rem;
                 }
             }
         }

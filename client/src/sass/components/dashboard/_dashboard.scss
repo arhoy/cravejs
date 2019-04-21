@@ -1,14 +1,4 @@
-.dashboard-container {
-    display:grid;
-    background-color: $fb-grey;
-    color: $color-black;
-      grid-template-columns:
-          [full-start] 1fr 
-          [center-start] repeat(8, [col-start] minmax(min-content,1fr) [col-end] ) 
-          [center-end] 1fr [full-end];
 
-    min-height:85vh;
-}
 
 .Dashboard {
     grid-column: center-start / center-end;

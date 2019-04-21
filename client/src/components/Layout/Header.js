@@ -8,18 +8,33 @@ import Menu from './Menu';
 
 class Header extends Component {
 
-    state = {
-        showMenu:false
-    }
 
     constructor(props) {
         super(props);
-        this.state = { width: 0, height: 0 };
+        this.state = { 
+            width: 0, 
+            height: 0,
+            showMenu:false,
+            showExploreLinks:false,
+            exploreLinks: [
+                {
+                    title: 'Network',
+                    linkTo: '/developers' 
+                },
+                {
+                    title:'Articles',
+                    linkTo:'/articles'
+                }
+            ]
+
+        };
+
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
       }
 
     componentWillMount() {
-        document.addEventListener('mousedown',this.handleClick,false);
+        document.addEventListener('mousedown',this.handleClickMe,false);
+    
     }  
       componentDidMount() {
         this.updateWindowDimensions();
@@ -28,7 +43,8 @@ class Header extends Component {
       
       componentWillUnmount() {
         window.removeEventListener('resize', this.updateWindowDimensions);
-        document.removeEventListener('mousedown',this.handleClick,false);
+        document.removeEventListener('mousedown',this.handleClickMe,false);
+       
       }
       
       updateWindowDimensions() {
@@ -38,25 +54,33 @@ class Header extends Component {
       showMenuHandler = () => {
         this.setState({showMenu:true})
     }
+      showExploreLinkHandler = () => {
+        console.log('explore link clicked!')
+        this.setState({showExploreLinks:true})
+    }
 
 
-    handleClick = (e) => {
+    handleClickMe = (e) => {
         if(this.node && this.node.contains(e.target)){
             // do nothing
+            console.log('NOde is: ',this.node);
+            console.log('Target is: ',e.target);
             return;
         }
         // click outside, handle event
         this.handleClickOutside();
     }
-    
+
     handleClickOutside = () => {
      
-        this.setState({showMenu:false})
+        this.setState({
+            showMenu:false,
+            showExploreLinks:false
+        })
     }
 
 
     render() {
-    
         const { auth } = this.props;
         const { user, isAuthenticated } = this.props.auth;
         let displayName;
@@ -81,57 +105,65 @@ class Header extends Component {
                         this.state.width < 450 ? 
                             <Navigation/>
                             :
-                            <div className="Header__nav-right">     
-                                <Link className = "link link__black Header__home" to = "/dashboard">
-                                    <FontAwesomeIcon
-                                        icon="igloo"
-                                        style = {{color:'white', cursor:'pointer',fontSize: '2.5rem'}}
-                                    />
-                                        <span>Home</span> 
-                                </Link>       
-                                
-                                <Link className = "link link__black Header__network" to = "/developers">
-                                    <FontAwesomeIcon
-                                        icon="user-friends"
-                                        style = {{color:'white', cursor:'pointer',fontSize: '2.5rem'}}
-                                    />
-                                    <span>Network</span> 
-                                </Link> 
-                        
-                                <Link className = "link link__black Header__jobs" to = "/dashboard">
-                                    <FontAwesomeIcon
-                                        icon="laptop-code"
-                                        style = {{color:'white', cursor:'pointer',fontSize: '2.5rem'}}
-                                    />
-                                        <span>Jobs</span> 
-                                </Link> 
-                            
-                                <div className = "link link__black Header__login Menu-container" onClick = {this.showMenuHandler} >
-                                    <FontAwesomeIcon 
+
+                            <div className = "Header__nav-right"
+                                ref = {node => this.node = node} 
+                            >
+
+                                     
+                                        <Link className = "link link__black Header__home" to = "/dashboard">
+                                            <FontAwesomeIcon
+                                                icon="igloo"
+                                                style = {{color:'white', cursor:'pointer',fontSize: '2.5rem'}}
+                                            />
+                                                <span>Home</span> 
+                                        </Link>   
+
                                         
-                                        icon="user-astronaut"
-                                        style = {{color:'white', cursor:'pointer',fontSize: '2.5rem'}}
-                                    />
-                                    <span>{ isAuthenticated ? 'Me ▼' : 'Login'}</span>
-                                   
-                                       <div
-                                        ref = {node => this.node = node} 
-                                       >
-
-                                        { this.state.showMenu ? 
-                                       <Menu 
-                                            links = {this.props.links}
-                                        />
-                                         :null
-                                        }
-                                       </div>
-                                      
-                                   
-
-                                </div> 
-                    
+                            
                                 
-                        </div>
+                                        <Link className = "link link__black Header__jobs" to = "/dashboard">
+                                            <FontAwesomeIcon
+                                                icon="laptop-code"
+                                                style = {{color:'white', cursor:'pointer',fontSize: '2.5rem'}}
+                                            />
+                                                <span>Jobs</span> 
+                                        </Link> 
+                                    
+                                
+
+                                        <div className = "link link__black Header__login Menu-container" onClick = {this.showExploreLinkHandler} >
+                                            <FontAwesomeIcon 
+                                                
+                                                icon="user-friends"
+                                                style = {{color:'white', cursor:'pointer',fontSize: '2.5rem'}}
+                                            />
+                                            <span onClick = {this.showExploreLinkHandler} >{ isAuthenticated ? 'Explore ▼' : 'Explore'}</span>
+                                            { 
+                                                    this.state.showExploreLinks ? 
+                                                    <Menu links = {this.state.exploreLinks}/>
+                                                    :null
+                                            } 
+                                            
+                                        </div>    
+
+                                        <div className = "link link__black Header__login Menu-container" onClick = {this.showMenuHandler} >
+                                            <FontAwesomeIcon 
+                                                
+                                                icon="user-astronaut"
+                                                style = {{color:'white', cursor:'pointer',fontSize: '2.5rem'}}
+                                            />
+                                            <span>{ isAuthenticated ? 'Me ▼' : 'Login'}</span>
+                                        
+                                                { 
+                                                    this.state.showMenu ? 
+                                                    <Menu links = {this.props.links}/>
+                                                    :null
+                                                }  
+                                        </div>  
+                                </div>
+         
+                          
                     }
                     
                 </nav>

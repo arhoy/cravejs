@@ -65,6 +65,11 @@ export const GET_RESUMES = 'GET_RESUMES';
 export const POST_RESUME = 'POST_RESUME';
 export const RESUME_LOADING = 'RESUME_LOADING';
 
+// ARTICLES RELATED
+export const GET_ARTICLE = 'GET_ARTICLE';
+export const GET_ARTICLES = 'GET_ARTICLES';
+export const ARTICLES_LOADING = 'ARTICLES_LOADING';
+
 
 
 

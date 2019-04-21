@@ -19,6 +19,7 @@
     "react-dropzone": "^4.3.0",
     "react-ga": "^2.5.7",
     "react-image-lightbox": "^5.1.0",
+    "react-markdown": "^4.0.8",
     "react-modal": "^3.8.1",
     "react-moment": "^0.8.4",
     "react-paypal-express-checkout": "^1.0.5",

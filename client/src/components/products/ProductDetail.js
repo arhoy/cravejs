@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getProduct, addProductToCart } from '../../actions/productActions';
 import { getUserCart } from '../../actions/cartActions';
-import { Link, withRouter } from 'react-router-dom'; 
+import { withRouter } from 'react-router-dom'; 
 import { submitOrder } from '../../actions/orderActions';
 
 import Modal from 'react-modal';

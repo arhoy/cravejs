@@ -49,9 +49,12 @@ import UserOrdersPage from './pages/orders/UserOrdersPage';
 import UserOrderPage from './pages/orders/UserOrderPage';
 
 import DevelopersPage from './pages/network/DevelopersPage';
-import ModernJSPage from './pages/articles/javascript/ModernJSPage';
+import ArticlesPage from './pages/articles/ArticlesPage';
+import ArticlePage from './pages/article/ArticlePage';
 
 import './sass/main.scss';
+
+
 
 
 
@@ -107,7 +110,9 @@ class App extends Component {
           <PrivateRoute exact path="/resume" component={ResumeUploadPage} />
         
           <Route exact path = "/login" component = {LoginPage}/>
-          <Route exact path = "/learn-javascript" component = {ModernJSPage}/>
+          <Route exact path = "/articles" component = {ArticlesPage}/>
+          <Route exact path = "/articles/:id" component = {ArticlePage}/>
+
           <Route exact path = "/posts" component = {PostsPage}/>
           <Route exact path = "/products" component = {ProductsPage}/>
           <Route exact path = "/cart" component = {CartPage}/>

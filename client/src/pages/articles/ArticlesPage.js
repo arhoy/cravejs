@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import Articles from '../../components/articles/Articles';
+import Header from '../../components/Layout/Header';
 import { connect } from 'react-redux';
-import Layout from '../../../components/Layout/Layout';
-import ModernJS from '../../../components/articles/javascript/ModernJS';
+import Layout from '../../components/Layout/Layout';
 
-class ModernJSPage extends Component {    
+class ArticlesPage extends Component {    
     render() {
     
         const { isAuthenticated ,user } = this.props.auth;
@@ -26,11 +27,11 @@ class ModernJSPage extends Component {
             links =  [
                 {
                     title: `${user.name}`,
-                    linkTo: `/dashboard` 
+                    linkTo: `/Articles` 
                 },
                 {
-                    title: 'Dashboard',
-                    linkTo: '/dashboard' 
+                    title: 'Articles',
+                    linkTo: '/Articles' 
                 },
                 {
                     title: 'Posts',
@@ -50,15 +51,11 @@ class ModernJSPage extends Component {
                 }
             ]
         }
-        
-       
- 
-        
+               
         return (
             <Layout links = {links}>
-             <ModernJS/>
+                    <Articles/>
             </Layout>
-           
         );
     }
 }
@@ -69,4 +66,4 @@ const mapStateToProps = state => ({
     auth: state.auth
 })
 
-export default connect(mapStateToProps)(ModernJSPage);
+export default connect(mapStateToProps)(ArticlesPage);
