@@ -17,7 +17,7 @@ class Articles extends Component {
    componentDidMount() {
 
       this.props.getArticles();
-    
+    console.log('article loading');
 
   }
 
