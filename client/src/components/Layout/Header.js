@@ -55,16 +55,13 @@ class Header extends Component {
         this.setState({showMenu:true})
     }
       showExploreLinkHandler = () => {
-        console.log('explore link clicked!')
         this.setState({showExploreLinks:true})
     }
 
 
     handleClickMe = (e) => {
         if(this.node && this.node.contains(e.target)){
-            // do nothing
-            console.log('NOde is: ',this.node);
-            console.log('Target is: ',e.target);
+        
             return;
         }
         // click outside, handle event
