@@ -39,6 +39,7 @@ class FullArticle extends Component {
                     articleTitle = {fields.title}
                     articleDescription = {fields.description}
                     articleBody = {fields.body}
+                    articleRichText = { fields.bodyRichText }
                     authorName = {author.name}
                     authorImage = {authorImage}
                     published = {fields.publishDate}

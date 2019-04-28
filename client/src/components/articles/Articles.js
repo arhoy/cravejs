@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 import { getArticles } from '../../actions/articleActions';
 import ArticleFeed from './ArticleFeed';
+import isEmpty from '../../validation/is-empty';
 
 class Articles extends Component {
 
@@ -24,19 +25,25 @@ class Articles extends Component {
 
  
   render() {
+     
      const { articles, loading } = this.props;
+     console.log(articles.artciles);
      let articleContent;
- 
-    if (articles === null || loading) {
+    if (articles === null || loading ) {
         articleContent = (<div> Loading </div>)
     }
     else {
-        articleContent = (
-            <ArticleFeed 
-                articles = {articles.articles}
-                history = {this.props.history}
-            />
-        )
+        if(isEmpty(articles.articles)){
+            console.log('what the fuck')
+        }
+        else {
+            articleContent = (
+                <ArticleFeed 
+                    articles = {articles.articles}
+                    history = {this.props.history}
+                />
+            )
+        }
     }
 
     return (

@@ -2,7 +2,7 @@ import React from 'react';
 import Article from './Article';
 
 const ArticleFeed = ({articles,history}) => {
- 
+    console.log(articles);
     return (
         articles.map( article => {
             const { fields } = article;

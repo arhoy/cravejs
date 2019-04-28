@@ -22,7 +22,8 @@ router.get('/:id', (req,res) => {
         const articleId = req.params.id;
         
         client.getEntry(articleId)
-        .then(function (entry) {
+        .then( entry => {
+            console.log('This is the entry rich text body',entry.fields.bodyRichText)
             res.status(200).json({msg:entry})
         })
         .catch( err => res.status(400).json({msg:'There was an error'}))
@@ -36,12 +37,13 @@ router.get('/:id', (req,res) => {
 
 router.get('/',(req,res) => {
     client.getEntries({
-        limit:100,
+        limit:1000,
         order:'sys.createdAt'
     })
     .then(function (entries){
         res.status(200).json(entries.items)
     })
+    .catch( err => res.status(400).json({msg:'There was an error'}))
 })
 
   

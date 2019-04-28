@@ -1,8 +1,11 @@
 import React from 'react';
 import Moment from 'react-moment';
-import * as Markdown from 'react-markdown'
+import FullArticleRichText from './FullArticleRichText';
 
-const FullArticleDetails = ({image,imageTitle,imageDescription,articleTitle,articleDescription,authorName,authorImage,articleBody,published,readTime}) => {
+
+const FullArticleDetails = ({image,imageTitle,imageDescription,articleTitle,articleDescription,authorName,authorImage,published,readTime,articleRichText}) => {
+    const contentArr = articleRichText.content;
+   
     return (
         <div className = "FullArticle">
             <div className="FullArticle__image">
@@ -11,8 +14,8 @@ const FullArticleDetails = ({image,imageTitle,imageDescription,articleTitle,arti
             </div>
 
             <div className = "FullArticle__title">
-                <h2> {articleTitle} </h2>
-                <h4> {articleDescription} </h4>
+                <h1> {articleTitle} </h1>
+                <h2> {articleDescription} </h2>
             </div>
 
             <div className = "FullArticle__author">
@@ -27,9 +30,13 @@ const FullArticleDetails = ({image,imageTitle,imageDescription,articleTitle,arti
                 </div>
             </div>
 
-            <div className = "FullArticle__body">
-                  <Markdown source =  { articleBody }/> 
+            <div className = "FullArticleRichText">
+                <FullArticleRichText
+                    nodeContent = {articleRichText}
+                />
             </div>
+
+        
       </div>
     );
 };

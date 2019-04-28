@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import ReactGA from 'react-ga';
+
 import './index.css';
 
  // google analytics tag
   ReactGA.initialize('UA-138449311-1');
   ReactGA.pageview(window.location.pathname + window.location.search);
+
+
 
 
 ReactDOM.render(<App />, document.getElementById('root'));
