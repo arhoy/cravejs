@@ -20,10 +20,10 @@ router.get('/:id', (req,res) => {
   
         // Contentful config use
         const articleId = req.params.id;
-        
+        console.log('request params',req.params);
         client.getEntry(articleId)
         .then( entry => {
-            console.log('This is the entry rich text body',entry.fields.bodyRichText)
+           // console.log('This is the entry rich text body',entry.fields)
             res.status(200).json({msg:entry})
         })
         .catch( err => res.status(400).json({msg:'There was an error'}))

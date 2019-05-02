@@ -9,7 +9,6 @@ import isEmpty from '../../validation/is-empty';
 class FullArticle extends Component {
 
     componentDidMount() {
-   
         const { id } = this.props.match.params;
         if(id){
             this.props.getArticle(id);
@@ -31,6 +30,9 @@ class FullArticle extends Component {
             const image = fields.heroImage.fields;
             const author = fields.author.fields;
             const authorImage = author.image.fields.file.url;
+
+            // update the title of the document
+            document.title = fields.title;
             articleContent = (
                 <FullArticleDetails
                     image = {image.file.url}
@@ -43,7 +45,8 @@ class FullArticle extends Component {
                     authorName = {author.name}
                     authorImage = {authorImage}
                     published = {fields.publishDate}
-                    readTime = { Math.round(fields.body.length / 1000, 0)}
+                    tags = {fields.tags}
+                  
                 />
          
             )

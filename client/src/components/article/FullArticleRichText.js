@@ -1,7 +1,7 @@
 import React from 'react';
 import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import FullArticleCode from './FullArticleCode';
+import FullArticleCodeSQL from './FullArticleCodeSQL';
 
 
 
@@ -15,12 +15,9 @@ const FullArticleRichText = ({nodeContent}) => {
       const Bold = ({ children }) => <span className="FullArticleRichText__bold">{children}</span>;
       const Underline = ({ children }) => <span className="FullArticleRichText__underline">{children}</span>;
       const Italic = ({ children }) => <span className="FullArticleRichText__italic">{children}</span>;
+      const Code = ({ children }) => <span className="FullArticleRichText__code">{children}</span>;
 
 
- 
-      console.log(['These are the marks',MARKS])
-      console.log('These are the blocks',BLOCKS)
-      console.log('These are the inlines',INLINES)
       const options = {
 
        
@@ -28,7 +25,7 @@ const FullArticleRichText = ({nodeContent}) => {
             [MARKS.UNDERLINE]: text => <Underline>{text}</Underline>,
             [MARKS.BOLD]: text => <Bold>{text}</Bold>,
             [MARKS.ITALICS]: text => <Italic>{text}</Italic>,
-             
+            [MARKS.CODE]: text => <Code> <FullArticleCodeSQL code = {text}/> </Code>   
           },
           renderNode: {
 
@@ -60,7 +57,7 @@ const FullArticleRichText = ({nodeContent}) => {
   return (
     <div>
           {rtf}
-          <FullArticleCode/>
+   
     </div>
   );
 };

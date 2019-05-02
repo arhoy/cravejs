@@ -6,8 +6,11 @@ import Footer from '../../components/Layout/Footer';
 import Layout from '../../components/Layout/Layout';
 
 class AddExperiencePage extends Component {    
-    render() {
+    componentDidMount() {
+        document.title = `Add Experience Page for ${this.props.auth.user.name}`;
+    }
     
+    render() {
         const { isAuthenticated ,user } = this.props.auth;
         let links;
         if (!isAuthenticated) links = [

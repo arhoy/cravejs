@@ -6,9 +6,12 @@ import AddEducation from '../../components/add-credentials/AddEducation';
 import Footer from '../../components/Layout/Footer';
 import Layout from '../../components/Layout/Layout';
 
-class AddEducationPage extends Component {    
+class AddEducationPage extends Component { 
+    componentDidMount() {
+        document.title = `Add Education Page for ${this.props.auth.user.name}`;
+    }   
     render() {
-    
+        
         const { isAuthenticated ,user } = this.props.auth;
         let links;
         if (!isAuthenticated) links = [

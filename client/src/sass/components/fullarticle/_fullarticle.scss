@@ -79,4 +79,21 @@
     &__body {
         grid-column: center-start / center-end;
     }
+    &__tags{
+        grid-column: center-start / center-end;
+        padding-bottom: 4rem;
+  
+    }
+    &__tag {
+        padding: 1rem 2rem;
+        margin-right:1rem;
+        margin-bottom: 1rem;
+        background-color: $color-red;
+        color:$color-white;
+        display: inline-block;
+        &:hover{
+            background-color: darken($color-red,10%);
+            cursor: pointer;
+        }
+    }
 }

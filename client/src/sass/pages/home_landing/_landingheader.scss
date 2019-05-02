@@ -4,7 +4,7 @@
         to right bottom,
         rgba($color-primary-light, 0.8),
         rgba($color-primary-dark, 0.8)),
-    url(/img/landing.jpg);
+    url(/img/landingPage/landing.jpg);
     background-size: cover;
     background-position: top;
     background-attachment: fixed;
@@ -24,7 +24,7 @@
             to right bottom,
             rgba($color-primary-light, 0.8),
             rgba($color-primary-dark, 0.8)),
-        url(/img/landing-small.jpeg);
+        url(/img/landingPage/landing-small.jpeg);
     }
 
     @include respond(phone) {

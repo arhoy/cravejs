@@ -12,6 +12,7 @@ body {
 
     backface-visibility: hidden;
     margin-bottom: 6rem;
+    line-height: 5.5rem;
 
     &--main {
         display: block;
@@ -22,6 +23,7 @@ body {
         animation-name: moveInLeft;
         animation-duration: 1s;
         animation-timing-function: ease-out;
+        margin-bottom: 3rem;
         
         @include respond(phone) {
             letter-spacing: 1rem;
@@ -39,6 +41,7 @@ body {
         font-weight: 700;
         letter-spacing: 1.75rem;
         animation: moveInRight 1s ease-out;
+        line-height: 3rem; 
 
         @include respond(phone) {
             letter-spacing: .5rem;

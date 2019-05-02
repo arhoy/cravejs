@@ -6,8 +6,8 @@ import FullArticle from '../../components/article/FullArticle';
 
 
 class ArticlePage extends Component {    
-    render() {
     
+    render() {
         const { isAuthenticated ,user } = this.props.auth;
         let links;
         if (!isAuthenticated) links = [

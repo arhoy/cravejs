@@ -1,11 +1,15 @@
 import React from 'react';
 import Moment from 'react-moment';
 import FullArticleRichText from './FullArticleRichText';
+import calcReadTime from '../utils/calcReadTime';
+import _ from 'lodash';
 
 
-const FullArticleDetails = ({image,imageTitle,imageDescription,articleTitle,articleDescription,authorName,authorImage,published,readTime,articleRichText}) => {
-    const contentArr = articleRichText.content;
-   
+
+const FullArticleDetails = ({image,imageTitle,imageDescription,articleTitle,articleDescription,authorName,authorImage,published,articleRichText,tags}) => {
+ 
+    
+    console.log(tags);
     return (
         <div className = "FullArticle">
             <div className="FullArticle__image">
@@ -26,7 +30,7 @@ const FullArticleDetails = ({image,imageTitle,imageDescription,articleTitle,arti
                     <img src= { authorImage } alt={ authorName }/>
                  </div>
                 <div className = "FullArticle__author-3">
-                     <Moment format = "MMM DD">{published}</Moment> | {readTime} min read
+                     <Moment format = "MMM DD">{published}</Moment> | {calcReadTime(articleRichText.content)} min read
                 </div>
             </div>
 
@@ -34,6 +38,16 @@ const FullArticleDetails = ({image,imageTitle,imageDescription,articleTitle,arti
                 <FullArticleRichText
                     nodeContent = {articleRichText}
                 />
+            </div>
+
+            <div className = "FullArticle__tags">
+                    {
+                        tags.map( tag => (
+                            <div className = "FullArticle__tag">
+                                {tag}
+                            </div>
+                        ))
+                    }
             </div>
 
         

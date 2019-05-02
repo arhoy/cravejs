@@ -1,18 +1,19 @@
 import React from 'react';
 import Article from './Article';
+import calcReadTime from '../utils/calcReadTime';
 
 const ArticleFeed = ({articles,history}) => {
-    console.log(articles);
+   
     return (
         articles.map( article => {
             const { fields } = article;
             const { sys } = article;
-       
-     
-
+            console.log(fields);
+        
             if( sys.contentType.sys.id === 'blogPost' ) {
                 const imgDescription = fields.heroImage.fields.description;
                 const imgURL = fields.heroImage.fields.file.url;
+                const readTime = calcReadTime(fields.bodyRichText.content);
                 return (
                     <Article
                         key = {article.sys.id}
@@ -20,11 +21,11 @@ const ArticleFeed = ({articles,history}) => {
                         title = {fields.title}
                         authorName = {fields.author.fields.name}
                         description = {fields.description}    
-                        readTime = { Math.round(fields.body.length / 1000, 0)}
                         imgDescription = { imgDescription }
                         imgURL = { imgURL }
                         slug = {fields.slug}
                         history = {history}
+                        readTime = {readTime}
                 />
     
                 )

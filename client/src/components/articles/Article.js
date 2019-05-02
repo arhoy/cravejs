@@ -1,12 +1,13 @@
 import React from 'react';
 
 
-const Article = ({urlId,title,authorName,body,description,publishDate,slug,imgURL,imgDescription,readTime,history}) => {
+const Article = ({urlId,title,authorName,description,publishDate,slug,imgURL,readTime,imgDescription,history}) => {
 
     const goToArticle = () => {
         history.push(`/articles/${urlId}`);
     
     }
+
     return (
         <div onClick = {goToArticle.bind(this,slug)} className = "Article" >
                 <img className = "Article__image"  src={imgURL} alt= {imgDescription}/>
