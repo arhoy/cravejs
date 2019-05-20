@@ -6,7 +6,6 @@ const passport = require('passport');
 const path = require('path');
 const cloudinary = require('cloudinary');
 
-
 const app = express();
 
 // Body parser middleware
@@ -15,8 +14,6 @@ app.use(bodyParser.json());
 
 // DB Config
 const db = require('./config/keys').mongoURI;
-
-
 
 // Cloudinary config
 const cloud_name = require('./config/keys').cloud_name;
@@ -27,10 +24,11 @@ const cloud_api_secret = require('./config/keys').cloud_api_secret;
 
 // Connect to MongoDB
 mongoose
-  .connect(db, {useNewUrlParser:true})
-  .then(() => console.log(`MongoDB Connected to database: ${db.substring(db.length-7)}`))
+  .connect(db, { useNewUrlParser: true })
+  .then(() =>
+    console.log(`MongoDB Connected to database: ${db.substring(db.length - 7)}`)
+  )
   .catch(err => console.log(err));
-
 
 // Routes to use
 const users = require('./routes/api/users');
@@ -49,30 +47,29 @@ require('./config/passport')(passport);
 
 // Cloudinary config
 cloudinary.config({
-    cloud_name:cloud_name,
-    api_key: cloud_api_key,
-    api_secret: cloud_api_secret
-})
+  cloud_name: cloud_name,
+  api_key: cloud_api_key,
+  api_secret: cloud_api_secret
+});
 
 // For contenful see artices.js
 
 // for env variables
 require('dotenv').config();
 
-
 // Use Routes
 app.use('/api/users', users);
 app.use('/api/profile', profile);
 app.use('/api/posts', posts);
 app.use('/api/product', product);
-app.use('/api/order',order);
-app.use('/api/resume',resume);
-app.use('/api/articles',articles);
-
+app.use('/api/order', order);
+app.use('/api/resume', resume);
+app.use('/api/articles', articles);
 
 // Server static assets if in production
 if (process.env.NODE_ENV === 'production') {
   // Set static folder
+  console.log('production build');
   app.use(express.static('client/build'));
 
   app.get('*', (req, res) => {
