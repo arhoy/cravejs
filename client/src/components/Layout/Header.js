@@ -26,7 +26,6 @@ class Header extends Component {
                     linkTo:'/articles'
                 }
             ]
-
         };
 
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
@@ -61,7 +60,7 @@ class Header extends Component {
 
     handleClickMe = (e) => {
         if(this.node && this.node.contains(e.target)){
-        
+             if(e.target.className === 'header_nav_helper' || e.target.attributes.getNamedItem('data-icon') || e.target.attributes.fill ) this.handleClickOutside();
             return;
         }
         // click outside, handle event
@@ -82,7 +81,7 @@ class Header extends Component {
         const { user, isAuthenticated } = this.props.auth;
         let displayName;
         if (user && user.name ) { displayName = user.name.split(' ')[0]; }
-       
+   
         
         return (
             
@@ -108,34 +107,39 @@ class Header extends Component {
                             >
 
                                      
-                                        <Link className = "link link__black Header__home" to = "/dashboard">
+                                        <Link className = "link link__black Header__home" to = {isAuthenticated ? "/dashboard": "/"}>
+                                            <div className="header_nav_helper">
                                             <FontAwesomeIcon
                                                 icon="igloo"
                                                 style = {{color:'white', cursor:'pointer',fontSize: '2.5rem'}}
                                             />
-                                                <span>Home</span> 
+                                            </div>
+                                            <span className = "header_nav_helper">Home</span> 
                                         </Link>   
 
                                         
                             
                                 
                                         <Link className = "link link__black Header__jobs" to = "/dashboard">
+                                            <div className="header_nav_helper">
                                             <FontAwesomeIcon
                                                 icon="laptop-code"
                                                 style = {{color:'white', cursor:'pointer',fontSize: '2.5rem'}}
                                             />
-                                                <span>Jobs</span> 
+                                            </div>
+                                                <span className = "header_nav_helper">Jobs</span> 
                                         </Link> 
                                     
                                 
 
                                         <div className = "link link__black Header__login Menu-container" onClick = {this.showExploreLinkHandler} >
+                                             <div className="header_nav_helper">
                                             <FontAwesomeIcon 
-                                                
                                                 icon="user-friends"
                                                 style = {{color:'white', cursor:'pointer',fontSize: '2.5rem'}}
                                             />
-                                            <span onClick = {this.showExploreLinkHandler} >{ isAuthenticated ? 'Explore ▼' : 'Explore'}</span>
+                                            </div>
+                                            <span className = "header_nav_helper" onClick = {this.showExploreLinkHandler} >{ isAuthenticated ? 'Explore ▼' : 'Explore'}</span>
                                             { 
                                                     this.state.showExploreLinks ? 
                                                     <Menu links = {this.state.exploreLinks}/>
@@ -145,12 +149,13 @@ class Header extends Component {
                                         </div>    
 
                                         <div className = "link link__black Header__login Menu-container" onClick = {this.showMenuHandler} >
+                                            <div className="header_nav_helper">
                                             <FontAwesomeIcon 
-                                                
                                                 icon="user-astronaut"
                                                 style = {{color:'white', cursor:'pointer',fontSize: '2.5rem'}}
                                             />
-                                            <span>{ isAuthenticated ? 'Me ▼' : 'Login'}</span>
+                                            </div>
+                                            <span className = "header_nav_helper">{ isAuthenticated ? 'Me ▼' : 'Login'}</span>
                                         
                                                 { 
                                                     this.state.showMenu ? 

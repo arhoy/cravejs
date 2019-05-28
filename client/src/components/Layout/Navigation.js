@@ -14,6 +14,7 @@ class Navigation extends Component {
         e.preventDefault();
          // this.props.clearCurrentProfile();
         this.props.logoutUser();
+        this.setState({isOpen:false});
       }
     onNavToggleHandler = () => {
         this.setState({isOpen:!this.state.isOpen});
@@ -22,16 +23,20 @@ class Navigation extends Component {
         const { user, isAuthenticated } = this.props.auth;
         let displayName;
         if (user && user.name ) { displayName = user.name.split(' ')[0]; }
-        
+        console.log(isAuthenticated)
         const guestLinks = (
             <ul className="navigation__list">
-                <li> <Link to = "/register" className = "navigation__link">Create Account</Link> </li>
-                <li> <Link to = "/login" className = "navigation__link">Login</Link> </li>
+                <li> <Link to = "/" className = "navigation__link">Home</Link> </li>
+                <li> <Link to = {isAuthenticated ? "/dashboard": "/login"} className = "navigation__link">{isAuthenticated ? `Dashboard` : `Login`  }</Link> </li>
                 <li> <Link to = "/developers" className = "navigation__link">Network</Link> </li>
+                <li> <Link to = "/articles" className = "navigation__link">Articles</Link> </li>
                 <li> <Link to = "/posts" className = "navigation__link">Daily Feed</Link> </li>
                 <li> <Link to = "/products" className = "navigation__link" >Products</Link></li>
                 <li> <Link to = "/contact" className = "navigation__link" >Contact</Link></li>
-                
+                {
+                    isAuthenticated ?  <a href="" onClick={this.logoutUserHandler.bind(this)} className="navigation__link"> Logout </a> : null
+                }
+          
             </ul>   
         )
 
@@ -39,6 +44,7 @@ class Navigation extends Component {
             <ul className="navigation__list">
                 <li> <Link to = "/dashboard" className = "navigation__link">{ `${displayName}'s `} Dashboard</Link> </li>
                 <li> <Link to = "/developers" className = "navigation__link">Network</Link> </li>
+                <li> <Link to = "/articles" className = "navigation__link">Articles</Link> </li>
                 <li> <Link to = "/posts" className = "navigation__link" >Posts</Link> </li>
                 <li> <Link to = "/products" className = "navigation__link" >Products</Link></li>
                 <li> <Link to = "/cart" className = "navigation__link" >Cart</Link> </li>

@@ -17,7 +17,7 @@ class LandingHeader extends Component {
                      className="heading-primary"
                     >
                         <span className="heading-primary--main">Crave JS</span>
-                        <span className="heading-primary--sub">Awesome Resume App</span>
+                        <span className="heading-primary--sub">Learn. Teach. Grow. Network.</span>
                     </h1>
                     <div
                         style = {{transform: `translate(0px, ${-pageYOffset/10}px)`}} 

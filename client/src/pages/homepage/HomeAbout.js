@@ -1,8 +1,14 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Slide from 'react-reveal/Slide';
-const HomeAbout = ({pageYOffset,homeAboutDOMOffset, windowHeight}) => {
+import { Link, withRouter } from 'react-router-dom';
 
+const HomeAbout = ({pageYOffset,homeAboutDOMOffset, windowHeight,history}) => {
+
+    const viewPage = (page)=> {
+        console.log('fuck a bitch')
+        history.push(`/${page}`);
+    }
   
     return (
         <div className = "HomeAbout">
@@ -104,24 +110,26 @@ const HomeAbout = ({pageYOffset,homeAboutDOMOffset, windowHeight}) => {
            
               </div>
               <Slide top cascade>
-                <div className="HomeAbout__section HomeAbout__section-5">
-                            <h4> Create Profile </h4>
-                            <p>
-                                Create a custom professional profile, where others can leave comments. 
-                                This can be thought of as your "professional wall".
-                            </p>
+                <div onClick = {viewPage.bind(this,'register')} className="HomeAbout__section HomeAbout__section-5">
+                    <h4> Create Profile </h4>
+                    <p>
+                        Create a custom professional profile, where others can leave comments. 
+                        This can be thought of as your "professional wall".
+                    </p>
                 </div>
-                <div className="HomeAbout__section HomeAbout__section-6">
-                            <h4> Browse Articles </h4>
-                            <p>Browse through an array of articles and online resources from <span>Power BI</span> to javascript
-                            </p>
+                <div onClick = {viewPage.bind(this,'articles')} className="HomeAbout__section HomeAbout__section-6">
+                    <h4> Browse Articles </h4>
+                    <p>Browse through an array of articles and online resources from <span>Power BI</span> to javascript
+                    </p>
                 </div>
-                <div className="HomeAbout__section HomeAbout__section-7">
-                            <h4> Return the favour </h4>
-                            <p> 
-                                Share your knowledge with others in your area of expertise. Interested in publishing articles? Contact us!
-                            </p>
+                <div onClick = {viewPage.bind(this,'register')} className="HomeAbout__section HomeAbout__section-7">
+                    <h4> Return the favour </h4>
+                    <p> 
+                        Share your knowledge with others in your area of expertise. Interested in publishing articles? Contact us!
+                    </p>
+
                 </div>
+   
               </Slide>
             
 
@@ -129,4 +137,4 @@ const HomeAbout = ({pageYOffset,homeAboutDOMOffset, windowHeight}) => {
     );
 };
 
-export default HomeAbout;
+export default withRouter(HomeAbout);
