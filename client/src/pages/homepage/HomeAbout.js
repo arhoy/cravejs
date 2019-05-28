@@ -6,7 +6,6 @@ import { Link, withRouter } from 'react-router-dom';
 const HomeAbout = ({pageYOffset,homeAboutDOMOffset, windowHeight,history}) => {
 
     const viewPage = (page)=> {
-        console.log('fuck a bitch')
         history.push(`/${page}`);
     }
   
