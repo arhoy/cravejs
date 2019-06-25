@@ -3,9 +3,9 @@ import {
     PRODUCTS_LOADING,
     GET_PRODUCTS,
     GET_PRODUCT,
-    ADD_PRODUCT,
-    DELETE_PRODUCT,
-    ADD_PRODUCT_TO_CART
+    // ADD_PRODUCT,
+    // DELETE_PRODUCT,
+    // ADD_PRODUCT_TO_CART
 } from './types';
 
 // products loading

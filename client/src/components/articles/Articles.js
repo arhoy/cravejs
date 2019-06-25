@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -18,28 +18,58 @@ class Articles extends Component {
     this.props.getArticles();
   }
 
+  componentDidUpdate(prevProps) {
+    if(prevProps.articles !== this.props.articles){
+      const selectArticles = this.props.articles.articles.filter(article => article.fields.description != null)
+        this.setState({ articles: selectArticles })
+    
+    }
+}
+
+   inputChangeHandler = (e) => {
+    const keyword = e.target.value;
+
+
+    const filteredArticles = this.state.articles.filter(article => (
+        article.fields.title.toLowerCase().includes(keyword.toLowerCase().trim()) ||  
+        article.fields.description.toLowerCase().includes(keyword.toLowerCase().trim()) ||
+        article.fields.tags.join().toLowerCase().includes(keyword.toLowerCase().trim())
+      
+  
+    ))
+    this.setState({filteredArticles,keyword});
+  
+}
+
   render() {
     const { articles, loading } = this.props;
-    console.log('loading?',loading);
-    console.log(articles.artciles);
     let articleContent;
-    if ( loading ) {
-      console.log('loading');
-      articleContent = <div> Loading </div>;
-    } else {
-      if (isEmpty(articles.articles)) {
-        return <div>There is no articles</div>
-      } else {
-        articleContent = (
-          <ArticleFeed
-            articles={articles.articles}
-            history={this.props.history}
-          />
-        );
-      }
-    }
+    if ( loading || isEmpty(articles.articles)) articleContent = <div> Loading </div>;
+      else {
+        const articlesToLoop = this.state.keyword === '' ? this.state.articles : this.state.filteredArticles;
 
-    return <div className="Articles">{articleContent}</div>;
+        if (this.state.keyword !== '' && this.state.filteredArticles.length === 0) articleContent = <div>No Articles Found</div>
+        
+        else {
+          articleContent = (
+            <ArticleFeed
+              articles={ articlesToLoop }
+              history={this.props.history}
+            />
+          );
+        }
+      }
+    
+    return (
+      <div style = {{gridColumn:'1/-1'}}>
+        <div className="Articles__inputHolder">
+           <input onChange = { this.inputChangeHandler } className = "Articles__input" type="text" placeholder = "Search Articles"/>
+        </div>
+        <div className="Articles">
+          {articleContent}
+        </div>
+     </div>
+    );
   }
 }
 

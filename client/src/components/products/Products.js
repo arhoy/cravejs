@@ -16,7 +16,7 @@ class Products extends Component {
         this.props.getProducts();
         
     }
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
         if(prevProps.products !== this.props.products){
             this.setState({products: this.props.products.products})
         }

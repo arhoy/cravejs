@@ -20,6 +20,27 @@
         padding: 1rem 1rem;
         margin-bottom: 2rem;
     }
+
+    &__input {
+        max-width: 20rem;
+        outline: none;
+        border:none;
+        padding: 1rem 2rem;
+        border-radius: 10px;
+    }
+
+    &__inputHolder {
+        display:grid;
+        justify-content: flex-end;
+        padding: 1rem 0;
+        padding-right: 2rem;
+        align-items: center;
+        background: linear-gradient( to right, $trello-blue-100,$trello-blue-400);
+        @include respond(phone){
+            margin-right: 0rem;
+            justify-content: center;
+        }
+    }
 }
 .Article {
     max-width: 30rem;
