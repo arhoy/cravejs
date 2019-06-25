@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 class PostEditForm extends Component {
     componentDidMount() {
         console.log(this.props);
-        const {posts} = this.props.post;
         const {postId} = this.props;
         this.props.getPost(postId);
 

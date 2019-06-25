@@ -11,7 +11,6 @@ import {
     GET_REPLY_ERRORS,
     CLEAR_ERRORS,
     LIKE_POST,
-    ADD_REPLY,
     GET_REPLY,
     GET_REPLIES
   } from '../actions/types';

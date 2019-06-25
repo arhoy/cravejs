@@ -14,7 +14,7 @@ class Menu extends Component {
       }
     
     render() {
-        const { name } = this.props.auth.user;
+        // const { name } = this.props.auth.user;
         return (
             <div className = "Menu">
                 <ul className="Menu__ul">

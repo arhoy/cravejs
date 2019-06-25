@@ -5,7 +5,6 @@ import { addExperience } from '../../actions/profileActions';
 import { Link ,withRouter} from 'react-router-dom';
 import TextFieldGroup from '../common/TextFieldGroup';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
-import SelectListGroup from '../common/SelectListGroup';
 
 class AddExperience extends Component {
 

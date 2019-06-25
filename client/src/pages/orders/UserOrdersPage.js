@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import Header from '../../components/Layout/Header';
 import { connect } from 'react-redux';
 import UserOrders from '../../components/orders/UserOrders';
-import Footer from '../../components/Layout/Footer';
 import Layout from '../../components/Layout/Layout';
 
 

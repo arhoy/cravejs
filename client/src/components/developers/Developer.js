@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link ,withRouter } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip'
-import { faChalkboardTeacher } from '@fortawesome/free-solid-svg-icons';
+
 
 class Developer extends Component {
 

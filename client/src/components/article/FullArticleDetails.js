@@ -2,7 +2,7 @@ import React from 'react';
 import Moment from 'react-moment';
 import FullArticleRichText from './FullArticleRichText';
 import calcReadTime from '../utils/calcReadTime';
-import _ from 'lodash';
+
 
 const FullArticleDetails = ({
   image,

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Header from '../../components/Layout/Header';
-import Footer from '../../components/Layout/Footer';
 import ResumeFileUpload from '../../components/utils/form/ResumeFileUpload';
 import Resume from '../../components/resume/Resume';
 import Layout from '../../components/Layout/Layout';

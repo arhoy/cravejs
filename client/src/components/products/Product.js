@@ -8,7 +8,7 @@ class Product extends Component {
         this.props.history.push(`/products/${id}`);
     }
     render() {
-        const { name, description, imageUrl, price, longDescription, id } = this.props;
+        const { name, description, imageUrl, price, id } = this.props;
         const defaultImage = 'https://picsum.photos/400/200';
 
         return (

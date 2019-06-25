@@ -100,7 +100,6 @@ class EditProfile extends Component {
   }
 
   onSubmitHandler(e) {
-    const { errors } = this.state;
     e.preventDefault();
 
     const profileData = {

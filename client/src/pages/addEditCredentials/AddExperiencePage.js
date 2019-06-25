@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import AddExperience from '../../components/add-credentials/AddExperience';
-import Header from '../../components/Layout/Header';
 import { connect } from 'react-redux';
-import Footer from '../../components/Layout/Footer';
 import Layout from '../../components/Layout/Layout';
 
 class AddExperiencePage extends Component {    

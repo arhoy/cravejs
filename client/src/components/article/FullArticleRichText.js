@@ -6,7 +6,7 @@ import FullArticleCodeSQL from './FullArticleCodeSQL';
 const FullArticleRichText = ({ nodeContent, language }) => {
   // this is the rtf node;
   const document = nodeContent;
-  console.log('this is the nodeContent', nodeContent);
+  console.log('this is the nodeContent', nodeContent,'these are the inlines',INLINES);
 
   // Rendering options
 

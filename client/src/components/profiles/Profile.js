@@ -22,7 +22,7 @@ class Profile extends Component {
     render() {
         
             const { profile, loading } = this.props.profile;
-            const { user } = this.props.auth;
+      
         
             let profileContent;
             if(profile === null || loading ){

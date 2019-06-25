@@ -23,7 +23,6 @@ class ProfileEditForm extends Component {
     }
     // when getProfileComment Updates, setState from reducer.
     componentDidUpdate(prevProps, prevState) {
-        const comment = this.props.profile.comment;
         if(prevState.text === "" && this.props.profile.comment.text !== ""){
             // check conditions, set the state
             this.setState({

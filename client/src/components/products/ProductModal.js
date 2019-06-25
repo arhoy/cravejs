@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withRouter } from 'react-router-dom';
-import PayPal from '../utils/PayPal';
 import { submitOrder } from '../../actions/orderActions';
 import { removeProductItemFromCart } from '../../actions/cartActions';
 import { connect } from 'react-redux';

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Articles from '../../components/articles/Articles';
-import Header from '../../components/Layout/Header';
 import { connect } from 'react-redux';
 import Layout from '../../components/Layout/Layout';
 

@@ -103,8 +103,7 @@ class ProfileItem extends Component {
     }
 
     render() { 
-        const { comment, showActions, auth } = this.props;
-        const { profile } = this.props.profile;
+        const { comment } = this.props;
    
         return (
             <React.Fragment>

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import Header from '../../components/Layout/Header';
+
 import { connect } from 'react-redux';
-import Footer from '../../components/Layout/Footer';
+
 import Developers from '../../components/developers/Developers';
 import Layout from '../../components/Layout/Layout';
 

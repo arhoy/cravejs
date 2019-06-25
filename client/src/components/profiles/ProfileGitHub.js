@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 
@@ -13,7 +12,7 @@ class ProfileGithub extends Component {
     componentDidMount() {
         const { username } = this.props;
         console.log(username)
-        const { count, sort, clientId, clientSecret } = this.state;
+        const { count, sort } = this.state;
     
         fetch(
           `https://api.github.com/users/${username}/repos?per_page=${count}&sort=${sort}`

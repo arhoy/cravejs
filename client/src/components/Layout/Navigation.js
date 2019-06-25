@@ -23,7 +23,7 @@ class Navigation extends Component {
         const { user, isAuthenticated } = this.props.auth;
         let displayName;
         if (user && user.name ) { displayName = user.name.split(' ')[0]; }
-        console.log(isAuthenticated)
+    
         const guestLinks = (
             <ul className="navigation__list">
                 <li> <Link to = "/" className = "navigation__link">Home</Link> </li>

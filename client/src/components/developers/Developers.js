@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import { connect } from 'react-redux';
 import { getProfiles } from '../../actions/profileActions';
 import LoadingSpinner from '../utils/LoadingSpinner';
@@ -17,7 +16,7 @@ class Developers extends Component {
         this.props.getProfiles();
         
     }
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
         if(prevProps.profile.profiles !== this.props.profile.profiles){
   
             this.setState({profiles: this.props.profile.profiles})

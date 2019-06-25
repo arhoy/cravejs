@@ -101,7 +101,7 @@ class PostItem extends Component {
     }
 
     render() { 
-        const { post, showActions, auth } = this.props;
+        const { post } = this.props;
         return (
             <React.Fragment>
 
