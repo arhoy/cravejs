@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -94,7 +94,7 @@ class App extends Component {
     return (
     <Provider store = {store}>
       <Router>
-        <React.Fragment>
+        <Fragment>
         <Switch>
           <PrivateRoute exact path="/dashboard" component={DashboardPage} />
           <Route exact path = "/developers" component = {DevelopersPage}/>
@@ -121,7 +121,7 @@ class App extends Component {
           <Route exact path = "/register" component = {RegisterPage}/>
           <Route exact path = "/" component = {HomePage}/>
         </Switch>
-        </React.Fragment>
+        </Fragment>
       </Router>
     </Provider>
         

@@ -6,7 +6,16 @@
     [full-start] 1fr 
     [center-start] repeat(4, [col-start] minmax(min-content,1fr) [col-end] ) 
     [center-end] 1fr [full-end];
- 
+    max-width: 95rem;
+    margin: 0 auto;
+
+    @include respond(phone){
+        grid-template-columns:
+        [full-start] 1fr 
+        [center-start] repeat(8, [col-start] minmax(min-content,1fr) [col-end] ) 
+        [center-end] 1fr [full-end];
+       
+    }
 
     &__image {
         grid-column: full-start / full-end;

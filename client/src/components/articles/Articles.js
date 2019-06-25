@@ -16,18 +16,19 @@ class Articles extends Component {
 
   componentDidMount() {
     this.props.getArticles();
-    console.log('article loading');
   }
 
   render() {
     const { articles, loading } = this.props;
+    console.log('loading?',loading);
     console.log(articles.artciles);
     let articleContent;
-    if (articles === null || loading) {
+    if ( loading ) {
+      console.log('loading');
       articleContent = <div> Loading </div>;
     } else {
       if (isEmpty(articles.articles)) {
-        console.log('what the fuck');
+        return <div>There is no articles</div>
       } else {
         articleContent = (
           <ArticleFeed
