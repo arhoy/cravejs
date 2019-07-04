@@ -14,7 +14,6 @@
         [full-start] 1fr 
         [center-start] repeat(8, [col-start] minmax(min-content,1fr) [col-end] ) 
         [center-end] 1fr [full-end];
-       
     }
 
     &__image {

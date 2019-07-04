@@ -1,7 +1,11 @@
 import React from 'react';
+import Moment from 'react-moment';
+import moment from 'moment';
 
 
 const Footer = () => {
+    const footerDate = moment();
+
     return (
         <div className = "Footer">
             <div className="Footer__container">
@@ -13,8 +17,11 @@ const Footer = () => {
                         </div>
 
                         <div className = "Footer__blurb">
-                        <div className = "Footer__blurb-1"> <span style = {{fontWeight:'bold'}}>CraveJs </span></div> 
-                        <div>web and self development since 2017 ©</div>  
+                        <div className = "Footer__blurb-1">© <span style = {{fontWeight:'bold'}}>CraveJs </span></div> 
+                        <div> 
+                            web & self development 2017-<Moment format = "YYYY">{footerDate}</Moment>.
+                             All code <a className = "Footer__link" target = "_blank" href="https://opensource.org/licenses/MIT">MIT license</a> 
+                        </div> 
                         </div>   
             
                 </div>

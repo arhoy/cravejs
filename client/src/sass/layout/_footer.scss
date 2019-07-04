@@ -12,8 +12,11 @@
     padding: 2rem 1rem;
     font-size: 1.6rem;
     justify-items: stretch;
- 
-
+    a {
+        color: $trello-green-500;
+        text-decoration: underline;
+    }
+   
     &__container {
         grid-column: center-start / center-end;
     

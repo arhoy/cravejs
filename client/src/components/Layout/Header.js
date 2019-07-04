@@ -93,7 +93,7 @@ class Header extends Component {
                                 <span className="Header__icon-2">js</span>
                         </div>
                         <div className="Header__searchbar">
-                                    <input type="text" placeholder = "search"/>
+                                    <input type="text" placeholder = "search site"/>
                         </div>
                     </div>
 

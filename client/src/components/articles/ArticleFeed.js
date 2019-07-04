@@ -10,7 +10,10 @@ const ArticleFeed = ({ articles, history, contentModel }) => {
     if (
       sys.contentType.sys.id === 'pythonPosts' ||
       sys.contentType.sys.id === 'blogPost' ||
-      sys.contentType.sys.id === 'javascriptPosts'
+      sys.contentType.sys.id === 'javascriptPosts' ||
+      sys.contentType.sys.id === 'expressPosts' || 
+      sys.contentType.sys.id === 'reactPosts' ||
+      sys.contentType.sys.id === 'mongoDb'
     ) {
       const imgDescription = fields.heroImage.fields.description;
       const imgURL = fields.heroImage.fields.file.url;

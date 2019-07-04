@@ -5,7 +5,7 @@
     justify-items:center;
     color:$trello-blue-900;
     font-size: 1.6rem;
-    margin: 2rem 0;
+    margin: 2rem 6rem;
     margin-bottom: 6rem;
 
     display: grid;
@@ -14,11 +14,12 @@
     @include respond(tab-port){
         grid-column: full-start / full-end;
         padding: 1rem 3rem;
+        margin: 2rem 2rem;
     }
     @include respond(phone){
         overflow-x: scroll;
         padding: 1rem 1rem;
-        margin-bottom: 2rem;
+        margin: 2rem 0rem;
     }
 
     &__input {
@@ -48,6 +49,11 @@
     padding: 1rem;
     display: flex;
     flex-direction: column;
+    @include respond(phone){
+        max-width: 40rem;
+        min-width: 20rem;
+        padding: 1rem 2rem;
+    }
    
     & > * {
         cursor: pointer;
