@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { getArticle } from '../../actions/articleActions';
@@ -28,20 +29,34 @@ class FullArticle extends Component {
 
       // update the title of the document
       document.title = fields.title;
+      
       articleContent = (
-        <FullArticleDetails
-          image={image.file.url}
-          imageTitle={image.title}
-          imageDescription={image.description}
-          articleTitle={fields.title}
-          articleDescription={fields.description}
-          articleBody={fields.body}
-          articleRichText={fields.bodyRichText}
-          authorName={author.name}
-          authorImage={authorImage}
-          published={fields.publishDate}
-          tags={fields.tags}
-        />
+        <Fragment>
+           <Helmet>
+              <title> { fields.title } | CraveJs Article </title>
+              <meta 
+                  name="description" 
+                  content = { fields.description } 
+              />
+              <meta name="keywords" content = { fields.tags }></meta>
+              <meta name="author" content = { author.name } ></meta>
+
+            </Helmet>
+            <FullArticleDetails
+            image={image.file.url}
+            imageTitle={image.title}
+            imageDescription={image.description}
+            articleTitle={fields.title}
+            articleDescription={fields.description}
+            articleBody={fields.body}
+            articleRichText={fields.bodyRichText}
+            authorName={author.name}
+            authorImage={authorImage}
+            published={fields.publishDate}
+            tags={fields.tags}
+           />
+        </Fragment>
+     
       );
     }
 

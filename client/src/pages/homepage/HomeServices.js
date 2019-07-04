@@ -42,7 +42,7 @@ const HomeServices = () => {
         <div className = "HomeServices">
             <div className="HomeServices__title">
             <LightSpeed left cascade>
-                <h2> Services we provide </h2>
+                <h2> Content and Services </h2>
                 <div>
                 <TextLoop>
                     <span className = "HomeServices__textLoop HomeServices__textLoop-1">Web Development</span>

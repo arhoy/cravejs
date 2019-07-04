@@ -6,7 +6,7 @@ const GallerySection = () => {
     return (
         <div className = "HomeGallerySection">
                 <Bounce top>
-                <h4> Stand out from the crowd! </h4>
+                <h4> Web and Self Development </h4>
                 </Bounce>
                <Bounce bottom>
                     <Gallery/>

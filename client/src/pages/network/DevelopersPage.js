@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
+import { Helmet } from 'react-helmet'
 
 import { connect } from 'react-redux';
 
@@ -51,12 +52,19 @@ class DevelopersPage extends Component {
  
         
         return (
-            <Layout links = {links}>
-                 <Developers/>
-            </Layout>
-
-            
-           
+            <Fragment>
+                <Helmet>
+                    <title> List of Developers | Cravejs </title>
+                    <meta 
+                        name="description" 
+                        content=
+                            "List of developers on cravejs, search for profiles" 
+                    />
+                </Helmet>
+                <Layout links = {links}>
+                    <Developers/>
+                </Layout>
+            </Fragment>           
         );
     }
 }

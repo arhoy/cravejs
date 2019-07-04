@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { Helmet } from 'react-helmet'
 
 import Layout from '../../components/Layout/Layout';
 import FullArticle from '../../components/article/FullArticle';
@@ -49,12 +50,20 @@ class ArticlePage extends Component {
  
         
         return (
+            <Fragment>
+                <Helmet>
+                    <title> Articles Page | Cravejs </title>
+                    <meta 
+                        name="description" 
+                        content=
+                            "Each article on CraveJs where the cms in contentful" 
+                    />
+                </Helmet>
+                <Layout links = {links}>
+                    <FullArticle />
+                </Layout>
+            </Fragment>
 
-            <Layout links = {links}>
-                <FullArticle />
-            </Layout>
-
-           
         );
     }
 }
