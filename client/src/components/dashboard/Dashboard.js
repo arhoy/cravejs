@@ -7,6 +7,7 @@ import Moment from 'react-moment';
 import Experience from './Experience';
 import Education from './Education';
 import LoadingSpinner from '../utils/LoadingSpinner';
+import DashboardLinks from './DashboardLinks';
 
 
 class Dashboard extends Component {
@@ -54,13 +55,7 @@ class Dashboard extends Component {
                         <div className="Dashboard__welcome">
                               <h3 className = "Dashboard__title"> Your Dashboard </h3>
                               <div className = "Dashboard__user"> { `${displayName}'s profile `} </div>
-                              <div className="Dashboard__links">
-                                    <ul>
-                                      <li> <Link className = "Dashboard__link" to = "edit-profile">Edit Profile</Link> </li>
-                                      <li> <Link className = "Dashboard__link" to = "add-experience"> Add Experience</Link> </li>
-                                      <li> <Link className = "Dashboard__link" to = "add-education"> Add Education</Link> </li>
-                                    </ul>
-                            </div>
+                              <DashboardLinks/>
                         </div>
                       <div className = "Dashboard__summary">
                       <h4 className = "heading-secondary heading-secondary--blue" style = {{fontSize:'2.2rem'}}>Profile Snapshot</h4>

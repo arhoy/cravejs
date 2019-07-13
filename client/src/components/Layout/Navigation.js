@@ -34,7 +34,7 @@ class Navigation extends Component {
                 <li> <Link to = "/products" className = "navigation__link" >Products</Link></li>
                 <li> <Link to = "/contact" className = "navigation__link" >Contact</Link></li>
                 {
-                    isAuthenticated ?  <a href="" onClick={this.logoutUserHandler.bind(this)} className="navigation__link"> Logout </a> : null
+                    isAuthenticated ?  <a href="#!" onClick={this.logoutUserHandler.bind(this)} className="navigation__link"> Logout </a> : null
                 }
           
             </ul>   
@@ -51,7 +51,7 @@ class Navigation extends Component {
                 <li> <Link to = "/orders" className = "navigation__link" >Orders</Link> </li>
                 <li className="">
                 <a
-                    href=""
+                    href="!#"
                     onClick={this.logoutUserHandler.bind(this)}
                     className="navigation__link"
                 >

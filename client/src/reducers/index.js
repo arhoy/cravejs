@@ -8,6 +8,7 @@ import cartReducer from './cartReducer';
 import orderReducer from './orderReducer';
 import resumeReducer from './resumeReducer';
 import articlesReducer from './articlesReducer';
+import todoReducer from './todoReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -18,5 +19,6 @@ export default combineReducers({
   cart: cartReducer,
   order:orderReducer,
   resume:resumeReducer,
-  articles:articlesReducer
+  articles:articlesReducer,
+  todo: todoReducer
 });

@@ -52,7 +52,12 @@ import DevelopersPage from './pages/network/DevelopersPage';
 import ArticlesPage from './pages/articles/ArticlesPage';
 import ArticlePage from './pages/article/ArticlePage';
 
+import ToDoPage from './pages/todo/ToDoPage';
+
 import './sass/main.scss';
+
+
+
 
 
 
@@ -119,7 +124,9 @@ class App extends Component {
           <Route exact path = "/products/:id" component = {ProductPage}/>
           <Route exact path = "/profile/:handle" component = {ProfilePage}/>
           <Route exact path = "/register" component = {RegisterPage}/>
+          <Route exact path = "/todo" component = { ToDoPage } />
           <Route exact path = "/" component = {HomePage}/>
+  
         </Switch>
         </Fragment>
       </Router>

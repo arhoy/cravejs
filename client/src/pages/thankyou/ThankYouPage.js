@@ -10,7 +10,6 @@ import Footer from '../../components/Layout/Footer';
 
 class ThankYouPage extends Component {    
     render() {
-        console.log(this.props);
         const { isAuthenticated ,user } = this.props.auth;
         let links;
         if (!isAuthenticated) links = [

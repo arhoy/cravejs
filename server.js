@@ -24,7 +24,12 @@ const cloud_api_secret = require('./config/keys').cloud_api_secret;
 
 // Connect to MongoDB
 mongoose
-  .connect(db, { useNewUrlParser: true })
+  .connect(db,
+     { 
+      useNewUrlParser: true,
+      useCreateIndex: true,
+      useFindAndModify: false
+   })
   .then(() =>
     console.log(`MongoDB Connected to database: ${db.substring(db.length - 7)}`)
   )
@@ -38,6 +43,7 @@ const product = require('./routes/api/product');
 const order = require('./routes/api/order');
 const resume = require('./routes/api/resume');
 const articles = require('./routes/api/articles');
+const tasks = require('./routes/api/tasks');
 
 // Passport middleware
 app.use(passport.initialize());
@@ -65,6 +71,8 @@ app.use('/api/product', product);
 app.use('/api/order', order);
 app.use('/api/resume', resume);
 app.use('/api/articles', articles);
+app.use('/api/tasks',tasks);
+
 
 // Server static assets if in production
 if (process.env.NODE_ENV === 'production') {

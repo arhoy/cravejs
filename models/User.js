@@ -41,7 +41,13 @@ const UserSchema = new Schema({
         role: {
           type: Number,
           default: 0
-        }
+        },
+        tasks: [
+          {
+            type: Schema.Types.ObjectId,
+            ref: 'tasks'
+          }
+        ]
 });
 
 // *** METHODS ON USER SCHEMA ***//
