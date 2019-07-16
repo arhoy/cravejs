@@ -23,12 +23,14 @@ export default function ( state = initialState, action ){
             return {
                 ...state,
                 article:action.payload,
+                articles:[],
                 loading:false
             }
         case GET_ARTICLES:
             return {
                 ...state,
                 articles:action.payload,
+                article: [],
                 loading:false
             }
      

@@ -1,12 +1,11 @@
 import React from 'react';
-import { BLOCKS, MARKS, INLINES } from '@contentful/rich-text-types';
+import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import FullArticleCodeSQL from './FullArticleCodeSQL';
+import FullArticleCode from './FullArticleCode';
 
 const FullArticleRichText = ({ nodeContent, language }) => {
   // this is the rtf node;
   const document = nodeContent;
-  console.log('this is the nodeContent', nodeContent,'these are the inlines',INLINES);
 
   // Rendering options
 
@@ -20,7 +19,7 @@ const FullArticleRichText = ({ nodeContent, language }) => {
     <span className="FullArticleRichText__italic">{children}</span>
   );
   const Code = ({ children }) => (
-    <span className="FullArticleRichText__code">{children}</span>
+    <span style = {{fontSize:'1.6rem'}} className="FullArticleRichText__code">{children}</span>
   );
 
   const options = {
@@ -31,7 +30,7 @@ const FullArticleRichText = ({ nodeContent, language }) => {
       [MARKS.CODE]: text => (
         <Code>
           {' '}
-          <FullArticleCodeSQL language={language} code={text} />{' '}
+          <FullArticleCode language={language} code={text} />{' '}
         </Code>
       )
     },
@@ -56,8 +55,7 @@ const FullArticleRichText = ({ nodeContent, language }) => {
 
   // black magic that contentful does when passing in the rtf document node abd the options defined above
   const rtf = documentToReactComponents(document, options);
-  console.log(document);
-  console.dir(rtf);
+
 
   return <div>{rtf}</div>;
 };

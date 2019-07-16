@@ -1,5 +1,4 @@
  const mainLinks = (isAuthenticated, user) => {
-     console.log(isAuthenticated);
      if(isAuthenticated){
         return  [
             {

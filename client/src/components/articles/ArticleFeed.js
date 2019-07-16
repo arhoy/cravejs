@@ -2,7 +2,7 @@ import React from 'react';
 import Article from './Article';
 import calcReadTime from '../utils/calcReadTime';
 
-const ArticleFeed = ({ articles, history, contentModel }) => {
+const ArticleFeed = ({ articles, history }) => {
   return articles.map(article => {
     const { fields } = article;
     const { sys } = article;
@@ -15,6 +15,7 @@ const ArticleFeed = ({ articles, history, contentModel }) => {
       sys.contentType.sys.id === 'reactPosts' ||
       sys.contentType.sys.id === 'mongoDb'
     ) {
+
       const imgDescription = fields.heroImage.fields.description;
       const imgURL = fields.heroImage.fields.file.url;
       const readTime = calcReadTime(fields.bodyRichText.content);
@@ -32,6 +33,8 @@ const ArticleFeed = ({ articles, history, contentModel }) => {
           readTime={readTime}
         />
       );
+    } else {
+      return null
     }
   });
 };

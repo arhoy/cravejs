@@ -1,10 +1,13 @@
 .FullArticleRichText {
     font-family: 'Open Sans', sans-serif;
     grid-column: center-start / center-end;
-    font-size: 1.8rem;
+    font-size: 1.65rem;
     margin-bottom: 5rem;
+    @include respond(tab-port) {
+        font-size: 1.8rem;
+    }
     @include respond(phone) {
-        font-size: 1.9rem;
+        font-size: 1.9rem !important;
         line-height: 2.8rem;
         font-weight: 100;
     }
@@ -116,6 +119,7 @@ https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clik
      word-break: normal;
      word-wrap: normal;
      line-height: 1.5;
+     font-size: 1.4rem !important;
  
      -moz-tab-size: 4;
      -o-tab-size: 4;
@@ -133,11 +137,13 @@ https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clik
      margin: .5em 0;
      overflow: auto;
      border-radius: 0.3em;
+     font-size: 1.4rem !important;
  }
  
  :not(pre) > code[class*="language-"],
  pre[class*="language-"] {
      background: #272822;
+     font-size: 1.4rem !important;
  }
  
  /* Inline code */
@@ -145,6 +151,7 @@ https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clik
      padding: .1em;
      border-radius: .3em;
      white-space: normal;
+     font-size: 1.4rem !important;
  }
  
  .token.comment,

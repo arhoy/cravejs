@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -7,22 +7,20 @@ import PropTypes from 'prop-types';
 import FullArticleDetails from './FullArticleDetails';
 import isEmpty from '../../validation/is-empty';
 
-class FullArticle extends Component {
-  componentDidMount() {
-    const { id } = this.props.match.params;
-    if (id) {
-      this.props.getArticle(id);
-    }
-  }
-
-  render() {
+const FullArticle = ({ articles: {article}, match, getArticle, loading }) => {
+    useEffect( ()=> {
+        const { id } = match.params;
+        if(id) {
+          getArticle(id);
+        }
+    },[])
+ 
     let articleContent;
-    const { loading } = this.props;
 
-    if (loading || isEmpty(this.props.articles.article)) {
+    if (loading || isEmpty(article)) {
       articleContent = <div>Loading</div>;
     } else {
-      const { fields } = this.props.articles.article.msg;
+      const { fields } = article.msg;
       const image = fields.heroImage.fields;
       const author = fields.author.fields;
       const authorImage = author.image.fields.file.url;
@@ -43,6 +41,7 @@ class FullArticle extends Component {
 
             </Helmet>
             <FullArticleDetails
+            key = {`${fields.title} - ${author.name}` }
             image={image.file.url}
             imageTitle={image.title}
             imageDescription={image.description}
@@ -62,7 +61,7 @@ class FullArticle extends Component {
 
     return articleContent;
   }
-}
+
 
 const mapStateToProps = state => ({
   articles: state.articles

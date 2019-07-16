@@ -19,8 +19,7 @@ class ArticlePage extends Component {
                     <title> Articles Page | Cravejs </title>
                     <meta 
                         name="description" 
-                        content=
-                            "Each article on CraveJs where the cms in contentful" 
+                        content= "Each article on CraveJs where the cms in contentful" 
                     />
                 </Helmet>
                 <Layout links = {links}>

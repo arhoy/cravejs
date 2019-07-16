@@ -60,7 +60,7 @@ const FullArticleDetails = ({
 
       <div className="FullArticle__tags">
         {tags.map(tag => (
-          <div className="FullArticle__tag">{tag}</div>
+          <div key = { tag } className="FullArticle__tag">{tag}</div>
         ))}
       </div>
     </div>

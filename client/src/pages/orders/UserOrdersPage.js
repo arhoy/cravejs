@@ -12,9 +12,7 @@ class UserOrdersPage extends Component {
     
         const { isAuthenticated ,user } = this.props.auth;
         const links = mainLinks(isAuthenticated, user);
-       
- 
-        
+
         return (
         
                <Layout links = {links}>
