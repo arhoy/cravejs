@@ -1,0 +1,16 @@
+.Todo {
+    &__signin {
+        background-image: linear-gradient(
+            to right bottom,
+            rgba($color-white, 1),
+            rgba($color-white, 0.7)),
+        url(/img/todo/paper-white.jpg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        &-grey {
+            filter: blur(2px);
+        }
+    }
+   
+}

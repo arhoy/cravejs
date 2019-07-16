@@ -17,9 +17,8 @@ const Todo = ({ auth, getTodos, addTodo, changeTodoStatus, todo: { todos, loadin
     }, [getTodos, addTodo, changeTodoStatus, auth]);
 
     const inputRef = useRef();
-
     return loading || todos === null ?  <LoadingSpinner/> : (
-       <div className = "Todo" >
+       <div className = 'Todo'>
            <TodoHeader/>
            <TodoForm inputRef = {inputRef} />
            <TodoList inputRef = {inputRef} todos = {todos} />

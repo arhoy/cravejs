@@ -30,9 +30,9 @@ const TodoNoAuth = () => {
 
     return  (
         <Fragment>
-              { modal ? <Login/> : null}>
-            <div className = {`Todo ${modal ? 'Todo__dark': ''}`} onClick = { signUpHandler } >
-                <TodoHeader/>
+              { modal ? <Login/> : null}
+            <div className = {`Todo__signin ${modal ? 'Todo__signin-grey': ''}`} onClick = { signUpHandler } >
+                <TodoHeader modal = {modal} />
                 <TodoForm />
                 <TodoList todos = {sampleTodos} />
             </div>        
