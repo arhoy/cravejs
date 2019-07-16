@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import ResumeFileUpload from '../../components/utils/form/ResumeFileUpload';
 import Resume from '../../components/resume/Resume';
 import Layout from '../../components/Layout/Layout';
+import mainLinks from '../../utils/Links/mainLinks';
 
 class ResumeUploadPage extends Component {   
 
@@ -49,49 +50,7 @@ class ResumeUploadPage extends Component {
     render() {
     
         const { isAuthenticated ,user } = this.props.auth;
-        let links;
-        if (!isAuthenticated) links = [
-            {
-                title: 'Login',
-                linkTo: '/login' 
-            },
-            {
-                title: 'Posts',
-                linkTo: '/posts' 
-            },
-            {
-                title: 'Products',
-                linkTo: '/products' 
-            },
-        ];
-        else {
-            links =  [
-                {
-                    title: `${user.name}`,
-                    linkTo: `/dashboard` 
-                },
-                {
-                    title: 'Dashboard',
-                    linkTo: '/dashboard' 
-                },
-                {
-                    title: 'Posts',
-                    linkTo: '/posts' 
-                },
-                {
-                    title: 'Products',
-                    linkTo: '/products' 
-                },
-                {
-                    title: 'My Cart',
-                    linkTo: '/cart' 
-                },
-                {
-                    title: 'Logout',
-                    linkTo: '/' 
-                }
-            ]
-        }
+        const links = mainLinks(isAuthenticated, user);
     
         return (
             <Layout links = {links}>

@@ -3,55 +3,15 @@ import { Helmet } from 'react-helmet'
 import Dashboard from '../../components/dashboard/Dashboard';
 import { connect } from 'react-redux';
 import Layout from '../../components/Layout/Layout';
+import mainLinks from '../../utils/Links/mainLinks';
 
-class DashboardPage extends Component {    
+class DashboardPage extends Component { 
+
     render() {
-    
+          
         const { isAuthenticated ,user } = this.props.auth;
-        let links;
-        if (!isAuthenticated) links = [
-            {
-                title: 'Login',
-                linkTo: '/login' 
-            },
-            {
-                title: 'Posts',
-                linkTo: '/posts' 
-            },
-            {
-                title: 'Products',
-                linkTo: '/products' 
-            },
-        ];
-        else {
-            links =  [
-                {
-                    title: `${user.name}`,
-                    linkTo: `/dashboard` 
-                },
-                {
-                    title: 'Dashboard',
-                    linkTo: '/dashboard' 
-                },
-                {
-                    title: 'Posts',
-                    linkTo: '/posts' 
-                },
-                {
-                    title: 'Products',
-                    linkTo: '/products' 
-                },
-                {
-                    title: 'My Cart',
-                    linkTo: '/cart' 
-                },
-                {
-                    title: 'Logout',
-                    linkTo: '/' 
-                }
-            ]
-        }
-               
+        const links = mainLinks(isAuthenticated, user);
+      
         return (
             <Fragment>
 
