@@ -1,12 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux'
 
-const TodoHeader = () => {
+const TodoHeader = ({ auth: {isAuthenticated, user} }) => {
     return (
         <div className = "TodoHeader">
-            <h1>Add Your ToDo</h1>
+            {
+                isAuthenticated ? 
+                <h1>Add Your ToDo</h1> : 
+                <div>
+                    <h1>Please Sign In</h1>
+                    <p> You must be signed into view and create Todos</p>
+                </div>
+            }
             
         </div>
     );
 };
 
-export default TodoHeader;
+const mapStateToProps = state => ({
+    auth: state.auth
+})
+export default connect(mapStateToProps)(TodoHeader);

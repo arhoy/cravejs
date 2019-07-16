@@ -22,6 +22,10 @@
                 linkTo: '/cart' 
             },
             {
+                title: 'My Todos',
+                linkTo: '/todo'
+            },
+            {
                 title: 'Logout',
                 linkTo: '/' 
             }
@@ -33,12 +37,20 @@
                 linkTo: '/login' 
             },
             {
+                title: 'Articles',
+                linkTo: '/articles' 
+            },
+            {
                 title: 'Posts',
                 linkTo: '/posts' 
             },
             {
                 title: 'Products',
                 linkTo: '/products' 
+            },
+            {
+                title: 'Todos',
+                linkTo: '/todo' 
             },
         ];
      }

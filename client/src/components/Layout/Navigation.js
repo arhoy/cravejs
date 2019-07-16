@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/authActions';
-
+import mainLinks from '../../utils/Links/mainLinks';
 class Navigation extends Component {
     state = {
         isOpen: false
     }
+
 
     logoutUserHandler(e) {
         e.preventDefault();
@@ -23,10 +24,16 @@ class Navigation extends Component {
         const { user, isAuthenticated } = this.props.auth;
         let displayName;
         if (user && user.name ) { displayName = user.name.split(' ')[0]; }
-    
+        
+        const links = mainLinks(isAuthenticated, user);
         const guestLinks = (
             <ul className="navigation__list">
-                <li> <Link to = "/" className = "navigation__link">Home</Link> </li>
+                {
+                    links.map( link => (
+                        <li key = {link.linkTo} > <Link to = { link.linkTo } className = "navigation__link" > { link.title } </Link> </li>
+                    ))
+                }
+                {/* <li> <Link to = "/" className = "navigation__link">Home</Link> </li>
                 <li> <Link to = {isAuthenticated ? "/dashboard": "/login"} className = "navigation__link">{isAuthenticated ? `Dashboard` : `Login`  }</Link> </li>
                 <li> <Link to = "/developers" className = "navigation__link">Network</Link> </li>
                 <li> <Link to = "/articles" className = "navigation__link">Articles</Link> </li>
@@ -35,7 +42,7 @@ class Navigation extends Component {
                 <li> <Link to = "/contact" className = "navigation__link" >Contact</Link></li>
                 {
                     isAuthenticated ?  <a href="#!" onClick={this.logoutUserHandler.bind(this)} className="navigation__link"> Logout </a> : null
-                }
+                } */}
           
             </ul>   
         )

@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { addTodo, editTodo } from '../../actions/todoActions';
 
-const TodoForm = ({addTodo, editTodo, isAuthenticated, todo: { currentTodo }, inputRef }) => {
+const TodoForm = ({addTodo, editTodo, todo: { currentTodo }, inputRef }) => {
     useEffect( ()=> {
         if( currentTodo ) {
             setText( currentTodo.text );
@@ -31,7 +30,7 @@ const TodoForm = ({addTodo, editTodo, isAuthenticated, todo: { currentTodo }, in
         setText('');
     }
 
-    if(!isAuthenticated) return <Redirect to = "/login" />
+
 
     return (
         <div className = "TodoForm">
@@ -58,12 +57,10 @@ const TodoForm = ({addTodo, editTodo, isAuthenticated, todo: { currentTodo }, in
 }
 
 TodoForm.propTypes = {
-    addTodo: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool
+    addTodo: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
-    isAuthenticated: state.auth.isAuthenticated,
     todo: state.todo
 })
 
