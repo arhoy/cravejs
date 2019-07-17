@@ -12,7 +12,7 @@ const ToDoPage = ({ auth: { user, isAuthenticated }, history: {location} }) => {
     const links = mainLinks(isAuthenticated, user);
     console.log(location);
         return (
-            <div style = {{minHeight: '100vh',display:'flex',flexDirection:'column',justifyContent:'space-between', background:'white'}} >
+            <div>
                 <Header links = {links} />
                     { isAuthenticated ?
                         <Todo/> :

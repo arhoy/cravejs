@@ -11,8 +11,8 @@ const TodoHeader = ({ auth: {isAuthenticated, user}, modal }) => {
                     {
                         !modal ? 
                         <div>
-                            <h1>Please Sign In</h1>
-                            <p> You must be signed into view and create Todos</p>
+                            <h2>Sign in to view and create Todos</h2>
+                            <button className = "btn btn-2 btn--blue" >Sign In</button>
                         </div> : null
                     }
                 </div>

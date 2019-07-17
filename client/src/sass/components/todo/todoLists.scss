@@ -11,10 +11,12 @@
     button { 
       outline: none;
     }
-    & li {
+    &__ul {
+      background: red;
+    }
+    &__li {
       outline: none;
       margin: 1rem auto;
-      border: 2px dashed black;
       padding: 2rem 0.5rem;
       max-width: 105rem;
       justify-content: center;

@@ -1,9 +1,12 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types';
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"; 
 import { connect } from 'react-redux';
 import { removeTodo, getTodo, changeTodoStatus } from '../../actions/todoActions';
 
+
 const TodoList = ({todos, removeTodo, changeTodoStatus, getTodo, inputRef, todo: { currentTodo }}) => {
+
 
     const statusChangeHandler = todo => {
         changeTodoStatus(todo._id, { status: todo.status }); // must send status as object to express.
@@ -30,6 +33,7 @@ const TodoList = ({todos, removeTodo, changeTodoStatus, getTodo, inputRef, todo:
                 return ['Todo!','TodoList__red','TodoList__uncompleted'];
         }
     }
+
     return (
     <Fragment>
     <div className = "TodoList">
@@ -47,12 +51,15 @@ const TodoList = ({todos, removeTodo, changeTodoStatus, getTodo, inputRef, todo:
               
         }
     </div>
-     <ul className = "TodoList">
+ 
+    <div className = "TodoList">
+    <ul className = "TodoList TodoList__ul">
             {
                 todos && todos.map( todo => (
+            
                     <li 
                         key = {todo._id}
-                        className = {`TodoList ${classNameHandler(todo.status)[1]} `}
+                        className = {`TodoList TodoList__li ${classNameHandler(todo.status)[1]} `}
                         onDoubleClick = { statusChangeHandler.bind(this,todo) }
                     > 
 
@@ -85,12 +92,12 @@ const TodoList = ({todos, removeTodo, changeTodoStatus, getTodo, inputRef, todo:
                                     <img className = "TodoList__img" src="https://icon.now.sh/edit" alt="Edit Icon"/>
                                 </button>
                          </div>
-                       
                     </li>
                 ))
             }
         </ul>
-
+    </div>
+   
     </Fragment>
        
     )

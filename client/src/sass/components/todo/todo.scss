@@ -1,9 +1,18 @@
+.TodoContainer {
+    min-height: '100vh';
+    display:'flex';
+    flex-direction:'column';
+    justify-content:'space-between';
+     background: $color-white;
+     overflow-x:'hidden'
+}
+
 .Todo {
     &__signin {
         background-image: linear-gradient(
             to right bottom,
             rgba($color-white, 1),
-            rgba($color-white, 0.7)),
+            rgba($color-white, 1)),
         url(/img/todo/paper-white.jpg);
         background-position: center center;
         background-repeat: no-repeat;
