@@ -9,6 +9,7 @@ import orderReducer from './orderReducer';
 import resumeReducer from './resumeReducer';
 import articlesReducer from './articlesReducer';
 import todoReducer from './todoReducer';
+import pageHistoryReducer from './pageHistoryReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -20,5 +21,6 @@ export default combineReducers({
   order:orderReducer,
   resume:resumeReducer,
   articles:articlesReducer,
-  todo: todoReducer
+  todo: todoReducer,
+  pageHistory: pageHistoryReducer
 });

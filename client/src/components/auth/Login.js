@@ -28,7 +28,13 @@ class Login extends Component {
         return {errors: props.errors}
         }
         if (props.auth.isAuthenticated) {
-            props.history.push('/dashboard');
+            // props.history.push('/dashboard');
+            if(props.location.state && props.location.state.from) {
+                const pathTo = props.location.state.from.pathname || '/dashboard';
+                props.history.push(pathTo);
+            } else {
+                props.history.push('/dashboard');
+            }
           }
         return null;
     }
