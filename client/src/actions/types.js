@@ -93,6 +93,7 @@ export const REMOVE_TODO = 'REMOVE_TODO';
 export const EDIT_TODO = 'EDIT_TODO';
 export const CHANGE_TODO_STATUS = 'CHANGE_TODO_STATUS';
 export const GET_TODO = 'GET_TODO'; // when you hit the edit button, populate the todo form.
+export const GET_SORTED_TODOS = 'GET_SORTED_TODOS';
 
 // PAGE HISTORY
 export const GET_LASTPAGE_HISTORY = 'GET_LASTPAGE_HISTORY';

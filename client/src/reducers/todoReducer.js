@@ -5,6 +5,7 @@ import {
     CHANGE_TODO_STATUS,
     REMOVE_TODO,
     GET_TODO,
+    GET_SORTED_TODOS,
     LOGOUT
 } from '../actions/types';
 
@@ -58,6 +59,12 @@ export default function ( state = initialState, action ) {
                 todos: state.todos.map( todo => 
                     todo._id === payload._id ? {...todo, completed: payload.completed, status: payload.status } : todo
                 )
+            }
+        case GET_SORTED_TODOS:
+            return {
+                ...state,
+                todos: payload,
+                loading:false
             }
         case LOGOUT:
             return {

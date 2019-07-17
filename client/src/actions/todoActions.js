@@ -6,7 +6,8 @@ import {
     EDIT_TODO,
     CHANGE_TODO_STATUS,
     GET_TODO,
-    GET_TODOS
+    GET_TODOS,
+    GET_SORTED_TODOS
 } from './types';
 
 
@@ -115,5 +116,19 @@ export const changeTodoStatus = (id, status) => async dispatch => {
 
     } catch (error) {
         console.error('There as an error in the changeTodoStatus action', error)
+    }
+}
+
+export const getSortedTodos = (todos) => async dispatch => {
+
+    try {
+        // status object forms the req.body
+        dispatch({
+            type: GET_SORTED_TODOS,
+            payload: todos
+        })
+
+    } catch (error) {
+        console.error('There as an error in the reorderTodo action', error)
     }
 }
