@@ -37,13 +37,17 @@ const TodoListItem = ( {todo, currentTodo, inputRef, removeTodo, getTodo, change
             index = { index }
         >
         {
-            provided => (
+            (provided, snapshot) => (
                 <li 
                     { ...provided.draggableProps }
                     { ...provided.dragHandleProps }
                     ref = { provided.innerRef }
                     key = {todo._id}
-                    className = {`TodoList TodoList__li ${classNameHandler(todo.status)[1]} `}
+                    className = {
+                        `TodoList TodoList__li 
+                         ${classNameHandler(todo.status)[1]} 
+                         ${snapshot.isDragging ? 'TodoList__dragging': ''}
+                        `}
                     onDoubleClick = { statusChangeHandler.bind(this,todo) }
                     > 
 

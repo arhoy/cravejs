@@ -11,14 +11,16 @@
     button { 
       outline: none;
     }
+    &__ul,&__li {
+      max-width: 105rem;
+    }
     &__ul {
-      background: red;
+      margin: auto;
     }
     &__li {
       outline: none;
       margin: 1rem auto;
       padding: 2rem 0.5rem;
-      max-width: 105rem;
       justify-content: center;
       & > * {
         text-align: center;
@@ -47,7 +49,16 @@
     &__blue {
       background: $trello-blue-100;
     }
-
+    &__dragging {
+      background: $color-grey-light-2;
+      border: 1px solid $color-black;
+    }
+    &__draggingOver {
+       background: transparent;
+    }
+    &__notDraggingOver {
+      background: $trello-yellow-100;
+    }
 
     &__remove {
       color: black;

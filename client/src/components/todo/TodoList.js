@@ -34,13 +34,21 @@ const TodoList = ({todos, inputRef, todo: { currentTodo }, getSortedTodos}) => {
             result.source.index,
             result.destination.index
        );
-        console.log(updatedTodos);
+       document.body.style.backgroundColor = 'white';
         getSortedTodos(updatedTodos);
-        
+    }
+
+    const onDragUpdate = update => {
+        const { destination } = update;
+        const opacity = destination ? destination.index  / todos.length: 0
+        document.body.style.backgroundColor = `rgba(142,131,217,${opacity})`;
     }
 
     return (
-    <DragDropContext onDragEnd = {onDragEnd}>
+    <DragDropContext 
+        onDragEnd = { onDragEnd } 
+        onDragUpdate = { onDragUpdate }
+    >
     <div className = "TodoList">
         {
             todos && todos.length > 0 ?
@@ -60,10 +68,11 @@ const TodoList = ({todos, inputRef, todo: { currentTodo }, getSortedTodos}) => {
     <div className = "TodoList">
     <ul className = "TodoList TodoList__ul">
         <Droppable droppableId = 'droppable'>
-        { provided => (
+        { (provided, snapshot) => (
             <div
                 {...provided.droppableProps}
                 ref = {provided.innerRef}   
+                className = {snapshot.isDraggingOver ? 'TodoList__draggingOver': 'TodList__notdraggingOver'}
             >
             { todos && todos.map( (todo, index) => ( <TodoListItem key = {todo._id} todo = {todo} currentTodo = {currentTodo} inputRef = { inputRef } index = { index } /> )) }
             {provided.placeholder}
