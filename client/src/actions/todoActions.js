@@ -119,15 +119,23 @@ export const changeTodoStatus = (id, status) => async dispatch => {
     }
 }
 
-export const getSortedTodos = (todos) => async dispatch => {
-
+export const getSortedTodos = todos => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    };
+    
     try {
+      
         // status object forms the req.body
         dispatch({
             type: GET_SORTED_TODOS,
             payload: todos
         })
-
+        // persist the data
+        axios.put('api/tasks', todos, config);
+        
     } catch (error) {
         console.error('There as an error in the reorderTodo action', error)
     }

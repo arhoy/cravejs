@@ -23,6 +23,24 @@ router.get('/', passport.authenticate('jwt', { session: false }), async (req, re
     }
 })
 
+// Type          :  PUT
+// Route         :  api/task
+// Description   :  send updated task array back to the user. i.e tasks was sorted
+// Access:       :  Only logged in user can see his tasks.
+router.put('/', passport.authenticate('jwt', { session: false }), async ( req, res) => {
+    try {
+        const user = await User.findById(req.user.id).select('-password');
+        if( !user ){
+            res.status(400).send('User was not found');
+        } else {
+           user.tasks = req.body;
+           await user.save();
+        }        
+
+    } catch (error) {
+        console.error('Error occurred in PUT: api/task',error.message);
+    }
+})
 
 
 // Type          :  POST

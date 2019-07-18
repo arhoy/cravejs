@@ -1,20 +1,42 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment } from 'react'
+
 import PropTypes from 'prop-types';
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"; 
+import { DragDropContext, Droppable } from "react-beautiful-dnd"; 
 import { connect } from 'react-redux';
+import { getSortedTodos } from '../../actions/todoActions';
 import TodoListItem from './TodoListItem';
 
 
-const TodoList = ({todos, inputRef, todo: { currentTodo }}) => {
+const TodoList = ({todos, inputRef, todo: { currentTodo }, getSortedTodos}) => {
 
-    const [data, setdata] = useState(todos);
+    //  const [items, setItems] = useState(todos);
 
-    console.log(data);
+    // useEffect( ()=> {
+    //     setItems(todos);
+    // },[])
 
+    const reorder = (list, startIndex, endIndex) => {
+        const result = Array.from(list);
+        const [removed] = result.splice(startIndex,1);
+        result.splice(endIndex, 0 ,removed);
 
+        return result
+    }
     // BEAUTIFUL DND
     const onDragEnd = result => {
+       const { destination, source, draggableId } = result;
+       if(!destination) return;
 
+       if( destination.droppableId === source.droppableId && destination.index === source.index ) return;
+
+       const updatedTodos = reorder(
+            todos,
+            result.source.index,
+            result.destination.index
+       );
+        console.log(updatedTodos);
+        getSortedTodos(updatedTodos);
+        
     }
 
     return (
@@ -37,17 +59,18 @@ const TodoList = ({todos, inputRef, todo: { currentTodo }}) => {
  
     <div className = "TodoList">
     <ul className = "TodoList TodoList__ul">
-            {
-                todos && todos.map( todo => (
-                 <TodoListItem
-                    key = {todo._id}
-                    todo = {todo}
-                    currentTodo = {currentTodo}
-                    inputRef = { inputRef }
-                 />
-                ))
-            }
-        </ul>
+        <Droppable droppableId = 'droppable'>
+        { provided => (
+            <div
+                {...provided.droppableProps}
+                ref = {provided.innerRef}   
+            >
+            { todos && todos.map( (todo, index) => ( <TodoListItem key = {todo._id} todo = {todo} currentTodo = {currentTodo} inputRef = { inputRef } index = { index } /> )) }
+            {provided.placeholder}
+            </div>
+        )}
+        </Droppable>
+    </ul>
     </div>
    
     </DragDropContext>
@@ -63,4 +86,4 @@ const mapStateToProps = state => ({
     todo: state.todo
 })
 
-export default connect(mapStateToProps)(TodoList)
+export default connect(mapStateToProps, { getSortedTodos })(TodoList)
