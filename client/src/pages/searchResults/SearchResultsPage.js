@@ -4,28 +4,22 @@ import PropTypes from 'prop-types'
 import Header from '../../components/Layout/Header';
 import Footer from '../../components/Layout/Footer';
 import { connect } from 'react-redux';
-import Todo from '../../components/todo/Todo';
-import TodoNoAuth from '../../components/todo/TodoNoAuth';
 import mainLinks from '../../utils/Links/mainLinks';
+import SearchResults from '../../components/searchResults/searchResults';
 
-const ToDoPage = ({ auth: { user, isAuthenticated }, history: {location} }) => {
+const SearchResultsPage = ({ auth: { user, isAuthenticated }, history: {location} }) => {
     const links = mainLinks(isAuthenticated, user);
     console.log(location);
         return (
-            <div className = "TodoContainer">
+            <div className = "SearchResults-container">
                 <Header links = {links} />
-                    { isAuthenticated ?
-                        <Todo/> :
-                        <TodoNoAuth/>
-                    }
+                    <SearchResults/>
                 <Footer/>
             </div>
         )
-
-    
 }
 
-ToDoPage.propTypes = {
+SearchResultsPage.propTypes = {
     auth: PropTypes.object.isRequired
 }
 
@@ -33,4 +27,4 @@ const mapStateToProps = state => ({
     auth: state.auth
 })
 
-export default connect(mapStateToProps)(ToDoPage)
+export default connect(mapStateToProps)(SearchResultsPage)

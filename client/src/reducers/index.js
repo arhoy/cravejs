@@ -10,6 +10,7 @@ import resumeReducer from './resumeReducer';
 import articlesReducer from './articlesReducer';
 import todoReducer from './todoReducer';
 import pageHistoryReducer from './pageHistoryReducer';
+import searchReducer from './searchReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -22,5 +23,6 @@ export default combineReducers({
   resume:resumeReducer,
   articles:articlesReducer,
   todo: todoReducer,
-  pageHistory: pageHistoryReducer
+  pageHistory: pageHistoryReducer,
+  search: searchReducer
 });

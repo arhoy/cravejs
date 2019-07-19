@@ -9,12 +9,6 @@ import TodoListItem from './TodoListItem';
 
 const TodoList = ({todos, inputRef, todo: { currentTodo }, getSortedTodos}) => {
 
-    //  const [items, setItems] = useState(todos);
-
-    // useEffect( ()=> {
-    //     setItems(todos);
-    // },[])
-
     const reorder = (list, startIndex, endIndex) => {
         const result = Array.from(list);
         const [removed] = result.splice(startIndex,1);
@@ -34,20 +28,14 @@ const TodoList = ({todos, inputRef, todo: { currentTodo }, getSortedTodos}) => {
             result.source.index,
             result.destination.index
        );
-       document.body.style.backgroundColor = 'white';
         getSortedTodos(updatedTodos);
     }
 
-    const onDragUpdate = update => {
-        const { destination } = update;
-        const opacity = destination ? destination.index  / todos.length: 0
-        document.body.style.backgroundColor = `rgba(142,131,217,${opacity})`;
-    }
+   
 
     return (
     <DragDropContext 
         onDragEnd = { onDragEnd } 
-        onDragUpdate = { onDragUpdate }
     >
     <div className = "TodoList">
         {

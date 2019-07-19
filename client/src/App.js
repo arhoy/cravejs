@@ -54,6 +54,8 @@ import ArticlePage from './pages/article/ArticlePage';
 
 import ToDoPage from './pages/todo/ToDoPage';
 
+import SearchResultsPage from './pages/searchResults/SearchResultsPage';
+
 import './sass/main.scss';
 
 
@@ -126,7 +128,8 @@ class App extends Component {
           <Route exact path = "/register" component = {RegisterPage}/>
 
           <Route exact path = "/todo" component = { ToDoPage } />
-
+          <Route exact path = "/search" component = { SearchResultsPage } />
+  
           <Route exact path = "/" component = {HomePage}/>
   
         </Switch>

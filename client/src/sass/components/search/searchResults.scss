@@ -1,0 +1,25 @@
+
+.SearchResults-container {
+    min-height: 100vh;
+    display:'flex';
+    flex-direction:'column';
+    justify-content:'space-between';
+     background: $color-white;
+     overflow-x:'hidden';
+}
+.SearchResults {
+    min-height: 65vh;
+    margin: 2rem;
+    &__link {
+        background: $fb-grey;
+        padding: 2rem;
+        margin: 1rem 0rem;
+        &:hover {
+            background: darken($fb-grey,3%);
+            cursor: pointer;
+        }
+    }
+    h2 { 
+        margin-bottom: 1rem;
+    }
+}

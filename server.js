@@ -44,6 +44,7 @@ const order = require('./routes/api/order');
 const resume = require('./routes/api/resume');
 const articles = require('./routes/api/articles');
 const tasks = require('./routes/api/tasks');
+const gcse = require('./routes/api/gcse');
 
 // Passport middleware
 app.use(passport.initialize());
@@ -72,6 +73,7 @@ app.use('/api/order', order);
 app.use('/api/resume', resume);
 app.use('/api/articles', articles);
 app.use('/api/tasks',tasks);
+app.use('/api/gcse',gcse);
 
 
 // Server static assets if in production

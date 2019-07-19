@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Navigation from './Navigation';
+import { googleCustomSearch } from '../../actions/searchActions';
+import PropTypes from 'prop-types';
 import Menu from './Menu';
 
 
 class Header extends Component {
-
 
     constructor(props) {
         super(props);
@@ -16,6 +17,7 @@ class Header extends Component {
             height: 0,
             showMenu:false,
             showExploreLinks:false,
+            query: '',
             exploreLinks: [
                 {
                     title: 'Network',
@@ -75,14 +77,26 @@ class Header extends Component {
         })
     }
 
+    onChange(e) {
+        this.setState({ [e.target.name]: e.target.value });
+      }
+    
+
+    siteSearchHandler = e => {
+        e.preventDefault();
+        console.log('I was submitted');
+        this.props.googleCustomSearch(this.state.query);
+        this.props.history.push('/search');
+    }
+ 
 
     render() {
-        const { auth } = this.props;
         const { user, isAuthenticated } = this.props.auth;
-        let displayName;
-        if (user && user.name ) { displayName = user.name.split(' ')[0]; }
-   
-        
+        if (user && user.name ) { 
+            const displayName = user.name.split(' ')[0]; 
+        }
+
+                
         return (
             
             <div className = "Header">
@@ -93,10 +107,24 @@ class Header extends Component {
                                 <span className="Header__icon-2">js</span>
                         </div>
                         <div className="Header__searchbar">
-                                    <input type="text" placeholder = "search site"/>
+                        
+                            <form onSubmit = {this.siteSearchHandler.bind(this)}>
+                            <div>
+                                <input
+                                    type="text" 
+                                    id="site-search-google" 
+                                    name="query" 
+                                    title="Search Site" 
+                                    alt="Search Text" maxLength="256" 
+                                    placeholder = "Search Site" 
+                                    value = { this.state.query }
+                                    onChange={e => this.onChange(e)}
+                                />
+                            </div>
+                            </form>
                         </div>
                     </div>
-
+                    <div className="gcse-search"></div>
                     {
                         this.state.width < 450 ? 
                             <Navigation/>
@@ -173,7 +201,16 @@ class Header extends Component {
         );
     }
 }
+
+Header.propTypes = {
+    auth: PropTypes.object.isRequired,
+    search: PropTypes.object.isRequired
+}
+
 const mapStateToProps = state => ({
-    auth: state.auth
+    auth: state.auth,
+    search: state.search
 })
-export default connect(mapStateToProps,null)(Header);
+
+
+export default connect(mapStateToProps,{ googleCustomSearch })(withRouter(Header));
