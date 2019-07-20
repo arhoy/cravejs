@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import Cart from '../../components/cart/Cart';
 import { connect } from 'react-redux';
 import Layout from '../../components/Layout/Layout';
@@ -7,65 +7,17 @@ import Layout from '../../components/Layout/Layout';
 
 
 
-class CartPage extends Component {    
-    render() {
-    
-        const { isAuthenticated ,user } = this.props.auth;
-        let links;
-        if (!isAuthenticated) links = [
-            {
-                title: 'Login',
-                linkTo: '/login' 
-            },
-            {
-                title: 'Posts',
-                linkTo: '/posts' 
-            },
-            {
-                title: 'Products',
-                linkTo: '/products' 
-            },
-        ];
-        else {
-            links =  [
-                {
-                    title: `${user.name}`,
-                    linkTo: `/dashboard` 
-                },
-                {
-                    title: 'Dashboard',
-                    linkTo: '/dashboard' 
-                },
-                {
-                    title: 'Posts',
-                    linkTo: '/posts' 
-                },
-                {
-                    title: 'Products',
-                    linkTo: '/products' 
-                },
-                {
-                    title: 'My Cart',
-                    linkTo: '/cart' 
-                },
-                {
-                    title: 'Logout',
-                    linkTo: '/' 
-                }
-            ]
-        }
-        
-       
- 
-        
+const CartPage = () =>  {    
+        useEffect(()=> {
+            document.title = 'This is the Cart page';
+        },[])
         return (
-
-             <Layout links = {links}>
+             <Layout>
                   <Cart/>
             </Layout>
            
         );
-    }
+    
 }
 
 

@@ -1,36 +1,26 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet'
 import Dashboard from '../../components/dashboard/Dashboard';
 import { connect } from 'react-redux';
 import Layout from '../../components/Layout/Layout';
-import mainLinks from '../../utils/links/mainLinks';
 
-class DashboardPage extends Component { 
+const DashboardPage = ({ auth: { user : { name } } }) => { 
 
-    render() {
-          
-        const { isAuthenticated ,user } = this.props.auth;
-        const links = mainLinks(isAuthenticated, user);
-      
         return (
             <Fragment>
-
                 <Helmet>
-                    <title> Your Dashboard Page for Developers | Cravejs </title>
+                    <title> {name}'s Dashboard | CraveJs </title>
                     <meta 
                         name="description" 
-                        content=
-                            "This is your dashboard page where you can showcase your skill, experience and education on cravejs" 
+                        content="Dashboard page for adding editing and viewing your CraveJs profile" 
                     />
                 </Helmet>
-                <Layout links = {links}>
+                <Layout>
                         <Dashboard/>
                 </Layout>
-
             </Fragment>
             
         );
-    }
 }
 
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import ResumeFileUpload from '../../components/utils/form/ResumeFileUpload';
 import Resume from '../../components/resume/Resume';
 import Layout from '../../components/Layout/Layout';
-import mainLinks from '../../utils/links/mainLinks';
+
 
 class ResumeUploadPage extends Component {   
 
@@ -48,12 +48,9 @@ class ResumeUploadPage extends Component {
     }
      
     render() {
-    
-        const { isAuthenticated ,user } = this.props.auth;
-        const links = mainLinks(isAuthenticated, user);
-    
+        
         return (
-            <Layout links = {links}>
+            <Layout>
              <>
                 <ResumeFileUpload/>
                 <Resume/>

@@ -1,33 +1,26 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { Helmet } from 'react-helmet'
 import Articles from '../../components/articles/Articles';
 import { connect } from 'react-redux';
 import Layout from '../../components/Layout/Layout';
-import mainLinks from '../../utils/links/mainLinks';
 
-class ArticlesPage extends Component {    
-    render() {
-    
-        const { isAuthenticated ,user } = this.props.auth;
-        const links = mainLinks(isAuthenticated, user);
-               
+
+const ArticlesPage = () => {                      
         return (
             <Fragment>
                  <Helmet>
-                    <title> Articles for fullstack developers - Cravejs </title>
+                    <title> Articles for React fullstack developers | CraveJs </title>
                     <meta 
                         name="description" 
                         content=
-                            "This is the add articles page for cravejs. Lots of articles related to web development, javascript, react, express, mongoose and much more." 
+                            "React fullstack development articles and articles related to Mongoose, express, node and much more." 
                     />
                 </Helmet>
-                <Layout links = {links}>
+                <Layout>
                     <Articles/>
                 </Layout>
             </Fragment>
-      
         );
-    }
 }
 
 

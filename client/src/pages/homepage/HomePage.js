@@ -19,6 +19,7 @@ class HomePage extends Component {
     }
 
     componentDidMount() {
+        document.title = `CraveJs - free online learning resource for React fullstack development`
         window.addEventListener('scroll', this.hasScrolled);
         const homeAboutDOM = this.refs.homeAboutContainer;
         const homeAboutDOMOffset = homeAboutDOM.offsetHeight;

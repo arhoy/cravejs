@@ -1,19 +1,18 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import Login from '../../components/auth/Login';
 import Layout from '../../components/Layout/Layout';
 import { connect } from 'react-redux';
 
-class LoginPage extends Component {
-    render() {
-    
-        
+const LoginPage = () => {   
+        useEffect( () => {
+            document.title = 'Login Page | CraveJs'
+        },[] )
         return (
              <Layout>
                 <Login/>
             </Layout>
         );
     }
-}
 const mapStateToProps = state => ({
     auth: state.auth
 })

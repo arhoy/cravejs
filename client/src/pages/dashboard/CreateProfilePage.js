@@ -1,21 +1,18 @@
 
-import React from 'react';
+import React, { useEffect} from 'react';
 import { connect } from 'react-redux';
 import CreateProfile from '../../components/create-profile/CreateProfile';
 import Layout from '../../components/Layout/Layout';
-import mainLinks from '../../utils/links/mainLinks';
-
-
 
 const CreateProfilePage = () => {
-    const links = mainLinks(null, null);
+   useEffect( () => {
+        document.title = 'Create your Profile | CraveJs';
+   },[])
     return (
-        <Layout links = { links }>
-        <CreateProfile/>
+        <Layout>
+            <CreateProfile/>
          </Layout>
     );
 };
-
-
 
 export default connect()(CreateProfilePage);

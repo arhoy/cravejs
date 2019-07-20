@@ -1,26 +1,31 @@
-import React, { Component } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import AddExperience from '../../components/add-credentials/AddExperience';
 import { connect } from 'react-redux';
 import Layout from '../../components/Layout/Layout';
-import mainLinks from '../../utils/links/mainLinks';
+import {Helmet} from 'react-helmet'
 
-class AddExperiencePage extends Component {    
-    componentDidMount() {
-        document.title = `Add Experience Page for ${this.props.auth.user.name}`;
-    }
+const AddExperiencePage = ({auth: {user: { name }}}) => {    
+
+    useEffect(()=> {
+        document.title = `Add work experience | ${name}`;
+    },[] ) 
     
-    render() {
-        const { isAuthenticated ,user } = this.props.auth;
-        const links = mainLinks(isAuthenticated, user);
-
         return (
-          
-            <Layout links = {links}>
+         
+            <Fragment>
+                <Helmet>
+                    <title> Add professional work related experience | {name} </title>
+                    <meta 
+                        name="description" 
+                        content=
+                            "Add your professional work experience or update your work experience credentials in your profile" 
+                    />
+                </Helmet>
+                <Layout>
                  <AddExperience/>
-            </Layout>
-           
+                </Layout>
+            </Fragment>
         );
-    }
 }
 
 

@@ -1,42 +1,33 @@
-import React, { Component, Fragment } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import {Helmet} from 'react-helmet'
 import { connect } from 'react-redux';
 import AddEducation from '../../components/add-credentials/AddEducation';
 
 import Layout from '../../components/Layout/Layout';
-import mainLinks from '../../utils/links/mainLinks';
 
-class AddEducationPage extends Component { 
 
-  
-    componentDidMount() {
-        document.title = `Add Education Page for ${this.props.auth.user.name}`;
-    }   
-    render() {
-        
-        const { isAuthenticated ,user } = this.props.auth;
-        const links = mainLinks(isAuthenticated, user);
- 
+const AddEducationPage = ({auth: {user: { name }}}) => { 
+
+        useEffect ( ()=> {
+            document.title = `Add Education Page for ${name}`;
+        },[] )
+
         return (
             <Fragment>
                 <Helmet>
-                    <title> Add experience page for {user.name} </title>
+                    <title> Add your education page | {name} </title>
                     <meta 
                         name="description" 
                         content=
-                            "This is the add experience page for cravejs. Add your web developer experience here and showcase your skills in web development." 
+                            "Add your education or update your education credentials in your profile" 
                     />
                 </Helmet>
-                <Layout links = {links}>
+                <Layout>
                     <AddEducation/>
                 </Layout>
             </Fragment>
-           
-           
         );
-    }
 }
-
 
 
 const mapStateToProps = state => ({

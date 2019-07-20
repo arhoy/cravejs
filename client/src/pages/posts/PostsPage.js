@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { Fragment, useEffect } from 'react';
 import Posts from '../../components/posts/Posts';
 import PostForm from '../../components/posts/PostForm';
 import PostHeader from '../../components/posts/PostHeader';
 import Footer from '../../components/Layout/Footer';
 const PostsPage = () => {
+    useEffect( ()=> {
+        document.title = 'Posts page for developers | CraveJs';
+    },[] )
     return (
-        <React.Fragment>
+        <Fragment>
             <div className = "post-container">
                 <PostHeader/>
                 <PostForm
@@ -14,7 +17,7 @@ const PostsPage = () => {
                 <Posts/>
             </div>
             <Footer/>
-        </React.Fragment>
+        </Fragment>
         
     );
 };

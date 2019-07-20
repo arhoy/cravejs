@@ -1,32 +1,22 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import UserOrders from '../../components/orders/UserOrders';
+import UserOrders from '../../components/orders/UserOrders'
 import Layout from '../../components/Layout/Layout';
-import mainLinks from '../../utils/links/mainLinks';
 
 
-
-
-class UserOrdersPage extends Component {    
-    render() {
-    
-        const { isAuthenticated ,user } = this.props.auth;
-        const links = mainLinks(isAuthenticated, user);
-
+const UserOrderPage = () =>  {    
+    useEffect( () => {
+        document.title = 'Order Page | CraveJs'
+    },[])
         return (
-        
-               <Layout links = {links}>
-                    <UserOrders/>
-              </Layout>
+            <Layout>
+               <UserOrders/>
+            </Layout>
            
-        );
-    }
+        );    
 }
-
-
-
 const mapStateToProps = state => ({
     auth: state.auth
 })
 
-export default connect(mapStateToProps)(UserOrdersPage);
+export default connect(mapStateToProps)(UserOrderPage);

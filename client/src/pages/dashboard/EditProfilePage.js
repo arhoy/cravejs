@@ -1,21 +1,18 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import EditProfile from '../../components/edit-profile/EditProfile';
 import { connect } from 'react-redux';
 import Layout from '../../components/Layout/Layout';
-import mainLinks from '../../utils/links/mainLinks';
 
-class EditProfilePage extends Component {    
-    render() {
-    
-        const { isAuthenticated ,user } = this.props.auth;
-        const links = mainLinks(isAuthenticated, user);
+const EditProfilePage = ({auth: {user: { name }}}) => {    
+        useEffect( () => {
+            document.title = `Edit Profile Page | ${name} | CraveJs`
+        },[])
+
         return (
-            <Layout links = {links}>
-             <EditProfile/>
+            <Layout>
+                 <EditProfile/>
             </Layout>
-           
         );
-    }
 }
 
 

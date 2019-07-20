@@ -20,34 +20,20 @@ const Footer = () => {
                         <div className = "Footer__blurb-1">© <span style = {{fontWeight:'bold'}}>CraveJs </span></div> 
                         <div> 
                             web & self development 2017-<Moment format = "YYYY">{footerDate}</Moment>.
-                             All code <a className = "Footer__link" target = "_blank" href="https://opensource.org/licenses/MIT">MIT license</a> 
+                             All code 
+                             <a 
+                                className = "Footer__link" 
+                                target = "_blank" 
+                                href="https://opensource.org/licenses/MIT"
+                                rel = "noopener noreferrer"
+                            >
+                                MIT license
+                            </a> 
                         </div> 
                         </div>   
             
                 </div>
-                {/* <div className="Footer__items">
-                    <ul>
-
-                        <li><Link className = "Footer__link" to = "/">Sample Products</Link></li>
-                        <li><Link className = "Footer__link" to = "/">About Us</Link></li>
-                        <li><Link className = "Footer__link" to = "/">Contact</Link></li>
-                    </ul>
-                </div>
-                <div className="Footer__items">
-                    <ul>
-                        <li><Link className = "Footer__link" to = "/">Learning</Link></li>
-                        <li><Link className = "Footer__link" to = "/">Articles</Link></li>
-                        <li><Link className = "Footer__link" to = "/">Resources</Link></li>
-                        <li><Link className = "Footer__link" to = "/">Blog</Link></li>
-                    </ul>
-                </div>
-                <div className="Footer__items">
-                    <ul>
-                        <li><Link className = "Footer__link" to = "/">Dashboard</Link></li>
-                        <li><Link className = "Footer__link" to = "/">Network</Link></li>
-                        <li><Link className = "Footer__link" to = "/">Profile</Link></li>
-                    </ul>
-                </div> */}
+              
             
         </div>
         </div>

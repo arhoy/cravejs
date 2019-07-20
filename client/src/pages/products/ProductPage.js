@@ -1,27 +1,23 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import ProductDetail from '../../components/products/ProductDetail';
 import Layout from '../../components/Layout/Layout';
-import mainLinks from '../../utils/links/mainLinks';
 
 
 
 
-class ProductsPage extends Component {    
-    render() {
-    
-        const { isAuthenticated ,user } = this.props.auth;
-        const links = mainLinks(isAuthenticated, user);
-        
+const ProductsPage = () => {    
+        useEffect( ()=> {
+            document.title = 'Products Page'
+        },[])
         return (
-
-            <Layout links = {links}>
+            <Layout>
                 <ProductDetail />
             </Layout>
 
            
         );
-    }
+    
 }
 
 
