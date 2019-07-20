@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 import Login from '../../components/auth/Login';
 import Layout from '../../components/Layout/Layout';
 import { connect } from 'react-redux';
-import mainLinks from '../../utils/links/mainLinks';
 
 class LoginPage extends Component {
     render() {
-        const { isAuthenticated ,user } = this.props.auth;
-        const links = mainLinks(isAuthenticated, user);
+    
         
         return (
-             <Layout links = {links}>
+             <Layout>
                 <Login/>
             </Layout>
         );
