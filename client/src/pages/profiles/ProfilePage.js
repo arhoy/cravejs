@@ -3,7 +3,7 @@ import Profile from '../../components/profiles/Profile';
 import Header from '../../components/Layout/Header';
 import { connect } from 'react-redux';
 import Footer from '../../components/Layout/Footer';
-import mainLinks from '../../utils/Links/mainLinks';
+import mainLinks from '../../utils/links/mainLinks';
 
 class ProfilePage extends Component {    
     render() {

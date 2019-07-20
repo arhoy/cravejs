@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import AddEducation from '../../components/add-credentials/AddEducation';
 
 import Layout from '../../components/Layout/Layout';
-import mainLinks from '../../utils/Links/mainLinks';
+import mainLinks from '../../utils/links/mainLinks';
 
 class AddEducationPage extends Component { 
 

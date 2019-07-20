@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Navigation from './Navigation';
-import { googleCustomSearch } from '../../actions/searchActions';
+import { googleCustomSearch, clearGoogleCustomerSearch } from '../../actions/searchActions';
 import PropTypes from 'prop-types';
 import Menu from './Menu';
+import mainLinks from '../../utils/links/mainLinks';
 
 
 class Header extends Component {
@@ -85,6 +86,7 @@ class Header extends Component {
     siteSearchHandler = e => {
         e.preventDefault();
         console.log('I was submitted');
+        this.props.clearGoogleCustomerSearch();
         this.props.googleCustomSearch(this.state.query);
         this.props.history.push('/search');
     }
@@ -95,7 +97,7 @@ class Header extends Component {
         if (user && user.name ) { 
             const displayName = user.name.split(' ')[0]; 
         }
-
+        const links = mainLinks(isAuthenticated, user);
                 
         return (
             
@@ -187,7 +189,7 @@ class Header extends Component {
                                         
                                                 { 
                                                     this.state.showMenu ? 
-                                                    <Menu links = {this.props.links}/>
+                                                    <Menu links = {links}/>
                                                     :null
                                                 }  
                                         </div>  
@@ -213,4 +215,4 @@ const mapStateToProps = state => ({
 })
 
 
-export default connect(mapStateToProps,{ googleCustomSearch })(withRouter(Header));
+export default connect(mapStateToProps,{ googleCustomSearch, clearGoogleCustomerSearch })(withRouter(Header));

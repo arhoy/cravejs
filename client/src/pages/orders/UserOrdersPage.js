@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import UserOrders from '../../components/orders/UserOrders';
 import Layout from '../../components/Layout/Layout';
-import mainLinks from '../../utils/Links/mainLinks';
+import mainLinks from '../../utils/links/mainLinks';
 
 
 

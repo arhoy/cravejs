@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AddExperience from '../../components/add-credentials/AddExperience';
 import { connect } from 'react-redux';
 import Layout from '../../components/Layout/Layout';
-import mainLinks from '../../utils/Links/mainLinks';
+import mainLinks from '../../utils/links/mainLinks';
 
 class AddExperiencePage extends Component {    
     componentDidMount() {

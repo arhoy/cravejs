@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import ResumeFileUpload from '../../components/utils/form/ResumeFileUpload';
 import Resume from '../../components/resume/Resume';
 import Layout from '../../components/Layout/Layout';
-import mainLinks from '../../utils/Links/mainLinks';
+import mainLinks from '../../utils/links/mainLinks';
 
 class ResumeUploadPage extends Component {   
 

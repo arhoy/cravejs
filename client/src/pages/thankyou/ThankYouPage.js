@@ -3,7 +3,7 @@ import Header from '../../components/Layout/Header';
 import { connect } from 'react-redux';
 import ThankYou from '../../components/thankyou/ThankYou';
 import Footer from '../../components/Layout/Footer';
-import mainLinks from '../../utils/Links/mainLinks';
+import mainLinks from '../../utils/links/mainLinks';
 
 
 

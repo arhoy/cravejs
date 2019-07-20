@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet'
 import Dashboard from '../../components/dashboard/Dashboard';
 import { connect } from 'react-redux';
 import Layout from '../../components/Layout/Layout';
-import mainLinks from '../../utils/Links/mainLinks';
+import mainLinks from '../../utils/links/mainLinks';
 
 class DashboardPage extends Component { 
 

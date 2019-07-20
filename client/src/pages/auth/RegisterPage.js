@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Register from '../../components/auth/Register';
 import Layout from '../../components/Layout/Layout';
 import { connect } from 'react-redux';
-import mainLinks from '../../utils/Links/mainLinks';
+import mainLinks from '../../utils/links/mainLinks';
 
 class RegisterPage extends Component {
     render() {

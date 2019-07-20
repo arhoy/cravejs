@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GOOGLE_SEARCH, GOOGLE_SEARCH_ERROR } from './types';
+import { GOOGLE_SEARCH, GOOGLE_SEARCH_ERROR, CLEAR_GOOGLE_SEARCH } from './types';
 
 export const googleCustomSearch = query => async dispatch => {
 
@@ -27,5 +27,15 @@ export const googleCustomSearch = query => async dispatch => {
             type: GOOGLE_SEARCH_ERROR,
             payload: {msg: 'Oops, could not find what you were searching for!'}
         })
+    }
+}
+
+export const clearGoogleCustomerSearch = () => dispatch => {
+    try {
+        dispatch({
+            type: CLEAR_GOOGLE_SEARCH
+        })
+    } catch (error) {
+        console.error('Could not clear the search results', error)
     }
 }

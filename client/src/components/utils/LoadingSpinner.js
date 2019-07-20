@@ -9,4 +9,10 @@ const LoadingSpinner = ({bgColor}) => {
     );
 };
 
+LoadingSpinner.defaultProps = {
+    bgColor: 'rgb(188, 217, 234)'
+}
+
 export default LoadingSpinner;
+
+

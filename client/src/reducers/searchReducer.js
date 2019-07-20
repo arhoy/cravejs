@@ -1,6 +1,7 @@
 import {
     GOOGLE_SEARCH,
-    GOOGLE_SEARCH_ERROR
+    GOOGLE_SEARCH_ERROR,
+    CLEAR_GOOGLE_SEARCH
 } from '../actions/types';
 
 const initialState = {
@@ -26,6 +27,14 @@ export default function( state = initialState, action ){
                 ...state,
                 error: payload,
                 loading: false
+            }
+        case CLEAR_GOOGLE_SEARCH:
+            return {
+                ...state,
+                searchResults: [],
+                query: '',
+                loading: true,
+                error: {}
             }
         default:
             return state

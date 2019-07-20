@@ -20,7 +20,7 @@ const client = contentful.createClient({
 router.get('/:id', (req, res) => {
   // Contentful config use
   const articleId = req.params.id;
-  console.log('request params', req.params);
+
   client
     .getEntry(articleId)
     .then(entry => {

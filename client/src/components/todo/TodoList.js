@@ -7,7 +7,7 @@ import { getSortedTodos } from '../../actions/todoActions';
 import TodoListItem from './TodoListItem';
 
 
-const TodoList = ({todos, inputRef, todo: { currentTodo }, getSortedTodos}) => {
+const TodoList = ({ todos, inputRef, todo: { currentTodo }, getSortedTodos}) => {
 
     const reorder = (list, startIndex, endIndex) => {
         const result = Array.from(list);
@@ -16,6 +16,7 @@ const TodoList = ({todos, inputRef, todo: { currentTodo }, getSortedTodos}) => {
 
         return result
     }
+
     // BEAUTIFUL DND
     const onDragEnd = result => {
        const { destination, source, draggableId } = result;

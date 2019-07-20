@@ -112,11 +112,11 @@ router.put(
                 .withMessage('To Do description must be between 1 and 255 characters!')
          ],
         async (req,res) => {
-            console.log('this is being called!');
+
             // check express-validation
             const errors = validationResult(req);
             if( !errors.isEmpty() ) {
-                console.log('wtf')
+      
                 return res.status(400).json({ errors: errors.array() })
             } 
 
@@ -182,8 +182,7 @@ router.put(
 
             // update the status by cycling through
             let { status } = req.body;
-            console.log(status);
-
+          
             switch( status ) {
                 case 'not completed':
                     status = 'in progress';

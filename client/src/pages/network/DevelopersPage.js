@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 import Developers from '../../components/developers/Developers';
 import Layout from '../../components/Layout/Layout';
-import mainLinks from '../../utils/Links/mainLinks';
+import mainLinks from '../../utils/links/mainLinks';
 
 
 class DevelopersPage extends Component {    

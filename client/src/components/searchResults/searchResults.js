@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import LoadingSpinner from '../utils/LoadingSpinner';
 
 const SearchResults = ({search: {loading, searchResults, error, query}, history}) => {
     
@@ -9,6 +10,7 @@ const SearchResults = ({search: {loading, searchResults, error, query}, history}
        
         history.push(link);
     }
+    if ( loading ) return   <div className = "SearchResults__summary"> <LoadingSpinner/> </div>; 
 
     if(searchResults){
 

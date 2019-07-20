@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Login from '../../components/auth/Login';
 import Layout from '../../components/Layout/Layout';
 import { connect } from 'react-redux';
-import mainLinks from '../../utils/Links/mainLinks';
+import mainLinks from '../../utils/links/mainLinks';
 
 class LoginPage extends Component {
     render() {

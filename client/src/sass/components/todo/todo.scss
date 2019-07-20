@@ -1,13 +1,7 @@
-.TodoContainer {
-    min-height: '100vh';
-    display:'flex';
-    flex-direction:'column';
-    justify-content:'space-between';
-     background: $color-white;
-     overflow-x:'hidden';
-}
 
 .Todo {
+    grid-column: 1 / -1;
+    background: $color-white;
     &__signin {
         background-image: linear-gradient(
             to right bottom,

@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet'
 import Articles from '../../components/articles/Articles';
 import { connect } from 'react-redux';
 import Layout from '../../components/Layout/Layout';
-import mainLinks from '../../utils/Links/mainLinks';
+import mainLinks from '../../utils/links/mainLinks';
 
 class ArticlesPage extends Component {    
     render() {

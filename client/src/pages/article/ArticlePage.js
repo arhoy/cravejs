@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet'
 
 import Layout from '../../components/Layout/Layout';
 import FullArticle from '../../components/article/FullArticle';
-import mainLinks from '../../utils/Links/mainLinks';
+import mainLinks from '../../utils/links/mainLinks';
 
 
 class ArticlePage extends Component {    

@@ -27,16 +27,16 @@ const TodoNoAuth = () => {
             behavior: 'smooth'
           });
     }
-
+ 
     return  (
-        <Fragment>
+        <div className = "Todo">
               { modal ? <Login/> : null}
             <div className = {`Todo__signin ${modal ? 'Todo__signin-grey': ''}`} onClick = { signUpHandler } >
                 <TodoHeader modal = {modal} />
                 <TodoForm />
                 <TodoList todos = {sampleTodos} />
             </div>        
-        </Fragment>
+        </div>
  
     );
 };
