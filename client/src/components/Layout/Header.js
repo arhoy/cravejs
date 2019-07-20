@@ -6,7 +6,7 @@ import Navigation from './Navigation';
 import { googleCustomSearch, clearGoogleCustomerSearch } from '../../actions/searchActions';
 import PropTypes from 'prop-types';
 import Menu from './Menu';
-import mainLinks from '../../utils/links/mainLinks';
+import mainLinks from './links/mainLinks';
 
 
 class Header extends Component {

@@ -4,24 +4,21 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/authActions';
+import mainLinks from './links/mainLinks';
 
 
 const Navigation = ({ logoutUser, auth: { user, isAuthenticated } }) => {
     const [isOpen, setIsOpen] = useState(false);
 
 
-    const logoutUserHandler = e => {
-        e.preventDefault();
-        logoutUser();
-        setIsOpen(!isOpen);
-      }
     const onNavToggleHandler = () => {
         setIsOpen(!isOpen);
     }
 
         if (user && user.name ) { const displayName = user.name.split(' ')[0]; }
         
-     
+    const links = mainLinks(isAuthenticated, user); 
+
 
         return (
                 <div className="navigation">
@@ -31,15 +28,17 @@ const Navigation = ({ logoutUser, auth: { user, isAuthenticated } }) => {
                         <span className="navigation__icon">&nbsp;</span>
                     </label>
                     
-
+            
                     {
                         isOpen ? 
                         <Fragment>
                             <div className="navigation__background">&nbsp;</div>
                             <nav className="navigation__nav">
-                               {
-                                   isAuthenticated ? <div>FUck you</div> : <div> Fukc yiou gooo</div>
-                               }
+                                <ul className="navigation__list">
+                                {links.map( link => (
+                                    <li key = {link.linkTo} > <Link to = { link.linkTo } className = "navigation__link" > { link.title } </Link> </li>
+                                ) )}
+                                </ul>
                             </nav>
                         </Fragment>
                         
