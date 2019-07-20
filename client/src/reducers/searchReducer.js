@@ -5,6 +5,7 @@ import {
 
 const initialState = {
     searchResults: [],
+    query: '',
     loading: true,
     error: {}
 }
@@ -15,8 +16,9 @@ export default function( state = initialState, action ){
        case GOOGLE_SEARCH:
            return {
                ...state,
-               searchResults: payload,
+               searchResults: payload.searchResults,
                loading: false,
+               query: payload.query,
                error: {}
            } 
         case GOOGLE_SEARCH_ERROR:

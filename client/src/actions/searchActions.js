@@ -14,7 +14,10 @@ export const googleCustomSearch = query => async dispatch => {
         } else {
             dispatch({
                 type: GOOGLE_SEARCH,
-                payload: res.data
+                payload: {
+                    searchResults:res.data,
+                    query:query
+                }
             })
         }
     

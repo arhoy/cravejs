@@ -1,19 +1,52 @@
 
-.SearchResults-container {
-    min-height: 100vh;
-    display:'flex';
-    flex-direction:'column';
-    justify-content:'space-between';
-     background: $color-white;
-     overflow-x:'hidden';
-}
 .SearchResults {
-    min-height: 65vh;
-    margin: 2rem;
-    &__link {
-        background: $fb-grey;
+
+    &__summary, &__message {
         padding: 2rem;
-        margin: 1rem 0rem;
+        background: $color-white;
+        grid-column: 1 / -1;
+        font-size: 2.3rem;
+        text-align: center;
+    }
+    &__message {
+        font-size: 1.6rem;
+    }
+
+    grid-column: 1/-1;
+    display:grid;
+    grid-template-columns:
+        [full-start] 1fr 
+        [center-start] repeat(4, [col-start] minmax(min-content,1fr) [col-end] ) 
+        [center-end] 1fr [full-end];
+
+    max-width: 95rem;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+
+    @include respond(phone){
+        grid-template-columns:
+            [full-start] 1fr 
+            [center-start] repeat(8, [col-start] minmax(min-content,1fr) [col-end] ) 
+            [center-end] 1fr [full-end];
+    }
+    &__header {
+        grid-column: 1 / -1;
+  
+        h2 {
+            font-size: 2.4rem;
+            margin: 2rem 0;
+        }
+    }
+    &__list {
+        grid-column: center-start/ center-end;
+        & h4 {
+            font-size: 2rem;
+        }
+    }
+    &__link {
+        padding: 2rem;
+        margin: 3rem 1rem;
+        box-shadow: 4px -4px 9px 2px rgba(108, 108, 179, 0.2);
         &:hover {
             background: darken($fb-grey,3%);
             cursor: pointer;
