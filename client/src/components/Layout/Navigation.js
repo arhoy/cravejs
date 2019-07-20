@@ -32,18 +32,7 @@ class Navigation extends Component {
                     links.map( link => (
                         <li key = {link.linkTo} > <Link to = { link.linkTo } className = "navigation__link" > { link.title } </Link> </li>
                     ))
-                }
-                {/* <li> <Link to = "/" className = "navigation__link">Home</Link> </li>
-                <li> <Link to = {isAuthenticated ? "/dashboard": "/login"} className = "navigation__link">{isAuthenticated ? `Dashboard` : `Login`  }</Link> </li>
-                <li> <Link to = "/developers" className = "navigation__link">Network</Link> </li>
-                <li> <Link to = "/articles" className = "navigation__link">Articles</Link> </li>
-                <li> <Link to = "/posts" className = "navigation__link">Daily Feed</Link> </li>
-                <li> <Link to = "/products" className = "navigation__link" >Products</Link></li>
-                <li> <Link to = "/contact" className = "navigation__link" >Contact</Link></li>
-                {
-                    isAuthenticated ?  <a href="#!" onClick={this.logoutUserHandler.bind(this)} className="navigation__link"> Logout </a> : null
-                } */}
-          
+                }   
             </ul>   
         )
 
