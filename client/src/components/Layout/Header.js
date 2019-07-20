@@ -94,9 +94,6 @@ class Header extends Component {
 
     render() {
         const { user, isAuthenticated } = this.props.auth;
-        if (user && user.name ) { 
-            const displayName = user.name.split(' ')[0]; 
-        }
         const links = mainLinks(isAuthenticated, user);
                 
         return (

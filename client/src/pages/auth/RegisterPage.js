@@ -4,6 +4,7 @@ import Layout from '../../components/Layout/Layout';
 import { connect } from 'react-redux';
 import mainLinks from '../../utils/links/mainLinks';
 
+
 class RegisterPage extends Component {
     render() {
         const { isAuthenticated ,user } = this.props.auth;
