@@ -3,18 +3,9 @@ import Article from './Article';
 import calcReadTime from '../utils/calcReadTime';
 
 const ArticleFeed = ({ articles, history }) => {
+
   return articles.map(article => {
     const { fields } = article;
-    const { sys } = article;
-
-    if (
-      sys.contentType.sys.id === 'pythonPosts' ||
-      sys.contentType.sys.id === 'blogPost' ||
-      sys.contentType.sys.id === 'javascriptPosts' ||
-      sys.contentType.sys.id === 'expressPosts' || 
-      sys.contentType.sys.id === 'reactPosts' ||
-      sys.contentType.sys.id === 'mongoDb'
-    ) {
 
       const imgDescription = fields.heroImage.fields.description;
       const imgURL = fields.heroImage.fields.file.url;
@@ -33,9 +24,7 @@ const ArticleFeed = ({ articles, history }) => {
           readTime={readTime}
         />
       );
-    } else {
-      return null
-    }
+  
   });
 };
 

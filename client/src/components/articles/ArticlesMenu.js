@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { getArticleByModel } from '../../actions/articleActions';
+import { getArticles } from '../../actions/articleActions';
 
-const ArticlesMenu = ({getArticleByModel}) => {
+const ArticlesMenu = ({getArticles}) => {
 
     const [article, setArticle] = useState('');
     const options = [
-        { value: 'all', label: 'Select Articles...' },
+        { value: '', label: 'Select Articles...' },
         { value: 'reactPosts', label: 'React Articles' },
         { value: 'javascriptPosts', label: 'Javascript Articles' },
         { value: 'expressPosts', label: 'Express Articles' },
@@ -15,11 +15,11 @@ const ArticlesMenu = ({getArticleByModel}) => {
     ]
 
     const setArticleHandler = e => {
+        const query = `?contentType=${e.target.value}`
         setArticle(e.target.value)
-        getArticleByModel(e.target.value);
+        getArticles(query);
     }
 
-    console.log('article value is: ', article)
     return (
         <select 
             name = "article_select_menu" 
@@ -46,4 +46,4 @@ const mapStateToProps = state => ({
     articles: state.articles
 })
 
-export default connect(mapStateToProps, {getArticleByModel})(ArticlesMenu);
+export default connect(mapStateToProps, {getArticles})(ArticlesMenu);

@@ -5,7 +5,7 @@ const contentful = require('contentful');
 
 const contentful_space = require('../../config/keys').contentful_space;
 const contentful_accessToken = require('../../config/keys').contentful_accessToken;
-
+const isEmpty = require('../../validation/is-empty');
 const client = contentful.createClient({
   space: contentful_space,
   accessToken: contentful_accessToken
@@ -22,7 +22,6 @@ router.get('/model/:content_type', async (req, res) => {
         limit: 20,
         'content_type': contentType, // content type is the content model name in contentful
       });
-      console.log(entries.items[0].fields);
       res.json(entries.items[0].fields);
     } catch (error) {
       console.error('There as an error with the slug request',error);
@@ -64,7 +63,7 @@ router.get('/:id', (req, res) => {
   client
     .getEntry(articleId)
     .then(entry => {
-      // console.log('This is the entry rich text body',entry.fields)
+     
       res.status(200).json({ msg: entry });
     })
     .catch(err => res.status(400).json({ msg: 'There was an error' }));
@@ -79,14 +78,97 @@ router.get('/:id', (req, res) => {
 // Access: Public
 
 router.get('/', async (req, res) => {
-
   try {
-    const entries = await client
+    // get back entries from contentful. They give as a shitty ass API we need to work with it a bit to get back only rel articles
+    let order = req.query.order || 'sys.createdAt';
+    switch(order) {
+      case 'createdAt':
+        order = 'sys.createdAt';
+        break;
+      case '-createdAt':
+        order = '-sys.createdAt'
+        break;
+      case 'updatedAt':
+        order = 'sys.updatedAt';
+        break;
+      case '-updatedAt':
+        order = '-sys.updatedAt'
+        break;
+      default: 
+        order = 'sys.createdAt'
+        break;
+    }
+    let entries = await client
       .getEntries({
         limit: 1000,
-        order: '-sys.createdAt'
-      });              
-   res.status(200).json(entries.items);  
+        order
+      });     
+
+   // BUILD THE QUERY
+
+   let query = entries.items;  
+   let queryToSend = [];
+   if(query) {
+      query.forEach( entry => {
+  
+        const contentType = entry.sys.contentType.sys.id;
+
+        // check to see if we have a req.query.contentType
+        if( !isEmpty(req.query.contentType) && contentType === req.query.contentType ) {
+
+            // add entry to queryToSend
+            queryToSend.push(entry);
+        }
+        // no filter was applied
+        if( isEmpty(req.query.contentType) ) {
+          // send back all relevant article content
+            if (
+              contentType === 'blogPost' || 
+              contentType === 'pythonPosts' || 
+              contentType === 'mongoDb' || 
+              contentType === 'reactPosts' || 
+              contentType === 'expressPosts' 
+            )
+            queryToSend.push(entry);
+        }
+      })
+
+
+        // sort query to send
+        if(!isEmpty(req.query.sort)) {
+          queryToSend.sort( (a,b)=> {
+            let x,y;
+            switch(req.query.sort){
+              case 'title':
+                   x = a.title.toLowerCase();
+                   y = b.title.toLowerCase();
+                  return x < y ? -1 : x > y ? 1: 0;
+              case '-title':
+                  x = a.title.toLowerCase();
+                  y = b.title.toLowerCase();
+                 return y < x ? -1 : y > x ? 1: 0;
+              case 'author':
+                   x = a.author.fields.name.toLowerCase();
+                   y = b.author.fields.name.toLowerCase();
+                  return x < y ? -1 : x > y ? 1: 0;
+              case 'author':
+                  x = a.author.fields.name.toLowerCase();
+                  y = b.author.fields.name.toLowerCase();
+                  return y < x ? -1 : y > x ? 1: 0;
+              default:
+                   x = a.title.toLowerCase();
+                   y = b.title.toLowerCase();
+                  return x < y ? -1 : x > y ? 1: 0;
+            }
+          })
+        } 
+    
+        // finally, send back array response
+     
+        res.json(queryToSend);
+        console.log(queryToSend.length);
+   }
+   
   } catch (error) {
      res.status(400).json({msg:'There was an error'})
   }

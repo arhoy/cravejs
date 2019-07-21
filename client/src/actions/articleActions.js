@@ -33,9 +33,9 @@ export const getArticleByModel = model => async dispatch => {
     }
 }
 
-export const getArticles = () => dispatch => {
+export const getArticles = query => dispatch => {
   axios
-    .get(`/api/articles`)
+    .get(`/api/articles${query}`)
     .then(res =>
       dispatch({
         type: GET_ARTICLES,

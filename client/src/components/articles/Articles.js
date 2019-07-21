@@ -18,7 +18,7 @@ class Articles extends Component {
   };
 
   componentDidMount() {
-    this.props.getArticles();
+    this.props.getArticles(this.props.location.search);
   }
 
   componentDidUpdate(prevProps) {
