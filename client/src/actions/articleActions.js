@@ -20,6 +20,19 @@ export const getArticle = id => dispatch => {
     );
 };
 
+export const getArticleByModel = model => async dispatch => {
+    try {
+        const res = await axios.get(`/api/articles/model/${model}`);
+
+        dispatch({
+          type: GET_ARTICLE,
+          payload: res.data
+        })
+    } catch (error) {
+      console.error('there was an error with the getArticleByModel action', error)
+    }
+}
+
 export const getArticles = () => dispatch => {
   axios
     .get(`/api/articles`)

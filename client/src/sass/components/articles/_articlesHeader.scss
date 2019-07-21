@@ -1,0 +1,19 @@
+.ArticlesHeader {
+    display:flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    padding-right: 2rem;
+    align-items: center;
+    background: linear-gradient( to right, $trello-blue-100,$trello-blue-400);
+    &__menu {
+        outline: none;
+        border:none;
+        border-radius: 3px;
+        width: 20rem;
+        margin: 0 2rem;
+    }
+    @include respond(phone){
+        margin-right: 0rem;
+        justify-content: center;
+    }
+}

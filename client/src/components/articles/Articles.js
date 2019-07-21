@@ -6,12 +6,15 @@ import { withRouter } from 'react-router-dom';
 import { getArticles } from '../../actions/articleActions';
 import ArticleFeed from './ArticleFeed';
 import isEmpty from '../../validation/is-empty';
+import ArticlesHeader from './ArticlesHeader';
+
 
 class Articles extends Component {
   state = {
     filteredArticles: [],
     keyword: '',
-    articles: []
+    articles: [],
+    results: null
   };
 
   componentDidMount() {
@@ -62,12 +65,10 @@ class Articles extends Component {
     
     return (
       <div style = {{gridColumn:'1/-1'}}>
-        <div className="Articles__inputHolder">
-           <input onChange = { this.inputChangeHandler } className = "Articles__input" type="text" placeholder = "Search Articles"/>
-        </div>
-        <div className="Articles">
-          {articleContent}
-        </div>
+          <ArticlesHeader inputChangeHandler = {this.inputChangeHandler} />
+          <div className="Articles">
+            {articleContent}
+          </div>
      </div>
     );
   }

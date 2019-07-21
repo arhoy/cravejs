@@ -4,7 +4,8 @@ import React from 'react';
 const Article = ({urlId,title,authorName,description,publishDate,slug,imgURL,readTime,imgDescription,history}) => {
 
     const goToArticle = () => {
-        history.push(`/articles/${urlId}`);
+        console.log('slug is ', slug);
+        history.push(`/articles/${urlId}?${slug}`);
     
     }
 
