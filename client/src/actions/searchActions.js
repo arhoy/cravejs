@@ -6,7 +6,6 @@ export const googleCustomSearch = query => async dispatch => {
     try {
         const res = await axios.get(`/api/gcse/${query}`);
         if(res === null || res === [] || res === ''){
-            console.log('why is this runnuing');
             dispatch({
                 type: GOOGLE_SEARCH_ERROR,
                 payload: {msg: 'No Search Results'}
@@ -30,7 +29,7 @@ export const googleCustomSearch = query => async dispatch => {
     }
 }
 
-export const clearGoogleCustomerSearch = () => dispatch => {
+export const clearGoogleCustomSearch = () => dispatch => {
     try {
         dispatch({
             type: CLEAR_GOOGLE_SEARCH

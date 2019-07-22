@@ -5,13 +5,6 @@ const router = express.Router();
 const googleAPIKEY = require('../../config/keys').googleAPIKEY;
 const customerSearchEngineID = require('../../config/keys').customerSearchEngineID; 
 
-router.get('/', (req, res) => {
-    try {
-        res.json({msg:'GCSE works!'})
-    } catch (error) {
-        console.log(error)
-    }
-})
 
 // Type     :   GET
 // Route    :   api/google-custom-search/:query

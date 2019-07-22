@@ -1,11 +1,11 @@
 import React from 'react';
 
 
-const Article = ({urlId,title,authorName,description,publishDate,slug,imgURL,readTime,imgDescription,history}) => {
+const Article = ({title,authorName,description,publishDate,slug,imgURL,readTime,imgDescription,history, contentType}) => {
 
     const goToArticle = () => {
-        console.log('slug is ', slug);
-        history.push(`/articles/${urlId}?${slug}`);
+
+        history.push(`/articles/${contentType}/${slug}`);
     
     }
 

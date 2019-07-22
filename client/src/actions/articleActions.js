@@ -20,6 +20,19 @@ export const getArticle = id => dispatch => {
     );
 };
 
+export const getArticleByModelAndSlug = (contentType, slugName) => async dispatch => {
+   
+    try {
+      const res = await axios.get(`/api/articles/${contentType}/${slugName}`);
+      dispatch({
+        type: GET_ARTICLE,
+        payload: res.data
+      })
+    } catch (error) {
+        console.error('there was an error with the getArticleByModelAndSlug action', error);
+    }
+}
+
 export const getArticleByModel = model => async dispatch => {
     try {
         const res = await axios.get(`/api/articles/model/${model}`);
@@ -29,7 +42,7 @@ export const getArticleByModel = model => async dispatch => {
           payload: res.data
         })
     } catch (error) {
-      console.error('there was an error with the getArticleByModel action', error)
+      console.error('there was an error with the getArticleByModel action', error);
     }
 }
 

@@ -5,8 +5,7 @@ import calcReadTime from '../utils/calcReadTime';
 const ArticleFeed = ({ articles, history }) => {
 
   return articles.map(article => {
-    const { fields } = article;
-
+    const { fields, sys } = article;
       const imgDescription = fields.heroImage.fields.description;
       const imgURL = fields.heroImage.fields.file.url;
       const readTime = calcReadTime(fields.bodyRichText.content);
@@ -22,6 +21,7 @@ const ArticleFeed = ({ articles, history }) => {
           slug={fields.slug}
           history={history}
           readTime={readTime}
+          contentType = {sys.contentType.sys.id}
         />
       );
   

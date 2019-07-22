@@ -166,7 +166,6 @@ router.get('/', async (req, res) => {
         // finally, send back array response
      
         res.json(queryToSend);
-        console.log(queryToSend.length);
    }
    
   } catch (error) {

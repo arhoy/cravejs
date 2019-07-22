@@ -2,32 +2,31 @@ import React, { Fragment, useEffect } from 'react';
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { getArticle } from '../../actions/articleActions';
+import { getArticleByModelAndSlug } from '../../actions/articleActions';
 import PropTypes from 'prop-types';
 import FullArticleDetails from './FullArticleDetails';
 import isEmpty from '../../validation/is-empty';
 
-const FullArticle = ({ articles: {article}, match, getArticle, loading }) => {
+const FullArticle = ({ articles: {article}, match: { params: { contentType, slugName } },  loading, getArticleByModelAndSlug }) => {
+
     useEffect( ()=> {
-        const { id } = match.params;
-        if(id) {
-          getArticle(id);
-        }
+      getArticleByModelAndSlug(contentType, slugName);
     },[])
  
     let articleContent;
 
     if (loading || isEmpty(article)) {
+  
       articleContent = <div>Loading</div>;
     } else {
-      const { fields } = article.msg;
+      const { fields } = article[0];
       const image = fields.heroImage.fields;
       const author = fields.author.fields;
       const authorImage = author.image.fields.file.url;
 
       // update the title of the document
       document.title = fields.title;
-      
+ 
       articleContent = (
         <Fragment>
            <Helmet>
@@ -68,10 +67,7 @@ const mapStateToProps = state => ({
 });
 
 FullArticle.propTypes = {
-  getArticle: PropTypes.func.isRequired
+  getArticleByModelAndSlug: PropTypes.func.isRequired
 };
 
-export default connect(
-  mapStateToProps,
-  { getArticle }
-)(withRouter(FullArticle));
+export default connect(mapStateToProps, { getArticleByModelAndSlug })(withRouter(FullArticle));

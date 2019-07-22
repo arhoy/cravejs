@@ -119,7 +119,7 @@ class App extends Component {
           <Route exact path = "/login" component = {LoginPage}/>
           <Route exact path = "/articles" component = {ArticlesPage}/>
           <Route exact path = "/articles/model/:content-type" component = {ArticlesPage}/>
-          <Route exact path = "/articles/:id" component = {ArticlePage}/>
+          <Route exact path = "/articles/:contentType/:slugName" component = {ArticlePage}/>
 
           <Route exact path = "/posts" component = {PostsPage}/>
           <Route exact path = "/products" component = {ProductsPage}/>

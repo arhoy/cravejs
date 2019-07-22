@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Navigation from './Navigation';
-import { googleCustomSearch, clearGoogleCustomerSearch } from '../../actions/searchActions';
+import { googleCustomSearch, clearGoogleCustomSearch } from '../../actions/searchActions';
 import PropTypes from 'prop-types';
 import Menu from './Menu';
 import mainLinks from './links/mainLinks';
@@ -85,12 +85,11 @@ class Header extends Component {
 
     siteSearchHandler = e => {
         e.preventDefault();
-        console.log('I was submitted');
-        this.props.clearGoogleCustomerSearch();
+        this.props.clearGoogleCustomSearch();
         this.props.googleCustomSearch(this.state.query);
         this.props.history.push('/search');
     }
- 
+   
 
     render() {
         const { user, isAuthenticated } = this.props.auth;
@@ -107,14 +106,15 @@ class Header extends Component {
                         </div>
                         <div className="Header__searchbar">
                         
-                            <form onSubmit = {this.siteSearchHandler.bind(this)}>
+                            <form 
+                                onSubmit = {this.siteSearchHandler.bind(this)}>
                             <div>
                                 <input
                                     type="text" 
                                     id="site-search-google" 
                                     name="query" 
                                     title="Search Site" 
-                                    alt="Search Text" maxLength="256" 
+                                    alt="Search Text" maxLength="50" 
                                     placeholder = "Search Site" 
                                     value = { this.state.query }
                                     onChange={e => this.onChange(e)}
@@ -212,4 +212,4 @@ const mapStateToProps = state => ({
 })
 
 
-export default connect(mapStateToProps,{ googleCustomSearch, clearGoogleCustomerSearch })(withRouter(Header));
+export default connect(mapStateToProps,{ googleCustomSearch, clearGoogleCustomSearch })(withRouter(Header));
