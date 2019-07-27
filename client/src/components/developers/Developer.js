@@ -10,8 +10,7 @@ class Developer extends Component {
     }
     render() {
         const { name, avatar, handle, headline, skills } = this.props;
-    
-    
+  
         return (
    
                  <div 
@@ -19,13 +18,14 @@ class Developer extends Component {
                         onClick = { this.showDetailsHandler.bind(this,handle) }
                         data-tip data-for = {handle}
                       
-                >
+                >       
+                        <div className="Developer__name">  {name} </div>
                         <figure className = "Developer__figure">
                             <img className = "Developer__image"src= { avatar } alt={ avatar }/>
                         </figure>
-                        <div className="Developer__name">  {name} </div>
-                        <div className="Developer__handle"> { handle }  </div>
-                        <div className="Developer__headline">  {headline} </div>
+                        <div className="Developer__headline"> 
+                            {headline.length < 50 ? headline : `${headline.slice(0,50)}...` } 
+                        </div>
         
                         <Link className = "Developer__button link link__Developer" to = {`/profile/${handle}`} > 
                             View Full Profile
@@ -55,14 +55,8 @@ class Developer extends Component {
                                 </ul>
                             </div>
                         </ReactTooltip>
-                           
-                     
-                </div>
-
-          
-           
-            
-           
+                                             
+                </div>        
         );
     }
 }

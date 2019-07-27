@@ -1,0 +1,36 @@
+.Portfolios {
+    grid-column: center-start / center-end;
+    background:$fb-grey;
+    justify-items:center;
+    color:$trello-blue-900;
+    font-size: 1.6rem;
+    margin: 2rem 6rem;
+    margin-bottom: 6rem;
+
+    display: grid;
+    grid-template-columns:  repeat(auto-fit,minmax(30rem,1fr));
+    grid-gap: 3rem;
+    @include respond(tab-port){
+        grid-column: full-start / full-end;
+        padding: 1rem 3rem;
+        margin: 2rem 2rem;
+    }
+    @include respond(phone){
+        overflow-x: scroll;
+        padding: 1rem 1rem;
+        margin: 2rem 0rem;
+    }
+    &__header {
+        grid-column: 1/-1;
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        padding: 2rem;
+        align-items: center;
+        background: linear-gradient( to right, $color-white, $fb-grey);
+        @include respond(phone){
+            margin-right: 0rem;
+            justify-content: center;
+        }
+    }
+}

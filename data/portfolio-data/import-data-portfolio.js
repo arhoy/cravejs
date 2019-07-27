@@ -50,5 +50,5 @@ const deleteData = async () => {
 
 
 // CALL OPERATIONS ABOVE SEPERATELY : node data/portfolio-data/import-data-portfolio.js
-      importData();
-     // deleteData();
+       importData();
+      // deleteData();

@@ -15,7 +15,9 @@ const PortfolioSchema = new Schema({
         required:true,
     },
     description: {
-        type:String
+        type:String,
+        maxlength: 50,
+        minlength: 20
     },
     lastUpdated:{
         type: Date,

@@ -27,6 +27,14 @@ class Header extends Component {
                 {
                     title:'Articles',
                     linkTo:'/articles'
+                },
+                {
+                    title:'Products',
+                    linkTo:'/products'
+                },
+                {
+                    title:'Porfolio',
+                    linkTo:'/portfolios'
                 }
             ]
         };

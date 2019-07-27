@@ -6,6 +6,10 @@
                 linkTo: `/dashboard` 
             },
             {
+                title: 'Articles',
+                linkTo: '/articles' 
+            },
+            {
                 title: 'Dashboard',
                 linkTo: '/dashboard' 
             },
@@ -16,6 +20,10 @@
             {
                 title: 'Products',
                 linkTo: '/products' 
+            },
+            {
+                title: 'Portfolio',
+                linkTo: '/portfolios' 
             },
             {
                 title: 'My Cart',
@@ -47,6 +55,10 @@
             {
                 title: 'Products',
                 linkTo: '/products' 
+            },
+            {
+                title: 'Portfolio',
+                linkTo: '/portfolios' 
             },
             {
                 title: 'Todos',

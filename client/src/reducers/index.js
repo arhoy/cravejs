@@ -11,6 +11,7 @@ import articlesReducer from './articlesReducer';
 import todoReducer from './todoReducer';
 import pageHistoryReducer from './pageHistoryReducer';
 import searchReducer from './searchReducer';
+import portfolioReducer from './portfolioReducer';
 
 export default combineReducers({
   auth: authReducer,
@@ -24,5 +25,6 @@ export default combineReducers({
   articles:articlesReducer,
   todo: todoReducer,
   pageHistory: pageHistoryReducer,
-  search: searchReducer
+  search: searchReducer,
+  portfolio: portfolioReducer
 });

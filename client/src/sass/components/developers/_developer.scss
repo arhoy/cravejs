@@ -1,15 +1,11 @@
 .Developer { 
-    font-size: 1.6rem;
-    color: $color-black;
- 
-    background-color: $color-black;
-    display:grid;
-    grid-template-rows: 1fr 7rem 4rem 12rem 4rem;
+    width: 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: black;
     cursor: pointer;
-    border: 0.5rem solid $fb-grey;
-    &:hover {
-        background-color: $color-white;
-    }
+
   
     &__figure {
         display: flex;
@@ -17,12 +13,10 @@
         justify-content: center;
     }
     &__image {
-        display: block;
-        width: 100%;
+        width: 50%;
         border-radius: 50%;
-        max-width: 15rem;
-        
-    
+        object-fit: cover;
+        max-height: 14rem;
     }
     &__name, &__headline, &__handle, &__button {
         display: flex;
@@ -41,6 +35,8 @@
         overflow: hidden;
         background: $color-white;
         align-items: flex-start;
+        max-height: 10rem;
+        flex-grow: 1;
     }
     &__handle {
         background-color:$color-black;
@@ -58,7 +54,5 @@
         padding: 1rem 2rem;
         color: $color-black;
         background-color: $fb-grey-1;
-        display: flex;
-        align-self: baseline;
     }
 }
