@@ -1,0 +1,101 @@
+[
+	{
+		"_id": "5c79d787ec5707264c650800",
+		"name": "Mongoose - Survival Guide",
+		"price": 29.99,
+		"description": "This course will walk you through creating the backend for several sample sites, including a social media platform and ecommerce site. Learn advanced Mongoose techniques.",
+		"longDescription": "In this 10 hour hands on practical course you will set up your first backend using express, connect to mlab or mongoDB Atlas in the cloud, and learn how to create and setup your own backend logic through node and with tools like Postman. Will be creating the backend for a simplified social media site and ecommerce site. In the process you will learn the basic of CRUD operations and familiarize yourself with the Mongoose library.  ",
+		"imageUrl": "https://res.cloudinary.com/dcb389szc/image/upload/v1564181035/cravejs/products/mongoose.png",
+		"userId": "5c60a6a07b03270a54ca90ae",
+		"lastUpdated": "2019-03-02T01:08:23.250Z",
+		"__v": 0
+	},
+	{
+		"_id": "5c79d7e5ec5707264c650801",
+		"name": "Build a FullStack React Project",
+		"price": 199.99,
+		"description": "Create a fullstack application with React/Redux, Mongoose and Express for a sample renter site, inspired by airbnb! Build a truly real world application including email, seo and much more.",
+		"longDescription": "In this 10 hour hands on practical course you will set up your first backend using express, connect to mlab or mongoDB Atlas in the cloud, and learn how to create and setup your own backend logic through node and with tools like Postman. Will be creating the backend for a simplified social media site and ecommerce site. In the process you will learn the basic of CRUD operations and familiarize yourself with the Mongoose library.  ",
+		"imageUrl": "https://res.cloudinary.com/dcb389szc/image/upload/v1564181034/cravejs/products/mernstack.png",
+		"userId": "5c60a6a07b03270a54ca90ae",
+		"lastUpdated": "2019-03-02T01:09:57.005Z",
+		"__v": 0
+	},
+	{
+		"_id": "5c80822e1c54830c34661f9d",
+		"name": "Angular - Survival Guide",
+		"price": 67.99,
+		"description": "This Angular will go through the basics and intermediate concepts of a Angular. Build an awesome, scalable and reactive angular site with Angular 8. No Angular prerequisite required.",
+		"longDescription": "One of the most popular frameworks for front end development, this course assumes no prior knowledge of Angular and will walk you through all the concepts from start to finish",
+		"imageUrl": "https://res.cloudinary.com/dcb389szc/image/upload/v1564181035/cravejs/products/angular.png",
+		"userId": "5c60a6a07b03270a54ca90ae",
+		"lastUpdated": "2019-03-07T02:30:06.693Z",
+		"__v": 0
+	},
+	{
+		"_id": "5c8087ec1afdae636c5f2e27",
+		"name": "CSS with React - Survival Guide\n",
+		"price": 19.99,
+		"description": "In this specialized scss course done through a create-react-app project you will learn the basics of scss and modern css concepts such as flexbox and css grid. ",
+		"longDescription": "This is a fully comprehensive 25 hour course that will get any beginner or those struggling with css or styling there apps up to speed. We will be creating our markup from scratch using BEM (block element modifier) method. Will create an completed front end application that is functional and fully responsive. You will learn how you can minimize the use of media queries, create a variety of components such as various navigation bars, and modularize your code with components. ",
+		"imageUrl": "https://res.cloudinary.com/dcb389szc/image/upload/v1564181036/cravejs/products/css.png",
+		"userId": "5c60a6a07b03270a54ca90ae",
+		"lastUpdated": "2019-03-07T02:54:36.366Z",
+		"__v": 0
+	},
+	{
+		"_id": "5c8089b91afdae636c5f2e29",
+		"name": "UI PATH - Starter Guide",
+		"price": 19.99,
+		"description": "This RPA (Robotic Process Automation) course covers RPA using a free version of UI Path, a billion dollar tech unicorn. You will learn web scraping and how to automate repetitive data entry tasks.",
+		"longDescription": "This hands on course will teach you how to read data from an excel file and will out a bunch of forms or different task online. We will be automating data entry and webscape information on the web.",
+		"imageUrl": "https://res.cloudinary.com/dcb389szc/image/upload/v1564181036/cravejs/products/uipath.png",
+		"userId": "5c60a6a07b03270a54ca90ae",
+		"lastUpdated": "2019-03-07T03:02:17.170Z",
+		"__v": 0
+	},
+	{
+		"_id": "5c808b111afdae636c5f2e2a",
+		"name": "React - Survival Guide",
+		"price": 19.99,
+		"description": "This expanding course covers the fundamentals of React. You will gain an understanding of how to think the React way and will build some fun projects along the way. React Hooks will be covered mostly..",
+		"longDescription": "This 5 hour course covers the fundamentals of React. You will gain an understanding of how to think the React way and will build some fun projects along the way. We will create several front end projects together including a tic tac toe game, concert landing page and sample social media site final project.",
+		"imageUrl": "https://res.cloudinary.com/dcb389szc/image/upload/v1564181034/cravejs/products/react.png",
+		"userId": "5c60a6a07b03270a54ca90ae",
+		"lastUpdated": "2019-03-07T03:08:01.026Z",
+		"__v": 0
+	},
+	{
+		"_id": "5c808beb1afdae636c5f2e2b",
+		"name": "Redux - Survival Guide",
+		"price": 9.99,
+		"description": "Learn Redux the easy way. Understand Redux state management, create actions and set up Redux in your projects to easily scale any web app. This course will cover Redux with React.",
+		"longDescription": "This 3 hour min course the fundamentals of Redux. You will gain an understanding of how to use Redux in your projects. This course is short and to the point. Action creators, Store, Connect and other concepts will be covered. You will learn how to use Redux as a state management tool for your apps. No more confusing Redux tutorials.",
+		"imageUrl": "https://res.cloudinary.com/dcb389szc/image/upload/v1564181035/cravejs/products/redux.png",
+		"userId": "5c60a6a07b03270a54ca90ae",
+		"lastUpdated": "2019-03-07T03:11:39.278Z",
+		"__v": 0
+	},
+	{
+		"_id": "5c808beb1afdae636c5f2e2d",
+		"name": "Express - Survival Guide",
+		"price": 9.99,
+		"description": "Learn Express the easy way. Routing, authentication and email and much more. Build a full backend custom API. This course will use Postman with Express.",
+		"longDescription": "This 3 hour min course the fundamentals of Redux. You will gain an understanding of how to use Redux in your projects. This course is short and to the point. Action creators, Store, Connect and other concepts will be covered. You will learn how to use Redux as a state management tool for your apps. No more confusing Redux tutorials.",
+		"imageUrl": "https://res.cloudinary.com/dcb389szc/image/upload/v1564181034/cravejs/products/express.png",
+		"userId": "5c60a6a07b03270a54ca90ae",
+		"lastUpdated": "2019-03-07T03:11:39.278Z",
+		"__v": 0
+	},
+	{
+		"_id": "5c808beb1afdae636c5f2e2c",
+		"name": "SQL - Survival Guide",
+		"price": 9.99,
+		"description": "This specialized SQL course for analysts will be a thorough guide to SQL query concepts for data analysts. Topic covered include joins, dynamic dates, stored procedures, advanced functions and more",
+		"longDescription": "This 3 hour min course the fundamentals of Redux. You will gain an understanding of how to use Redux in your projects. This course is short and to the point. Action creators, Store, Connect and other concepts will be covered. You will learn how to use Redux as a state management tool for your apps. No more confusing Redux tutorials.",
+		"imageUrl": "https://res.cloudinary.com/dcb389szc/image/upload/v1564181034/cravejs/products/sql.png",
+		"userId": "5c60a6a07b03270a54ca90ae",
+		"lastUpdated": "2019-03-07T03:11:39.278Z",
+		"__v": 0
+	}
+]

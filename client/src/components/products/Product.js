@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link ,withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class Product extends Component {
 
@@ -19,12 +19,7 @@ class Product extends Component {
                 <div className="Product__name">  {name} </div>
                 <div className="Product__price">  {`sale price `} <span>{`: $${price}`}</span>  </div>
                 <div className="Product__description">  {description} </div>
-      
-                    <Link className = "Product__button link link__product" to = {`/products/${id}`} > 
-                         Show Details
-                     </Link>   
-    
-               
+         
             </div>
         );
     }

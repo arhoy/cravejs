@@ -22,7 +22,7 @@ export default function ( state = initialState, action ) {
         case GET_USER_CART:
             return {
                 ...state,
-                cart: action.payload.items,
+                cart: action.payload ? action.payload.items: [] ,
                 loading:false
             }
         case GET_CURRENT_CART_TOTAL:

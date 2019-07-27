@@ -1,20 +1,26 @@
-.products-container {
-    grid-column: 1/-1;
-      display:grid;
-      background-color: $fb-grey;
-        grid-template-columns:
-            [full-start] 1fr 
-            [center-start] repeat(8, [col-start] minmax(min-content,1fr) [col-end] ) 
-            [center-end] 1fr [full-end];
-        
-}
+
 .products , .products__noResults {
-    grid-column: center-start/ center-end;
-    grid-row: 2/3;
-    display:grid;
-    grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
-    grid-gap: 7rem;
-    margin: 5rem 0rem;
+    grid-column: center-start / center-end;
+    background:$fb-grey;
+    justify-items:center;
+    color:$trello-blue-900;
+    font-size: 1.6rem;
+    margin: 2rem 6rem;
+    margin-bottom: 6rem;
+
+    display: grid;
+    grid-template-columns:  repeat(auto-fit,minmax(30rem,1fr));
+    grid-gap: 3rem;
+    @include respond(tab-port){
+        grid-column: full-start / full-end;
+        padding: 1rem 3rem;
+        margin: 2rem 2rem;
+    }
+    @include respond(phone){
+        overflow-x: scroll;
+        padding: 1rem 1rem;
+        margin: 2rem 0rem;
+    }
 }
 .products__loading {
     font-size: 2rem;
@@ -35,10 +41,24 @@
     grid-column: center-start/ center-end;
     grid-row: 1/2;
     max-width: 20rem;
-    margin-top:2rem;
     display: inline-block;
     outline: none;
     border:none;
     padding: 1rem 2rem;
     border-radius: 10px;
 }
+
+.products__header {
+    grid-column: 1/-1;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 1rem;
+    align-items: center;
+    background: linear-gradient( to right, $trello-blue-100,$trello-blue-400);
+    @include respond(phone){
+        margin-right: 0rem;
+        justify-content: center;
+    }
+}
+    

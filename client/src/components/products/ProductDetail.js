@@ -180,7 +180,7 @@ class ProductDetail extends Component {
                          <div className="ProductDetail__longDescription"> 
                             
                             <div className="ProductDetail__longDescription-1">
-                                 Course Description: 
+                                 Course Description: (This Course is A DEMO)
                             </div>
                             <div className="ProductDetail__longDescription-2">
                                   { product.longDescription } 

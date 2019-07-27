@@ -1,22 +1,20 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const ProductSchema = new Schema({
+const PortfolioSchema = new Schema({
     name:{
         type:String,
         required:true,
         unique:true
     },
-    price:{
-        type:Number,
+    url:{
+        type:String,
         required:true
     },
-    description:{
+    displayUrl:{
         type:String,
         required:true,
-        maxlength: 215,
-        minlength: 150
     },
-    longDescription: {
+    description: {
         type:String
     },
     lastUpdated:{
@@ -25,12 +23,11 @@ const ProductSchema = new Schema({
     },
     imageUrl: {
         type:String
-    }
-    ,userId: {
-        type: Schema.Types.ObjectId,
-        ref: 'users',
-        required:true
+    },
+    live:{
+        type: Boolean,
+        default: true
     }
 });
 
-module.exports = Product = mongoose.model('product',ProductSchema)
+module.exports = Portfolio = mongoose.model('Portfolio',PortfolioSchema)

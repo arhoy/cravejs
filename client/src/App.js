@@ -53,6 +53,7 @@ import ArticlesPage from './pages/articles/ArticlesPage';
 import ArticlePage from './pages/article/ArticlePage';
 
 import ToDoPage from './pages/todo/ToDoPage';
+import PortfolioPage from './pages/portfolio/PortfolioPage';
 
 import SearchResultsPage from './pages/searchResults/SearchResultsPage';
 
@@ -120,6 +121,8 @@ class App extends Component {
           <Route exact path = "/articles" component = {ArticlesPage}/>
           <Route exact path = "/articles/model/:content-type" component = {ArticlesPage}/>
           <Route exact path = "/articles/:contentType/:slugName" component = {ArticlePage}/>
+
+          <Route exact path = "/portfolios" component = {PortfolioPage}/>
 
           <Route exact path = "/posts" component = {PostsPage}/>
           <Route exact path = "/products" component = {ProductsPage}/>

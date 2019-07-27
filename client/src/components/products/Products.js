@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Product from './Product';
 import { connect } from 'react-redux';
 import { getProducts } from '../../actions/productActions';
 import LoadingSpinner from '../utils/LoadingSpinner';
+import ProductsHeader from './ProductHeader';
 
 
 class Products extends Component {
@@ -23,6 +24,7 @@ class Products extends Component {
       
     }
     inputChangeHandler = (e) => {
+    
         const keyword = e.target.value;
         const filteredProducts = this.state.products.filter(product => (
             product.name.toLowerCase().includes(keyword.toLowerCase().trim()) ||
@@ -34,8 +36,8 @@ class Products extends Component {
     
     
     render() {
-     
         const { products,filteredProducts } = this.state;
+
         if( !products || products.length < 1 ) {
             return (
                 <div className = "products__loading">
@@ -50,8 +52,8 @@ class Products extends Component {
         else {
             const productsToLoop = this.state.keyword === '' ? products : filteredProducts
             return (
-                <div className = "products-container">
-                    <input onChange = { this.inputChangeHandler } className = "products__input" type="text" placeholder = "Search for products"/>
+            <Fragment>
+                    <ProductsHeader inputChangeHandler = { this.inputChangeHandler }/>
                     <div className = "products">
                     {
                         this.state.keyword !== '' && this.state.filteredProducts.length === 0 ? 
@@ -70,8 +72,8 @@ class Products extends Component {
                         ))
                     }
                     </div>
-                </div>
-               
+     
+            </Fragment>
             );
         }
        
