@@ -9,7 +9,11 @@
     "client-install": "npm install --prefix client",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "dev-next": "next",
+    "build-next": "next build",
+    "start-next": "next start",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "postbuild": "react-snap"
   },
   "engines": {
     "node": "8.12.0",
@@ -37,7 +41,6 @@
     "jsonwebtoken": "^8.2.0",
     "lodash": "^4.17.5",
     "mongoose": "^5.0.12",
-    "next": "^9.0.3",
     "nodemailer": "^5.1.1",
     "nodemailer-sendgrid-transport": "^0.2.0",
     "passport": "^0.4.0",

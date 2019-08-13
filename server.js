@@ -8,6 +8,9 @@ const cloudinary = require('cloudinary');
 
 const app = express();
 
+
+
+
 // Body parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -88,6 +91,8 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
+
+
 
 const port = process.env.PORT || 5000;
 
