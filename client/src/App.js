@@ -58,6 +58,7 @@ import PortfolioPage from './pages/portfolio/PortfolioPage';
 import SearchResultsPage from './pages/searchResults/SearchResultsPage';
 
 import './sass/main.scss';
+import NotFoundPage from './pages/notFound/NotFoundPage';
 
 
 
@@ -135,7 +136,7 @@ class App extends Component {
           <Route exact path = "/search" component = { SearchResultsPage } />
   
           <Route exact path = "/" component = {HomePage}/>
-  
+          <Route component = { NotFoundPage }/>
         </Switch>
         </Fragment>
       </Router>
