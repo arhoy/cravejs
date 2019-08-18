@@ -51,8 +51,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "sitemap": "babel-node src/components/routes/sitemap-generator.js",
-    "fuckyou":"babel-node src/components/routes/what.js"
-  
+    "fuckyou": "babel-node src/components/routes/what.js"
   },
   "proxy": "http://localhost:5000",
   "eslintConfig": {
