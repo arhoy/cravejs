@@ -23,16 +23,18 @@ const cloud_name = require('./config/keys').cloud_name;
 const cloud_api_key = require('./config/keys').cloud_api_key;
 const cloud_api_secret = require('./config/keys').cloud_api_secret;
 
+// Prerender config
+const prerender_token = require('./config/keys').prerender_token;
+
 // Contentful config see articles js
 
 // Connect to MongoDB
 mongoose
-  .connect(db,
-     { 
-      useNewUrlParser: true,
-      useCreateIndex: true,
-      useFindAndModify: false
-   })
+  .connect(db, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  })
   .then(() =>
     console.log(`MongoDB Connected to database: ${db.substring(db.length - 7)}`)
   )
@@ -52,6 +54,9 @@ const portfolio = require('./routes/api/portfolio');
 
 // Passport middleware
 app.use(passport.initialize());
+
+// Middleware for Prerender.io
+app.use(require('prerender-node').set('prerenderToken', prerender_token));
 
 // Passport Config
 require('./config/passport')(passport);
@@ -79,7 +84,6 @@ app.use('/api/articles', articles);
 app.use('/api/tasks', tasks);
 app.use('/api/gcse', gcse);
 app.use('/api/portfolio', portfolio);
-
 
 // Server static assets if in production
 if (process.env.NODE_ENV === 'production') {

@@ -16,8 +16,8 @@
     "postbuild": "react-snap"
   },
   "engines": {
-    "node": "8.12.0",
-    "npm": ">=6.0.0"
+    "node": ">8.11.0",
+    "npm": ">=5.6.0"
   },
   "author": "Alex Quasar",
   "license": "MIT",
@@ -47,6 +47,7 @@
     "passport-jwt": "^4.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "prerender-node": "^3.2.5",
     "react-ga": "^2.5.7",
     "react-helmet": "^5.2.1",
     "react-redux": "^7.1.0",
