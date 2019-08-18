@@ -1,7 +1,7 @@
 {
-  "name": "aweseome_resume_app",
+  "name": "cravejs",
   "version": "1.0.0",
-  "description": "Awesome Resume App",
+  "description": "FullStack React Web Development articles and resources. My online documentation to becoming a fullstack developer",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -9,11 +9,7 @@
     "client-install": "npm install --prefix client",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "dev-next": "next",
-    "build-next": "next build",
-    "start-next": "next start",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
-    "postbuild": "react-snap"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "engines": {
     "node": ">8.11.0",
