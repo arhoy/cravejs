@@ -24,7 +24,7 @@
     "classnames": "^2.2.6",
     "cli": "^1.0.1",
     "cloudinary": "^1.13.2",
-    "compression": "1.7.0",
+    "compression": "1.8.2",
     "concurrently": "^4.1.0",
     "contentful": "^7.5.0",
     "cookie-parser": "^1.4.4",
